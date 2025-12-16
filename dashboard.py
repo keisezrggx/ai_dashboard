@@ -5,10 +5,9 @@ import plotly.graph_objects as go
 import streamlit as st
 import logging
 import datetime
-import difflib
 
 # from backend.kula.chatbot_optimized import ChatbotOptimized
-from utils_aggregation import aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity, calculate_checker_accuracy, aggregate_checker_errors, week_of_month, aggregate_csat_dual
+from utils_aggregation import aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity, calculate_checker_accuracy, aggregate_checker_errors, week_of_month, aggregate_csat_dual, highlight_diff_words
 from streamlit_chatbox import *
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
@@ -25,7 +24,7 @@ team = st.sidebar.radio('Team', ['QC'])
 if team == 'QC':
     st.sidebar.header("Adjust Data")
 
-    page = st.sidebar.selectbox("Pages", ["Overview","Sampling","Audio Sample", "Performance"])
+    page = st.sidebar.selectbox("Pages", ["Overview","Sampling", "Performance", "Audio Sample", "Recheck Sample"])
 
 
     #Page 1
@@ -619,26 +618,6 @@ if team == 'QC':
     elif page == "Audio Sample":
         st.title("Audio Sample")
 
-        def highlight_diff_words(original, revised):
-            """
-            Mengembalikan string HTML yang menandai kata-kata berbeda dalam `revised` dibandingkan `original` dengan warna merah.
-            """
-            original_words = original.split()
-            revised_words = revised.split()
-            s = difflib.SequenceMatcher(None, original_words, revised_words)
-            result = []
-
-            for tag, i1, i2, j1, j2 in s.get_opcodes():
-                if tag == "equal":
-                    result.extend(revised_words[j1:j2])
-                elif tag in ("replace", "insert"):
-                    for word in revised_words[j1:j2]:
-                        result.append(f"<span style='color: red'>{word}</span>")
-                elif tag == "delete":
-                    continue  # tidak perlu menampilkan kata yang dihapus
-
-            return " ".join(result)
-
         # Load data
         df = pd.read_csv("dataset_qc/weekly_calibration_data.csv")
         df.columns = df.columns.str.strip()
@@ -742,9 +721,101 @@ if team == 'QC':
         st.title("Recheck Sample")
         
         # Load data
-        df = pd.read_csv("")
+        df = pd.read_csv("dataset_qc/sampling_agent.csv")
         df.columns = df.columns.str.strip()
+        df.fillna('-', inplace=True)
+        df['tanggal_pengerjaan'] = pd.to_datetime(df['tanggal_pengerjaan'], 
+        errors='coerce').dt.date
+        df['tanggal_meeting'] = pd.to_datetime(df['tanggal_meeting'], errors='coerce').dt.date
 
+        meeting_data = {}
+
+        for _, row in df.iterrows():
+            tanggal_meeting = row['tanggal_meeting']
+            checker = row['nama_qc']
+            agent = row['nama_sampling']
+
+            # Ambil nama file gambar
+            screenshot_filename = str(row.get('file_screenshot', '')).strip()
+            screenshot_file = f'screenshot/{screenshot_filename}' if screenshot_filename else None
+
+            # Siapkan teks recheck
+            sections = []
+            
+            mapping = [
+                ('result_qc', 'result_qc_awal', 'Result QC'),
+                ('reason', 'reason_awal', 'Reason'),
+            ]
+
+            for final_col, awal_col, label in mapping:
+                text_awal = str(row[awal_col]).strip()
+                hasil = str(row[final_col]).strip()
+
+                if text_awal:
+                    if label == "Teks" and hasil:
+                        hasil_diff = highlight_diff_words(text_awal, hasil)
+                        hasil_markdown = f"**{label}:** {text_awal}  \n**Diubah:** <span>{hasil_diff}</span>  \n"
+                        sections.append(hasil_markdown)
+                    else:
+                        sections.append(f"**{label}:** {text_awal}  \n**Diubah:** {hasil}  \n")
+            
+            if not sections and not screenshot_filename:
+                continue
+
+            entry = {
+                'checker': checker,
+                'agent': agent,
+                'text': f'**Checker:** {checker}' + ('\n\n' + '\n'.join(sections) if sections else ''),
+                'file': screenshot_file
+            }
+
+            if tanggal_meeting not in meeting_data:
+                meeting_data[tanggal_meeting] = []
+
+            meeting_data[tanggal_meeting].append(entry)
+
+        dates = sorted(meeting_data.keys())
+        if not dates:
+            st.warning('Tidak ada data meeting.')
+            st.stop() 
+
+        # === Sidebar: Pilih Tanggal ===
+        selected_date = st.sidebar.date_input(
+            'Tanggal Meeting',
+            value=max(meeting_data.keys()),
+            min_value=min(meeting_data.keys()),
+            max_value=max(meeting_data.keys())
+        )
+
+        if selected_date not in meeting_data:
+            st.warning(f'Tidak ada data untuk tanggal {selected_date.strftime('%d %B %Y')}')
+            st.stop()
+
+        # Date filter
+        manual_order = ['Neneng', 'Azer', 'Reza', 'Aul']
+        agent_list = [agent for agent in manual_order if agent in {entry['agent'] for entry in meeting_data[selected_date]}]
+        selected_agent = st.sidebar.radio('Agent Sampling', agent_list)
+
+        st.markdown(f"### {selected_agent}")
+
+        filtered_entries = [
+            item for item in meeting_data[selected_date]
+            if item['agent'] == selected_agent
+        ]
+
+        for i in range(0, len(filtered_entries), 3):
+            row_entries = filtered_entries[i:i+3]
+            cols =  st.columns(3)
+
+            for col, item in zip(cols, row_entries):
+                with col:
+                    with st.expander(f'Screenshot {i + filtered_entries.index(item) + 1}'):
+                        st.markdown(item['text'], unsafe_allow_html=True)
+                        if item['file']:
+                            try:
+                                st.image(item['file'])
+                            except Exception as e:
+                                st.error(f'Image Restricted')
 
     # Page 5
     elif page == 'Performance':

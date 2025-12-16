@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
+import difflib
 import matplotlib.pyplot as plt
 from datetime import timedelta
 
@@ -294,3 +295,23 @@ def aggregate_checker_errors(df):
     ]
     df_checker = df.groupby('Checker')[count_cols].sum().reset_index()
     return df_checker, count_cols
+
+def highlight_diff_words(original, revised):
+    """
+    Mengembalikan string HTML yang menandai kata-kata berbeda dalam `revised` dibandingkan `original` dengan warna merah.
+    """
+    original_words = original.split()
+    revised_words = revised.split()
+    s = difflib.SequenceMatcher(None, original_words, revised_words)
+    result = []
+
+    for tag, i1, i2, j1, j2 in s.get_opcodes():
+        if tag == "equal":
+            result.extend(revised_words[j1:j2])
+        elif tag in ("replace", "insert"):
+            for word in revised_words[j1:j2]:
+                result.append(f"<span style='color: red'>{word}</span>")
+        elif tag == "delete":
+            continue  # tidak perlu menampilkan kata yang dihapus
+
+    return " ".join(result)
