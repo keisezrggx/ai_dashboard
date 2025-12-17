@@ -315,3 +315,20 @@ def highlight_diff_words(original, revised):
             continue  # tidak perlu menampilkan kata yang dihapus
 
     return " ".join(result)
+
+# 2 screenshots path
+def build_screenshot_path(filename: str):
+    filename = str(filename).strip()
+    if not filename or filename == '-' or filename.lower() == 'nan':
+        return None
+    return f'screenshots/{filename}'
+
+# showing 2 screenshots side by side
+def show_image(path: str):
+    if not path:
+        st.info('No image.')
+        return
+    try:
+        st.image(path)
+    except Exception as e:
+        st.error('Image Restriceted.')

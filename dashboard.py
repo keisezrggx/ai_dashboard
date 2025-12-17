@@ -7,7 +7,7 @@ import logging
 import datetime
 
 # from backend.kula.chatbot_optimized import ChatbotOptimized
-from utils_aggregation import aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity, calculate_checker_accuracy, aggregate_checker_errors, week_of_month, aggregate_csat_dual, highlight_diff_words
+from utils_aggregation import aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity, calculate_checker_accuracy, aggregate_checker_errors, week_of_month, aggregate_csat_dual, highlight_diff_words, build_screenshot_path, show_image
 from streamlit_chatbox import *
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
@@ -736,8 +736,8 @@ if team == 'QC':
             agent = row['nama_sampling']
 
             # Ambil nama file gambar
-            screenshot_filename = str(row.get('file_screenshot', '')).strip()
-            screenshot_file = f'screenshot/{screenshot_filename}' if screenshot_filename else None
+            screenshot_file_1 = build_screenshot_path(row.get('file_screenshot_1', ''))
+            screenshot_file_2 = build_screenshot_path(row.get('file_screenshot_2', ''))
 
             # Siapkan teks recheck
             sections = []
@@ -759,14 +759,15 @@ if team == 'QC':
                     else:
                         sections.append(f"**{label}:** {text_awal}  \n**Diubah:** {hasil}  \n")
             
-            if not sections and not screenshot_filename:
+            if not sections and not (screenshot_file_1 or screenshot_file_2):
                 continue
 
             entry = {
                 'checker': checker,
                 'agent': agent,
                 'text': f'**Checker:** {checker}' + ('\n\n' + '\n'.join(sections) if sections else ''),
-                'file': screenshot_file
+                'file_1': screenshot_file_1,
+                'file_2': screenshot_file_2
             }
 
             if tanggal_meeting not in meeting_data:
@@ -809,13 +810,17 @@ if team == 'QC':
 
             for col, item in zip(cols, row_entries):
                 with col:
-                    with st.expander(f'Screenshot {i + filtered_entries.index(item) + 1}'):
-                        st.markdown(item['text'], unsafe_allow_html=True)
-                        if item['file']:
-                            try:
-                                st.image(item['file'])
-                            except Exception as e:
-                                st.error(f'Image Restricted')
+                    idx = i + filtered_entries.index(item) + 1
+                    st.markdown(item['text'], unsafe_allow_html=True)
+                    exp_cols = st.columns(2)
+
+                    with exp_cols[0]:
+                        with st.expander(f'Scerenshot {idx} - 1', expanded=False):
+                            show_image(item.get('file_1'))
+                    
+                    with exp_cols[1]:
+                        with st.expander(f'Screenshot {idx} - 2', expanded=False):
+                            show_image(item.get('file_2'))
 
     # Page 5
     elif page == 'Performance':
