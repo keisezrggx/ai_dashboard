@@ -331,4 +331,4 @@ def show_image(path: str):
     try:
         st.image(path)
     except Exception as e:
-        st.error('Image Restriceted.')
+        st.error('Image Restricted.')

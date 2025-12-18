@@ -736,7 +736,7 @@ if team == 'QC':
             agent = row['nama_sampling']
 
             # Ambil nama file gambar
-            screenshot_file_1 = build_screenshot_path(row.get('file_screenshot_1', ''))
+            screenshot_file_1 = build_screenshot_path(row.get('file_screenshot', ''))
             screenshot_file_2 = build_screenshot_path(row.get('file_screenshot_2', ''))
 
             # Siapkan teks recheck
@@ -806,19 +806,23 @@ if team == 'QC':
 
         for i in range(0, len(filtered_entries), 3):
             row_entries = filtered_entries[i:i+3]
-            cols =  st.columns(3)
+            cols =  st.columns(1)
 
-            for col, item in zip(cols, row_entries):
+            for j, (col, item) in enumerate(zip(cols, row_entries), start=i):
                 with col:
-                    idx = i + filtered_entries.index(item) + 1
-                    st.markdown(item['text'], unsafe_allow_html=True)
-                    exp_cols = st.columns(2)
+                    idx = j + 1
 
-                    with exp_cols[0]:
-                        with st.expander(f'Scerenshot {idx} - 1', expanded=False):
+                    head_case, head_s1, head_s2 = st.columns([1, 1, 1])
+                    
+                    with head_case:
+                        with st.expander(f'Case {idx}', expanded=False):
+                            st.markdown(item['text'], unsafe_allow_html=True)
+                            
+                    with head_s1:
+                        with st.expander(f'Screenshot {idx} - 1', expanded=False):
                             show_image(item.get('file_1'))
                     
-                    with exp_cols[1]:
+                    with head_s2:
                         with st.expander(f'Screenshot {idx} - 2', expanded=False):
                             show_image(item.get('file_2'))
 
