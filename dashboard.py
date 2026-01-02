@@ -741,23 +741,53 @@ if team == 'QC':
 
             # Siapkan teks recheck
             sections = []
-            
+
             mapping = [
-                ('result_qc', 'result_qc_awal', 'Result QC'),
-                ('reason', 'reason_awal', 'Reason'),
+                # static data
+                {
+                    'type': 'static',
+                    'col': 'code_robot',
+                    'label': 'Code'
+                },
+
+                {
+                    'type': 'static',
+                    'col': 'description',
+                    'label': 'Description'
+                },
+
+                # dynamic data
+                {
+                    'type': 'compare',
+                    'final': 'result_qc', 
+                    'text_awal': 'result_qc_awal', 
+                    'label': 'Result QC'
+                },
+                
+                {
+                    'type': 'compare',
+                    'final': 'reason', 
+                    'text_awal': 'reason_awal', 
+                    'label': 'Reason'
+                },
             ]
 
-            for final_col, awal_col, label in mapping:
-                text_awal = str(row[awal_col]).strip()
-                hasil = str(row[final_col]).strip()
+            code = str(row.get("code", "")).strip()
+            desc = str(row.get("description", "")).strip()
 
-                if text_awal:
-                    if label == "Teks" and hasil:
-                        hasil_diff = highlight_diff_words(text_awal, hasil)
-                        hasil_markdown = f"**{label}:** {text_awal}  \n**Diubah:** <span>{hasil_diff}</span>  \n"
-                        sections.append(hasil_markdown)
-                    else:
-                        sections.append(f"**{label}:** {text_awal}  \n**Diubah:** {hasil}  \n")
+            if code or desc:
+                sections.append(f"**Code:** {code}  \n **Description:** {desc}\n")
+
+            for item in mapping:
+                if item['type'] == 'compare':
+                    text_awal = str(row.get(item['text_awal'], '')).strip()
+                    hasil = str(row.get(item['final'], '')).strip()
+
+                    if text_awal:
+                        sections.append(
+                            f'**{item['label']}:** {text_awal}  \n'
+                            f'**Diubah:** {hasil}   \n'
+                        )
             
             if not sections and not (screenshot_file_1 or screenshot_file_2):
                 continue
