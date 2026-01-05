@@ -842,7 +842,7 @@ if team == 'QC':
                 with col:
                     idx = j + 1
 
-                    head_case, head_s1, head_s2 = st.columns([1, 1, 1])
+                    head_case, head_s1 = st.columns([0.8, 1.2])
                     
                     with head_case:
                         with st.expander(f'Case {idx}', expanded=False):
@@ -851,10 +851,11 @@ if team == 'QC':
                     with head_s1:
                         with st.expander(f'Screenshot {idx} - 1', expanded=False):
                             show_image(item.get('file_1'))
-                    
-                    with head_s2:
+                            
                         with st.expander(f'Screenshot {idx} - 2', expanded=False):
                             show_image(item.get('file_2'))
+                    
+                    # with head_s2:
 
     # Page 5
     elif page == 'Performance':
