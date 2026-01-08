@@ -19,7 +19,7 @@ CURRENT_THEME = "light"
 IS_DARK_THEME = False
 st.set_page_config(layout="wide")
 
-team = st.sidebar.radio('Team', ['QC'])
+team = st.sidebar.radio('Team', ['QC', 'LLM'])
 
 if team == 'QC':
     st.sidebar.header("Adjust Data")
@@ -1662,3 +1662,9 @@ elif team == 'KULA':
                     gd_bg.configure_pagination()
                     grid_options_bg = gd_bg.build()
                     AgGrid(bg_summary, gridOptions=grid_options_bg, height=400)
+
+
+elif team == 'LLM':
+    st.title('LLM QC Report')
+
+    
