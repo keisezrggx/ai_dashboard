@@ -24,7 +24,7 @@ team = st.sidebar.radio('Team', ['QC'])
 if team == 'QC':
     st.sidebar.header("Adjust Data")
 
-    page = st.sidebar.selectbox("Pages", ["Overview","Sampling", "Performance", "Audio Sample", "Recheck Sample"])
+    page = st.sidebar.selectbox("Pages", ["Recheck Sample"])
 
 
     #Page 1
@@ -759,15 +759,15 @@ if team == 'QC':
                 # dynamic data
                 {
                     'type': 'compare',
-                    'final': 'result_qc', 
-                    'text_awal': 'result_qc_awal', 
+                    'final': 'result_qc_ubah', 
+                    'text_awal': 'result_qc', 
                     'label': 'Result QC'
                 },
                 
                 {
                     'type': 'compare',
-                    'final': 'reason', 
-                    'text_awal': 'reason_awal', 
+                    'final': 'reason_ubah',
+                    'text_awal': 'reason', 
                     'label': 'Reason'
                 },
             ]
