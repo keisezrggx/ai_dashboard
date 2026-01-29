@@ -19,7 +19,7 @@ CURRENT_THEME = "light"
 IS_DARK_THEME = False
 st.set_page_config(layout="wide")
 
-team = st.sidebar.radio('Team', ['QC', 'LLM'])
+team = st.sidebar.radio('Team', ['QC'])
 
 if team == 'QC':
     st.sidebar.header("Adjust Data")
@@ -718,7 +718,7 @@ if team == 'QC':
 
     # Page 4
     elif page == "Recheck Sample":
-        st.title("Recheck Sample")
+        st.title("AI Human Agent QC")
         
         # Load data
         df = pd.read_csv("dataset_qc/sampling_agent.csv")
@@ -836,26 +836,22 @@ if team == 'QC':
 
         for i in range(0, len(filtered_entries), 3):
             row_entries = filtered_entries[i:i+3]
-            cols =  st.columns(1)
+            cols =  st.columns(len(row_entries))
 
-            for j, (col, item) in enumerate(zip(cols, row_entries), start=i):
-                with col:
-                    idx = j + 1
+            for idx, item in enumerate(filtered_entries, start=1):
 
-                    head_case, head_s1 = st.columns([0.8, 1.2])
+                    head_case, head_s = st.columns([0.8, 1.2])
                     
                     with head_case:
                         with st.expander(f'Case {idx}', expanded=False):
                             st.markdown(item['text'], unsafe_allow_html=True)
                             
-                    with head_s1:
+                    with head_s:
                         with st.expander(f'Screenshot {idx} - 1', expanded=False):
                             show_image(item.get('file_1'))
                             
                         with st.expander(f'Screenshot {idx} - 2', expanded=False):
                             show_image(item.get('file_2'))
-                    
-                    # with head_s2:
 
     # Page 5
     elif page == 'Performance':
@@ -1666,5 +1662,4 @@ elif team == 'KULA':
 
 elif team == 'LLM':
     st.title('LLM QC Report')
-
     
