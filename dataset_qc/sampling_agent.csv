@@ -8,4 +8,15 @@
 6,1/22/2026,Azer,Neneng,E01-01,Correct,E01-01,"Agen tidak menyampaikan permohonan maaf atau menunjukkan sikap positif terhadap masalah yang dialami pengguna",Agent sudah melakukan Empathy pada menit 08:02:22,Normal Conversation,-,TRUE,azer_case_1_1.png,azer_case_1_2.png,1/23/2026
 7,1/22/2026,Azer,Neneng,LC7-01,Rule Judgment Error,-,-,-,-,-,TRUE,azer_case_2_1.png,azer_case_2_2.png,1/23/2026
 8,1/22/2026,Azer,Neneng,RC01-01,Correct,RC01-01,Agen tidak menanyakan dengan jelas apakah masalah pengguna telah terselesaikan,"seharusnya normal karena ketika agent konfirmasi nomor pesanan ke user, user tidak ada respon",Normal Conversation,-,TRUE,azer_case_3_1.png,azer_case_3_2.png,1/23/2026
-9,1/28/2026,Neneng,Aul,LC10-01,Normal Conversation,LC10-01,tes 1,tes 2,Correct,tes 3,TRUE,-,-,1/29/2026
+9,1/28/2026,Aul,Neneng,RC01-01,Correct,RC01-01,-,-,Normal Conversation,user tidak ada respon kembali saat agent sedang melakukan probbing kepada user ,TRUE,aul_case_4_1.png,aul_case_4_2.png,1/30/2026
+10,1/28/2026,Aul,Reza,"UB02-01",Normal Conversation,"UB02-01","Standar Ucapan: Nada bersifat argumentatif (menyinggung, tidak menghormati, melanggar etika komunikasi)",-,Correct,agent menutup chat sepihak dan tidak ada konfirmasi terlebih dahulu kepada user sebelum mengakhiri percakapan,TRUE,aul_case_5_1.png,aul_case_5_2.png,1/30/2026
+11,1/28/2026,Aul,Azer,LC1-04,Correct,LC1-04,-,-,-,-,TRUE,aul_case_6_1.png,aul_case_6_2.png,1/30/2026
+12,1/28/2026,Neneng,Azer,LC12-01,Correct,LC12-01,Agen menutup percakapan tanpa mengonfirmasi apakah pengguna sedang online.,chat terputus,Normal Conversation,-,TRUE,neneng_case_4_1.png,neneng_case_4_2.png,1/30/2026
+13,1/28/2026,Neneng,Reza,"RC02-01",Normal Conversation,RC02-01,tidak mengulang pertanyaan tentang kebutuhan bantuan lebih lanjut ,Seharusnya tanyakan kejelasan dan tawarkan bantuan terlebih dahulu,Correct,-,TRUE,neneng_case_5_1.png,neneng_case_5_2.png,1/30/2026
+14,1/28/2026,Neneng,Aul,LC10-01,Correct,LC10-01,Kalimat penutupan sesi yang dikirimkan agen tidak sesuai ketentuan,yang dimaksud robot bukan kalimat penutup melainkan bagian dari solusi,Normal Conversation,-,TRUE,neneng_case_6_1.png,neneng_case_6_2.png,1/30/2026
+15,1/29/2026,Reza,Neneng,RC02-01,Normal Conversation,RC02-01,-,-,-,-,TRUE,reza_case_4_1.png,reza_case_4_2.png,1/30/2026
+16,1/29/2026,Reza,Azer,LC12-01,Correct,LC12-01,-,-,-,-,TRUE,reza_case_5_1.png,reza_case_5_2.png,1/30/2026
+17,1/29/2026,Reza,Aul,LC3-01,Normal Conversation,LC3-01,-,-,-,-,TRUE,reza_case_6_1.png,reza_case_6_2.png,1/30/2026
+18,1/29/2026,Azer,Reza,"LC7-01",Normal Conversation,"LC7-01",-,-,-,-,TRUE,azer_case_4_1.png,azer_case_4_2.png,1/30/2026
+19,1/29/2026,Azer,Aul,RC02-01,Normal Conversation,RC02-01,-,-,-,-,TRUE,azer_case_5_1.png,azer_case_5_2.png,1/30/2026
+20,1/29/2026,Azer,Neneng,RC02-01,Normal Conversation,RC02-01,-,-,-,-,TRUE,azer_case_6_1.png,azer_case_6_2.png,1/30/2026
