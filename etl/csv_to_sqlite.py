@@ -5,8 +5,11 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-DB_PATH = 'data/warehouse.db'
-CSV_DIR = Path('data/csvs')
+DB_PATH = 'database/warehouse.db'
+CSV_DIRS = [
+    Path('dataset_kula/'),
+    Path('dataset_qc/')
+]
 
 def safe_table_name(name: str) -> str:
     base = Path(name).stem.lower()
@@ -24,25 +27,25 @@ with sqlite3.connect(DB_PATH) as conn:
                     source_file TEXT,
                     last_updated_utc TEXT,
                     row_count INTEGER)
-        )
     """)
 
-    for csv_path in CSV_DIR.glob("*.csv"):
-        table = safe_table_name(csv_path.name)
-        df = pd.read_csv(csv_path)
+    for csv_dir in CSV_DIRS:
+        for csv_path in csv_dir.glob("*.csv"):
+            table = safe_table_name(f"{csv_dir.name}_{csv_path.name}")
+            df = pd.read_csv(csv_path)
 
-        df.to_sql(table, conn, if_exists='replace', index=False)
+            df.to_sql(table, conn, if_exists='replace', index=False)
 
-        now_utc = datetime.now(timezone.utc).isoformat(timespec='seconds')
-        conn.execute("""
-            INSERT OR REPLACE INTO metadata (table_name, source_file, last_updated_utc, row_count)
-            VALUES (?, ?, ?, ?)
-            ON CONFLICT(table_name) DO UPDATE SET
-                source_file = excluded.last_updated_utc,
-                last_updated_utc = excluded.last_updated_utc,
-                row_count = excluded.row_count
-        """, (table, csv_path.name, now_utc, int(len(df))))
+            now_utc = datetime.now(timezone.utc).isoformat(timespec='seconds')
+            conn.execute("""
+                INSERT OR REPLACE INTO metadata (table_name, source_file, last_updated_utc, row_count)
+                VALUES (?, ?, ?, ?)
+                ON CONFLICT(table_name) DO UPDATE SET
+                    source_file = excluded.last_updated_utc,
+                    last_updated_utc = excluded.last_updated_utc,
+                    row_count = excluded.row_count
+            """, (table, csv_path.name, now_utc, len(df)))
 
-    conn.commit()
+        conn.commit()
 
-print("Done. Loaded:", len(list(CSV_DIR.glob("*.csv"))), "CSV files into", DB_PATH)
+print("Done. Loaded:", len(list(csv_dir.glob("*.csv"))), "CSV files into", DB_PATH)
