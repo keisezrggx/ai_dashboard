@@ -7,8 +7,7 @@ from pathlib import Path
 
 DB_PATH = 'database/warehouse.db'
 CSV_DIRS = [
-    Path('dataset_kula/'),
-    Path('dataset_qc/')
+    Path('raw_data/')
 ]
 
 def safe_table_name(name: str) -> str:
@@ -48,4 +47,7 @@ with sqlite3.connect(DB_PATH) as conn:
 
         conn.commit()
 
-print("Done. Loaded:", len(list(csv_dir.glob("*.csv"))), "CSV files into", DB_PATH)
+print(
+    f"Done. Loaded {len(list(csv_dir.glob('*.csv')))} CSV files into {DB_PATH}. "
+    f"Updated on {now_utc}"
+    )
