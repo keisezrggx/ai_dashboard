@@ -5,9 +5,10 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-DB_PATH = 'database/warehouse.db'
+now_utc = datetime.now(timezone.utc).isoformat(timespec='seconds')
+DB_PATH = '../database/warehouse.db'
 CSV_DIRS = [
-    Path('raw_data/')
+    Path('../raw_data/')
 ]
 
 def safe_table_name(name: str) -> str:
@@ -35,7 +36,6 @@ with sqlite3.connect(DB_PATH) as conn:
 
             df.to_sql(table, conn, if_exists='replace', index=False)
 
-            now_utc = datetime.now(timezone.utc).isoformat(timespec='seconds')
             conn.execute("""
                 INSERT OR REPLACE INTO metadata (table_name, source_file, last_updated_utc, row_count)
                 VALUES (?, ?, ?, ?)
