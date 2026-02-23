@@ -806,6 +806,7 @@ if team == 'QC':
             meeting_data[tanggal_meeting].append(entry)
 
         dates = sorted(meeting_data.keys())
+
         if not dates:
             st.warning('Tidak ada data meeting.')
             st.stop() 
