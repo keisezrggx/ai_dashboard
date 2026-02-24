@@ -20,13 +20,16 @@ CURRENT_THEME = "light"
 IS_DARK_THEME = False
 st.set_page_config(layout="wide")
 
-team = st.sidebar.radio('Team', ['KULA'])
+# team = st.sidebar.radio('Team', ['KULA'])
+team = ('KULA')
 
 if team == 'KULA':
 
     # st.markdown('#####')
 
-    page = st.sidebar.selectbox("Pages", ['Dashboard'])
+    # page = st.sidebar.selectbox("Pages", ['Dashboard'])
+    st.sidebar.title('Settings')
+    page = ('Dashboard')
 
     if page == 'Dashboard':
         
