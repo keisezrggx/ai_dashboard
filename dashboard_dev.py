@@ -37,7 +37,7 @@ if team == 'KULA':
             cols = st.columns([3.5,0.5])
         
             with cols[0]:
-                st.title("KULA Dashboard")
+                st.title("KULA Performance")
             with cols[1]:
                 granularity = st.selectbox(
                     '',
