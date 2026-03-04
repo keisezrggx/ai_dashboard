@@ -1,0 +1,126 @@
+sub_category,label_category
+alfacart - pembayaran tidak sinkron,alfacart - pembayaran tidak sinkron
+,alfacart - status cancel tidak sinkron
+apakah bisa belanja di toko offline,apakah bisa belanja di toko offline
+bhinneka - status cancel tidak sinkron,bhinneka - status cancel tidak sinkron
+,bl - status cancel tidak sinkron
+,blibli - status cancel tidak sinkron
+,blibli - status pembayaran tidak sinkron
+,bodybigsize - status cancel tidak sinkron
+pembayaran tagihan aplikasi dana,pembayaran tagihan aplikasi dana
+faspay - transaksi,faspay - transaksi
+,hita - status cancel tidak sinkron
+,ipay88 - status cancel tidak sinkron
+,ipaymu - status cancel tidak sinkron
+kendala openpay,kendala openpay
+,lazada paylater/masalah pembayaran
+lazada paylater/transaksi,lazada paylater/transaksi
+lazada paylater/kendala pembelian,lazada paylater/kendala pembelian
+lazada paylater refund,lazada paylater refund
+,myhartono - status cancel tidak sinkron
+,ncr sport - status cancel tidak sinkron
+,shopee - status cancel tidak sinkron
+,shopee - status pembayaran tidak sinkron
+,tiket.com- status cancel tidak sinkron
+,blibli - batas waktu retur barang
+,blibli - cara pengiriman pengembalian barang
+,blibli - estimasi pengiriman
+,blibli - estimasi proses retur
+,blibli - ongkos kirim retur
+,blibli - pembatalan pesanan yang sudah terbayar
+,blibli - pengembalian barang ditolak
+,blibli - pesanan belum diterima
+,blibli - pesanan menunggu pengiriman
+,blibli - pesanan yang diterima jumlah tidak sesuai/rusak/tidak sesuai deskripsi
+,blibli - pesanan yang diterima rusak/pecah saat pengiriman
+,waktu penerimaan produk setelah pembayaran berhasil
+,jd.id - pembatalan pesanan yang sudah terbayar
+,jd.id - pesanan belum diterima
+,jd.id - pesanan menunggu pengiriman
+,jd.id - pesanan yang diterima jumlah tidak sesuai/rusak/tidak sesuai deskripsi
+,jd.id - pesanan yang diterima rusak/pecah saat pengiriman
+,merchant yang mendukung fitur scan
+"transaksi tiktok sudah terbatalkan, dana sudah dikembalikan, tetapi tagihan pada akulaku masih muncul","transaksi tiktok sudah terbatalkan, dana sudah dikembalikan, tetapi tagihan pada akulaku masih muncul"
+,pembayaran klik indomaret gagal
+,tidak dapat menemukan akses untuk klaim akulaku elite card
+,dapat menemukan akses untuk klaim namun gagal saat diklaim
+,bertanya apakah akan menerima kartu fisik setelah mengklaim kartu akulaku elite card
+,limit akulau elite card lebih rendah dari limit kredit akulaku paylater
+,cara melakukan cicilan dengan akulaku elite card
+,nominal tagihan tidak sesuai dengan nominal transaksi akulaku elite card (nominal tagihan lebih tinggi dari nominal yang dipakai untuk transaksi)
+,bunga yang dikenakan untuk transaksi dengan akulaku elite card
+,bayar tagihan akulaku elite card di aplikasi bank mitra (bni)
+,platform yang mendukung pembayaran elite card
+,nominal denda akulaku elite card
+,pengguna dapat menemukan akses untuk klaim akulaku elite card namun tidak dapat mengaktifkan elite card
+,akulaku elite card tidak dapat digunakan untuk transaksi
+,terdapat transaksi elite card yang bukan dilakukan oleh pengguna
+,"sudah melakukan refund/cancel transaksi di merchant eksternal, namun limit kredit di akun akulaku tidak dipulihkan"
+,tidak dapat menggunakan voucher elite card
+,user melakukan pembayaran tagihan elite card sebanyak 2 kali atau lebih
+,pembayaran untuk tagihan elite card belum masuk sistem
+,bertanya apa itu akulaku in-store installment
+,denda tagihan akulaku in-store installment
+,cara pembayaran tagihan akulaku in-store installment
+,jumlah limit akulaku in-store installment
+,nominal minimal transaksi di akulaku in-store installment
+,bunga untuk transaksi in-store installmet
+,tidak bisa transaksi di in-store installment
+,tidak bisa scan qr merchant pada saat transaksi menggunakan in-store installment
+,pembayaran tagihan in-store installment belum masuk sistem
+,request batalkan pesanan hotel
+,tidak bisa belanja di bukalapak pakai akulaku
+beli tiket xxi pakai limit akulaku,beli tiket xxi pakai limit akulaku
+,bl-cara bayar uang muka
+,apakah bisa berbelanja paylater ditoko ofline akulaku
+,pengertian fitur scan yang terdapat pada bagian paylater
+,limit yang akan terpotong ketika saya menggunakan fitur (scan)
+,apa itu fitur barcode yang terdapat pada bagian paylater?
+,"tidak bisa menggunakan fitur barcode? terdapat notifikasi (sorry, currently you cannot use this payment method. for further queries, please call akulaku hotline at 1500920)"
+,apa itu fitur qris kaspro?
+,apa yang membedakan dengan fitur qris kaspro dengan fitur scan?
+,berasal darimana sumber nominal yang tertera pada fitur qris kaspro?
+"jika fitur scan dan qris kaspro adalah sama, apa yang membedakan dari kedua fitur tersebut?","jika fitur scan dan qris kaspro adalah sama, apa yang membedakan dari kedua fitur tersebut?"
+,ada berapa pilihan tenor yang tersedia untuk fitur qris kaspro?
+,berapa persen bunga yang ditagihkan untuk transaksi menggunakan fitur qris kaspro?
+berapa persen denda yang dikenakan apabila saya mengalami keterlambatan pembayaran?,berapa persen denda yang dikenakan apabila saya mengalami keterlambatan pembayaran?
+,"jika saya melakukan top up pada fitur qris kaspro, apakah saldo kaspro di aplikasi akulaku saya akan bertambah?"
+,apakah untuk saldo qris kaspro yang akan diterima oleh setiap user setelah aktivasi sama?
+,berapa nominal maksimum pembayaran per pesanan dengan menggunakan fitur metode pembayaran qris kaspro?
+,pembayaran di pegipegi.com gagal pakai akulaku
+,cara aktifkan fitur qris
+,"sudah booking hotel, pembayaran menggunakan akulaku gagal"
+bertanya apakah bisa menggunakan qris paylater,bertanya apakah bisa menggunakan qris paylater
+tidak muncul metode akulaku di bukalapak,tidak muncul metode akulaku di bukalapak
+,kendala lazada paylater tidak bisa digunakan
+,limit akulaku paylater tidak kembali setelah pembatalan pesanan
+,pengajuan limit kredit lazada paylater ditolak
+cara pengajuan akulaku paylater,cara pengajuan akulaku paylater
+,pengajuan retur produk akulaku paylater
+,penggunaan limit openpay yang hanya bisa dipakai di beberapa merchant
+,status pembayaran qris masih dalam proses
+,cara penggunaan layanan pembayaran offline
+,cara bayar tagihan lazada paylater
+,kendala penggunaan layanan scan kode offline
+tidak bisa lakukan transaksi-diminta pembayaran fullpayment,tidak bisa lakukan transaksi-diminta pembayaran fullpayment
+lazada paylater/rejected by akulaku,lazada paylater/rejected by akulaku
+,kendala tidak bisa pembayaran blibli pakai akulaku paylater
+,cara belanja di shopee pakai akulaku paylater
+,tidak ada metode pembayaran akulaku di aplikasi shopee
+pemesanan hotel menggunakan qris,pemesanan hotel menggunakan qris
+pengertian akulaku,pengertian akulaku
+,lama masa perlindungan
+,cakupan perlindungan
+,jenis resiko perlindungan
+,jenis resiko yang tidak masuk perlindungan
+manfaat perlindungan,manfaat perlindungan
+,harga premi perlindungan
+,jaminan perlindungan untuk produk senilai rp30.000.000
+,pihak rekanan kerja sama
+cara klaim asuransi,cara klaim asuransi
+,rincian tagihan lazada paylater
+,akun lazada paylater dibekukan
+"lazada paylater / akun disalahgunakan, permintaan kode pembayaran","lazada paylater / akun disalahgunakan, permintaan kode pembayaran"
+,cara beli pulsa pakai limit akulaku paylater
+,cara mencairkan limit akulaku paylater
+,lazada paylater - tidak bisa pembayaran karena kendala login
