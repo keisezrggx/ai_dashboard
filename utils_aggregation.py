@@ -321,14 +321,16 @@ def build_screenshot_path(filename: str):
     filename = str(filename).strip()
     if not filename or filename == '-' or filename.lower() == 'nan':
         return None
-    return f'screenshots/{filename}'
+    # return f'screenshots/{filename}'
+    return f'screenshots_summary/{filename}'
 
 # showing 2 screenshots side by side
 def show_image(path: str):
     if not path:
-        st.info('No image.')
+        st.error('Image Restricted.')
         return
     try:
         st.image(path)
     except Exception as e:
-        st.error('Image Restricted.')
+        st.info('No image.')
+        

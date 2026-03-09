@@ -718,10 +718,11 @@ if team == 'QC':
 
     # Page 4
     elif page == "Recheck Sample":
-        st.title("AI Human Agent QC")
+        st.title("AI Summary Sampling")
         
         # Load data
-        df = pd.read_csv("dataset_qc/sampling_agent.csv")
+        # df = pd.read_csv("dataset_qc/sampling_agent.csv")
+        df = pd.read_csv('dataset_qc/sampling_summary.csv')
         df.columns = df.columns.str.strip()
         df.fillna('-', inplace=True)
         df['tanggal_pengerjaan'] = pd.to_datetime(df['tanggal_pengerjaan'], 
@@ -746,37 +747,67 @@ if team == 'QC':
                 # static data
                 {
                     'type': 'static',
-                    'col': 'code_robot',
-                    'label': 'Code'
+                    'col': 'asi_afi',
+                    'label': 'Comp'
                 },
 
                 {
                     'type': 'static',
-                    'col': 'description',
-                    'label': 'Description'
+                    'col': 'id_tiket',
+                    'label': 'ID Tiket'
+                },
+
+                {
+                    'type': 'static',
+                    'col': 'sentimen_pengguna',
+                    'label': 'Sentimen Robot Tag'
+                },
+
+                {
+                    'type': 'static',
+                    'col': 'masalah_pelanggan',
+                    'label': 'Masalah Pelanggan'
+                },
+
+                {
+                    'type': 'static',
+                    'col': 'solusi',
+                    'label': 'Solusi'
+                },
+
+                {
+                    'type': 'static',
+                    'col': 'hasil_summary',
+                    'label': 'Hasil Summary'
                 },
 
                 # dynamic data
                 {
                     'type': 'compare',
-                    'final': 'result_qc_ubah', 
-                    'text_awal': 'result_qc', 
-                    'label': 'Result QC'
+                    'final': 'revisi_sentimen_ubah', 
+                    'text_awal': 'revisi_sentimen', 
+                    'label': 'Sampling Sentimen'
                 },
                 
                 {
                     'type': 'compare',
                     'final': 'reason_ubah',
-                    'text_awal': 'reason', 
+                    'text_awal': 'alasan_tidak_suka', 
                     'label': 'Reason'
                 },
             ]
 
-            code = str(row.get("code", "")).strip()
-            desc = str(row.get("description", "")).strip()
+            asi_afi = str(row.get("asi_afi", "")).strip()
+            id_tiket = str(row.get("id_tiket", "")).strip()
+            sentimen_pengguna = str(row.get('sentimen_pengguna', '')).strip()
+            masalah_pelanggan = str(row.get('masalah_pelanggan', '')).strip()
+            solusi = str(row.get('solusi', '')).strip()
+            hasil_summary = str(row.get('hasil_summary', '')).strip()
 
-            if code or desc:
-                sections.append(f"**Code:** {code}  \n **Description:** {desc}\n")
+            if asi_afi or id_tiket:
+                sections.append(
+                    f"**Comp:** {asi_afi}  \n **ID Tiket:** {id_tiket}  \n **Robot Tag:** {sentimen_pengguna}  \n \n **Masalah Pelanggan:** {masalah_pelanggan}  \n **Solusi:** {solusi}  \n **Hasil Summary:** {hasil_summary}  \n"
+                )
 
             for item in mapping:
                 if item['type'] == 'compare':
@@ -824,7 +855,7 @@ if team == 'QC':
             st.stop()
 
         # Date filter
-        manual_order = ['Aul', 'Azer', 'Neneng', 'Reza']
+        manual_order = ['Reza', 'Azer', 'Aul', 'Neneng']
         agent_list = [agent for agent in manual_order if agent in {entry['agent'] for entry in meeting_data[selected_date]}]
         selected_agent = st.sidebar.radio('Agent Sampling', agent_list)
 
