@@ -19,12 +19,14 @@ CURRENT_THEME = "light"
 IS_DARK_THEME = False
 st.set_page_config(layout="wide")
 
-team = st.sidebar.radio('Team', ['QC'])
+# team = st.sidebar.radio('Team', ['QC'])
+team = 'QC'
 
 if team == 'QC':
     st.sidebar.header("Adjust Data")
 
-    page = st.sidebar.selectbox("Pages", ["Recheck Sample"])
+    # page = st.sidebar.selectbox("Pages", ["Recheck Sample"])
+    page = 'Recheck Sample'
 
 
     #Page 1
@@ -786,7 +788,7 @@ if team == 'QC':
                     'type': 'compare',
                     'final': 'revisi_sentimen_ubah', 
                     'text_awal': 'revisi_sentimen', 
-                    'label': 'Sampling Sentimen'
+                    'label': 'Revisi Sentimen'
                 },
                 
                 {
@@ -806,19 +808,27 @@ if team == 'QC':
 
             if asi_afi or id_tiket:
                 sections.append(
-                    f"**Comp:** {asi_afi}  \n **ID Tiket:** {id_tiket}  \n **Robot Tag:** {sentimen_pengguna}  \n \n **Masalah Pelanggan:** {masalah_pelanggan}  \n **Solusi:** {solusi}  \n **Hasil Summary:** {hasil_summary}  \n"
+                    f"**Comp:** {asi_afi}  \n **ID Tiket:** {id_tiket}  \n \n **Masalah Pelanggan:** {masalah_pelanggan}  \n **Solusi:** {solusi}  \n **Hasil Summary:** {hasil_summary}  \n"
                 )
 
             for item in mapping:
                 if item['type'] == 'compare':
+                    
                     text_awal = str(row.get(item['text_awal'], '')).strip()
                     hasil = str(row.get(item['final'], '')).strip()
 
                     if text_awal:
-                        sections.append(
-                            f'**{item['label']}:** {text_awal}  \n'
-                            f'**Diubah:** {hasil}   \n'
-                        )
+                        if item['label'] == 'Revisi Sentimen':
+                            sections.append(
+                                f'**Robot Tag:** {sentimen_pengguna}  \n'
+                                f"**{item['label']}:** {text_awal}  \n"
+                                f'**Sampling:** {hasil}   \n'
+                            )
+                        else:
+                            sections.append(
+                                f'**Alasan Revisi:** {text_awal}  \n'
+                                f'**Alasan Sampling:** {hasil}   \n'
+                            )
             
             if not sections and not (screenshot_file_1 or screenshot_file_2):
                 continue
@@ -855,7 +865,7 @@ if team == 'QC':
             st.stop()
 
         # Date filter
-        manual_order = ['Reza', 'Azer', 'Aul', 'Neneng']
+        manual_order = ['Neneng', 'Aul', 'Reza', 'Azer']
         agent_list = [agent for agent in manual_order if agent in {entry['agent'] for entry in meeting_data[selected_date]}]
         selected_agent = st.sidebar.radio('Agent Sampling', agent_list)
 
