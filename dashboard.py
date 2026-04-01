@@ -25,8 +25,8 @@ team = 'QC'
 if team == 'QC':
     st.sidebar.header("Adjust Data")
 
-    # page = st.sidebar.selectbox("Pages", ["Recheck Sample"])
-    page = 'Recheck Sample'
+    page = st.sidebar.selectbox("Pages", ["Recheck Sample", "Hotline Calibration"])
+    # page = 'Recheck Sample'
 
 
     #Page 1
@@ -895,6 +895,7 @@ if team == 'QC':
                         with st.expander(f'Screenshot {idx} - 2', expanded=False):
                             show_image(item.get('file_2'))
 
+
     # Page 5
     elif page == 'Performance':
         df_sampling = pd.read_csv(
@@ -1171,6 +1172,13 @@ if team == 'QC':
 
             st.plotly_chart(fig, use_container_width=True)
 
+
+    # Page 6
+    elif page == 'Hotline Calibration':
+        st.title('Hotline Calibration')
+        st.text('Tolong jangan anu anu banget, gw pusing ngecodingin datanya.')
+
+        df = pd.read_csv('dataset_qc/')
 
 elif team == 'KULA':
     # st.markdown('#####')
