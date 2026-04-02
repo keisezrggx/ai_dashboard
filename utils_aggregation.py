@@ -322,7 +322,7 @@ def build_screenshot_path(filename: str):
     if not filename or filename == '-' or filename.lower() == 'nan':
         return None
     # return f'screenshots/{filename}'
-    return f'screenshots_summary/{filename}'
+    return f'screenshots/{filename}'
 
 # showing 2 screenshots side by side
 def show_image(path: str):

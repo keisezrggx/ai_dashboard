@@ -25,7 +25,7 @@ team = 'QC'
 if team == 'QC':
     st.sidebar.header("Adjust Data")
 
-    page = st.sidebar.selectbox("Pages", ["Recheck Sample", "Hotline Calibration"])
+    page = st.sidebar.selectbox("Pages", ["Agent Sample", "Hotline Calibration"])
     # page = 'Recheck Sample'
 
 
@@ -719,12 +719,12 @@ if team == 'QC':
 
 
     # Page 4
-    elif page == "Recheck Sample":
-        st.title("AI Summary Sampling")
+    elif page == "Agent Sample":
+        st.title("AI Human Agent QC Sampling")
         
         # Load data
-        # df = pd.read_csv("dataset_qc/sampling_agent.csv")
-        df = pd.read_csv('dataset_qc/sampling_summary.csv')
+        df = pd.read_csv("dataset_qc/sampling_agent.csv")
+        # df = pd.read_csv('dataset_qc/sampling_summary.csv')
         df.columns = df.columns.str.strip()
         df.fillna('-', inplace=True)
         df['tanggal_pengerjaan'] = pd.to_datetime(df['tanggal_pengerjaan'], 
@@ -749,86 +749,84 @@ if team == 'QC':
                 # static data
                 {
                     'type': 'static',
-                    'col': 'asi_afi',
+                    'col': 'asi/afi',
                     'label': 'Comp'
                 },
 
                 {
                     'type': 'static',
-                    'col': 'id_tiket',
-                    'label': 'ID Tiket'
+                    'col': 'chat_id',
+                    'label': 'Chat ID'
                 },
 
                 {
                     'type': 'static',
-                    'col': 'sentimen_pengguna',
-                    'label': 'Sentimen Robot Tag'
+                    'col': 'code_robot',
+                    'label': 'Code Robot'
                 },
 
                 {
                     'type': 'static',
-                    'col': 'masalah_pelanggan',
-                    'label': 'Masalah Pelanggan'
-                },
-
-                {
-                    'type': 'static',
-                    'col': 'solusi',
-                    'label': 'Solusi'
-                },
-
-                {
-                    'type': 'static',
-                    'col': 'hasil_summary',
-                    'label': 'Hasil Summary'
+                    'col': 'description',
+                    'label': 'Description'
                 },
 
                 # dynamic data
                 {
                     'type': 'compare',
-                    'final': 'revisi_sentimen_ubah', 
-                    'text_awal': 'revisi_sentimen', 
-                    'label': 'Revisi Sentimen'
+                    'final': 'result_qc_ubah', 
+                    'text_awal': 'result_qc', 
+                    'label': 'Result QC'
                 },
                 
                 {
                     'type': 'compare',
                     'final': 'reason_ubah',
-                    'text_awal': 'alasan_tidak_suka', 
+                    'text_awal': 'reason', 
                     'label': 'Reason'
                 },
             ]
 
-            asi_afi = str(row.get("asi_afi", "")).strip()
-            id_tiket = str(row.get("id_tiket", "")).strip()
-            sentimen_pengguna = str(row.get('sentimen_pengguna', '')).strip()
-            masalah_pelanggan = str(row.get('masalah_pelanggan', '')).strip()
-            solusi = str(row.get('solusi', '')).strip()
-            hasil_summary = str(row.get('hasil_summary', '')).strip()
+            asi_afi = str(row.get("asi/afi", "")).strip()
+            chat_id = str(row.get("chat_id", "")).strip()
+            code_robot = str(row.get("code_robot", "")).strip()
+            description = str(row.get("description", "")).strip()
 
-            if asi_afi or id_tiket:
+            if asi_afi and chat_id:
                 sections.append(
-                    f"**Comp:** {asi_afi}  \n **ID Tiket:** {id_tiket}  \n \n **Masalah Pelanggan:** {masalah_pelanggan}  \n **Solusi:** {solusi}  \n **Hasil Summary:** {hasil_summary}  \n"
+                    f"**Comp:** {asi_afi}  \n **Chat ID:** {chat_id}  \n **Code Robot:** {code_robot}  \n"
                 )
 
             for item in mapping:
                 if item['type'] == 'compare':
-                    
+
                     text_awal = str(row.get(item['text_awal'], '')).strip()
                     hasil = str(row.get(item['final'], '')).strip()
 
                     if text_awal:
-                        if item['label'] == 'Revisi Sentimen':
-                            sections.append(
-                                f'**Robot Tag:** {sentimen_pengguna}  \n'
-                                f"**{item['label']}:** {text_awal}  \n"
-                                f'**Sampling:** {hasil}   \n'
-                            )
-                        else:
-                            sections.append(
-                                f'**Alasan Revisi:** {text_awal}  \n'
-                                f'**Alasan Sampling:** {hasil}   \n'
-                            )
+                        sections.append(
+                            f'**{item['label']}:** {text_awal}  \n'
+                            f'**Diubah:** {hasil}   \n'
+                        )
+
+            # for item in mapping:
+            #     if item['type'] == 'compare':
+                    
+            #         text_awal = str(row.get(item['text_awal'], '')).strip()
+            #         hasil = str(row.get(item['final'], '')).strip()
+
+            #         if text_awal:
+            #             if item['label'] == 'Revisi Sentimen':
+            #                 sections.append(
+            #                     f'**Robot Tag:** {sentimen_pengguna}  \n'
+            #                     f"**{item['label']}:** {text_awal}  \n"
+            #                     f'**Sampling:** {hasil}   \n'
+            #                 )
+            #             else:
+            #                 sections.append(
+            #                     f'**Alasan Revisi:** {text_awal}  \n'
+            #                     f'**Alasan Sampling:** {hasil}   \n'
+            #                 )
             
             if not sections and not (screenshot_file_1 or screenshot_file_2):
                 continue
@@ -891,7 +889,7 @@ if team == 'QC':
                     with head_s:
                         with st.expander(f'Screenshot {idx} - 1', expanded=False):
                             show_image(item.get('file_1'))
-                            
+                        
                         with st.expander(f'Screenshot {idx} - 2', expanded=False):
                             show_image(item.get('file_2'))
 
@@ -1176,9 +1174,169 @@ if team == 'QC':
     # Page 6
     elif page == 'Hotline Calibration':
         st.title('Hotline Calibration')
-        st.text('Tolong jangan anu anu banget, gw pusing ngecodingin datanya.')
 
-        df = pd.read_csv('dataset_qc/')
+        df = pd.read_csv('dataset_qc/sampling_hotline.csv')
+
+        df.fillna('-', inplace=True)
+        df['tanggal_sampling'] = pd.to_datetime(df['tanggal_sampling'], errors='coerce').dt.date
+        df['tanggal_meeting'] = pd.to_datetime(df['tanggal_meeting'], errors='coerce').dt.date
+
+        meeting_data = {}
+
+        for _, row in df.iterrows():
+            tanggal_meeting = row['tanggal_meeting']
+            checker = row['checker']
+            agent = row['agent_sampling']
+
+            # nama file gambar
+            screenshot_file_1 = build_screenshot_path(row.get('file_screenshot', ''))
+
+            # teks recheck
+            sections = []
+            
+            mapping = [
+                # static data
+                {
+                    'type': 'static',
+                    'col': 'asi/afi',
+                    'label': 'Comp'
+                },
+
+                {
+                    'type': 'static',
+                    'col': 'call_id',
+                    'label': 'Call ID'
+                },
+
+                {
+                    'type': 'static',
+                    'col': 'detik',
+                    'label': 'Detik'
+                },
+
+                {
+                    'type': 'static',
+                    'col': 'alasan',
+                    'label': 'Alasan'
+                },
+
+                #dynamic data
+                {
+                    'type': 'compare',
+                    'final': 'hasil_pemeriksaan_kualitas',
+                    'text_awal': 'hasil_pemeriksaan_kualitas_awal',
+                    'label': 'Hasil Pemeriksaan Kualitas'
+                },
+                
+                {
+                    'type': 'compare',
+                    'final': 'efektif',
+                    'text_awal': 'efektif_awal',
+                    'label': 'Efektif'
+                },
+                
+                {
+                    'type': 'compare',
+                    'final': 'kejelasan_suara',
+                    'text_awal': 'kejelasan_suara_awal',
+                    'label': 'Kejelasan Suara'
+                },
+
+                {
+                    'type': 'compare',
+                    'final': 'suara_lain',
+                    'text_awal': 'suara_lain_awal',
+                    'label': 'Suara Lain'
+                }
+            ]
+            
+            asi_afi = str(row.get("asi/afi", "")).strip()
+            call_id = str(row.get('call_id', '')).strip()
+            detik = str(row.get('detik', '')).strip()
+            alasan = str(row.get('alasan', '')).strip()
+
+            if asi_afi or call_id:
+                sections.append(
+                    f'**Comp:** {asi_afi}  \n'
+                    f'**Call ID:** {call_id}  \n'
+                    f'**Detik:** {detik}  \n'
+                )
+
+            for item in mapping:
+                if item['type'] == 'compare':
+
+                    text_awal = str(row.get(item['text_awal'], '')).strip()
+                    hasil = str(row.get(item['final'], '')).strip()
+
+                    if text_awal:
+                        sections.append(
+                            f'**{item['label']}:** {text_awal}  \n'
+                            f'**Diubah:** {hasil}   \n'
+                        )
+
+            if alasan:
+                sections.append(f'**Alasan:** {alasan}  \n')
+                    
+            if not sections and not screenshot_file_1:
+                continue
+
+            entry = {
+                'checker': checker,
+                'agent': agent,
+                'text': f'**Checker:** {checker}' + ('\n\n' + '\n'.join(sections) if sections else ''),
+                'file_1': screenshot_file_1
+            }
+
+            if tanggal_meeting not in meeting_data:
+                meeting_data[tanggal_meeting] = []
+
+            meeting_data[tanggal_meeting].append(entry)
+        
+        dates = sorted(meeting_data.keys())
+
+        if not dates:
+            st.warning('Tidak ada data meeting.')
+            st.stop()
+
+        #Sidebar tanggal meeting
+        selected_date = st.sidebar.date_input(
+            'Tanggal Meeting',
+            value=max(meeting_data.keys()),
+            min_value=min(meeting_data.keys()),
+            max_value=max(meeting_data.keys())
+        )
+
+        if selected_date not in meeting_data:
+            st.warning(f'Tidak ada data untuk tanggal {selected_date.strftime("%d %B %Y")}')
+            st.stop()
+
+        # Date filter
+        manual_order = ['Reza', 'Aulia', 'Azer', 'Neneng']
+        agent_list = [agent for agent in manual_order if agent in {entry['agent'] for entry in meeting_data[selected_date]}]
+        selected_agent = st.sidebar.radio('Agent Sampling', agent_list)
+
+        st.markdown(f"### {selected_agent}")
+
+        filtered_entries = [
+            item for item in meeting_data[selected_date]
+            if item['agent'] == selected_agent
+        ]
+
+        for i in range(0, len(filtered_entries), 3):
+            row_entries = filtered_entries[i:i+3]
+            cols = st.columns(len(row_entries))
+
+            for idx, item in enumerate(filtered_entries, start=1):
+                
+                head_case, head_s = st.columns([0.8, 1.2])
+
+                with head_case:
+                    with st.expander(f'Case {idx}', expanded=False):
+                        st.markdown(item['text'], unsafe_allow_html=True)
+
+                with head_s:
+                    with st.expander(f'Screenshot {idx} - 1', expanded=False):
+                        show_image(item.get('file_1'))
 
 elif team == 'KULA':
     # st.markdown('#####')
