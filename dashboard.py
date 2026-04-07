@@ -1174,7 +1174,6 @@ if team == 'QC':
     # Page 6
     elif page == 'Hotline Calibration':
         st.title('Hotline Calibration')
-
         df = pd.read_csv('dataset_qc/sampling_hotline.csv')
 
         df.fillna('-', inplace=True)
