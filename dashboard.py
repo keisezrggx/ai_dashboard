@@ -1222,29 +1222,29 @@ if team == 'QC':
                 #dynamic data
                 {
                     'type': 'compare',
-                    'final': 'hasil_pemeriksaan_kualitas',
-                    'text_awal': 'hasil_pemeriksaan_kualitas_awal',
+                    'final': 'hasil_pemeriksaan_kualitas_ubah',
+                    'text_awal': 'hasil_pemeriksaan_kualitas',
                     'label': 'Hasil Pemeriksaan Kualitas'
                 },
                 
                 {
                     'type': 'compare',
-                    'final': 'efektif',
-                    'text_awal': 'efektif_awal',
+                    'final': 'efektif_ubah',
+                    'text_awal': 'efektif',
                     'label': 'Efektif'
                 },
                 
                 {
                     'type': 'compare',
-                    'final': 'kejelasan_suara',
-                    'text_awal': 'kejelasan_suara_awal',
+                    'final': 'kejelasan_suara_ubah',
+                    'text_awal': 'kejelasan_suara',
                     'label': 'Kejelasan Suara'
                 },
 
                 {
                     'type': 'compare',
-                    'final': 'suara_lain',
-                    'text_awal': 'suara_lain_awal',
+                    'final': 'suara_lain_ubah',
+                    'text_awal': 'suara_lain',
                     'label': 'Suara Lain'
                 }
             ]

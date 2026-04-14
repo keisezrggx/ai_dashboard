@@ -61,3 +61,9 @@
 319,4/2/2026,Azer,Reza,ASI ,2-2054347657-3-1_1774397255,"RC02-01",Normal Conversation,-,-,-,-,-,TRUE,azer_case_10_1.png,azer_case_10_2.png,4/2/2026
 324,4/2/2026,Azer,Aul,ASI ,2-2044337934-3-1_1774368139,LC12-01,Normal Conversation,-,-,-,Correct,Seharusnya correct karena agent menutup chat,TRUE,azer_case_11_1.png,azer_case_11_2.png,4/2/2026
 327,4/2/2026,Azer,Neneng,ASI ,2-2020253277-3-1_1774454680,E01-01,Normal Conversation,-,-,-,-,-,TRUE,azer_case_12_1.png,azer_case_12_2.png,4/2/2026
+333,4/8/2026,Aul,Reza,ASI ,2-2049715383-3-1_1774823316,"LC1-04",Correct,-,-,-,-,-,TRUE,aul_case_13_1.png,aul_case_13_2.png,4/10/2026
+344,4/8/2026,Aul,Azer,ASI ,2-15712514-3-1_1774962104,LC1-03,Correct,-,-,-,-,-,TRUE,aul_case_14_1.png,aul_case_14_2.png,4/10/2026
+350,4/9/2026,Azer,Aul,ASI ,2-14001659-3-1_1774863735,LC12-01,Correct,-,-,-,-,-,TRUE,azer_case_13_1.png,azer_case_13_2.png,4/10/2026
+353,4/9/2026,Azer,Neneng,ASI ,2-2016622067-3-1_1774792818,RC01-01,Normal Conversation,-,-,-,-,-,TRUE,azer_case_14_1.png,azer_case_14_2.png,4/10/2026
+366,4/10/2026,Neneng,Azer,ASI ,2-2040458125-3-1_1774783986,RC01-01,Correct,-,-,-,Normal Conversation,Agent sudah ada tanya kejelasan sebelumny,TRUE,neneng_case_13_1.png,neneng_case_13_2.png,4/10/2026
+371,4/10/2026,Neneng,Aul,ASI ,2-103823393-3-1_1774868119,LC3-01,Correct,-,-,-,Normal Conversation,pertanyaan agent berbeda antara apakah sudah mengirimkan dan sudah cek alamat pengembalian,TRUE,neneng_case_14_1.png,neneng_case_14_2.png,4/10/2026
