@@ -741,6 +741,7 @@ if team == 'QC':
             # Ambil nama file gambar
             screenshot_file_1 = build_screenshot_path(row.get('file_screenshot', ''))
             screenshot_file_2 = build_screenshot_path(row.get('file_screenshot_2', ''))
+            screenshot_file_3 = build_screenshot_path(row.get('file_screenshot_3', ''))
 
             # Siapkan teks recheck
             sections = []
@@ -836,7 +837,8 @@ if team == 'QC':
                 'agent': agent,
                 'text': f'**Checker:** {checker}' + ('\n\n' + '\n'.join(sections) if sections else ''),
                 'file_1': screenshot_file_1,
-                'file_2': screenshot_file_2
+                'file_2': screenshot_file_2,
+                'file_3': screenshot_file_3
             }
 
             if tanggal_meeting not in meeting_data:
@@ -892,6 +894,9 @@ if team == 'QC':
                         
                         with st.expander(f'Screenshot {idx} - 2', expanded=False):
                             show_image(item.get('file_2'))
+                        
+                        with st.expander(f'Screenshot {idx} - 3', expanded=False):
+                            show_image(item.get('file_3'))
 
 
     # Page 5
