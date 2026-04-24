@@ -25,8 +25,8 @@ team = 'QC'
 if team == 'QC':
     st.sidebar.header("Adjust Data")
 
-    page = st.sidebar.selectbox("Pages", ["Agent Sample", "Hotline Calibration"])
-    # page = 'Recheck Sample'
+    # page = st.sidebar.selectbox("Pages", ["Agent Sample", "Hotline Calibration"])
+    page = 'Hotline Calibration'
 
 
     #Page 1
@@ -1315,7 +1315,7 @@ if team == 'QC':
             st.stop()
 
         # Date filter
-        manual_order = ['Reza', 'Aulia', 'Azer', 'Neneng']
+        manual_order = ['Reza', 'Neneng', 'Azer', 'Aulia']
         agent_list = [agent for agent in manual_order if agent in {entry['agent'] for entry in meeting_data[selected_date]}]
         selected_agent = st.sidebar.radio('Agent Sampling', agent_list)
 
