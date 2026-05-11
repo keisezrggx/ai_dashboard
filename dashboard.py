@@ -1192,6 +1192,10 @@ if team == 'QC':
             checker = row['checker']
             agent = row['agent_sampling']
 
+            # Ambil nama audio
+            audio_filename = str(row.get('file_audio', '')).strip()
+            audio_file = f'audio/{audio_filename}' if audio_filename else None
+
             # nama file gambar
             screenshot_file_1 = build_screenshot_path(row.get('file_screenshot', ''))
 
@@ -1251,6 +1255,13 @@ if team == 'QC':
                     'final': 'suara_lain_ubah',
                     'text_awal': 'suara_lain',
                     'label': 'Suara Lain'
+                },
+
+                {
+                    'type': 'compare',
+                    'final': 'kelengkapan_rekaman_ubah',
+                    'text_awal': 'kelengkapan_rekaman',
+                    'label': 'Kelengkapan Rekaman'
                 }
             ]
             
@@ -1258,6 +1269,7 @@ if team == 'QC':
             call_id = str(row.get('call_id', '')).strip()
             detik = str(row.get('detik', '')).strip()
             alasan = str(row.get('alasan', '')).strip()
+            kelengkapan_rekaman = str(row.get('kelengkapan_rekaman', '')).strip()
 
             if asi_afi or call_id:
                 sections.append(
@@ -1279,16 +1291,17 @@ if team == 'QC':
                         )
 
             if alasan:
-                sections.append(f'**Alasan:** {alasan}  \n')
+                sections.append(f'**Text Sebelum:** {alasan}  \n')
                     
-            if not sections and not screenshot_file_1:
+            if not sections and not screenshot_file_1 and not audio_filename:
                 continue
 
             entry = {
                 'checker': checker,
                 'agent': agent,
                 'text': f'**Checker:** {checker}' + ('\n\n' + '\n'.join(sections) if sections else ''),
-                'file_1': screenshot_file_1
+                'file_1': screenshot_file_1,
+                'file_audio': audio_file
             }
 
             if tanggal_meeting not in meeting_data:
@@ -1337,6 +1350,13 @@ if team == 'QC':
                 with head_case:
                     with st.expander(f'Case {idx}', expanded=False):
                         st.markdown(item['text'], unsafe_allow_html=True)
+                        if item['file_audio']:
+                            if not item['file_audio']:
+                                st.error('Audio Restricted')
+                            try:
+                                st.audio(item['file_audio'])
+                            except Exception as e:
+                                st.info('No Audio')
 
                 with head_s:
                     with st.expander(f'Screenshot {idx} - 1', expanded=False):
