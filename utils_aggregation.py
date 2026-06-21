@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import difflib
-import matplotlib.pyplot as plt
 from datetime import timedelta
 
 
@@ -35,7 +34,7 @@ def aggregate_side(df, date_col, granularity, csat_col):
         return grouped[['Date', csat_col]]
 
     if granularity == 'Weekly':
-        df['Period'] = df[date_col].dt.to_period('W').apply(lambda r: r.start_time)
+        df['Period'] = df[date_col].dt.to_period('W').dt.start_time
     elif granularity == 'Monthly':
         df['Period'] = df[date_col].dt.to_period('M').dt.to_timestamp()
     else:
@@ -91,7 +90,7 @@ def aggregation_ratio(df, date_col, granularity):
     if granularity == 'Daily':
         df['Period'] = df[date_col].dt.normalize()
     elif granularity == 'Weekly':
-        df['Period'] = df[date_col].dt.to_period('W').apply(lambda r: r.start_time)
+        df['Period'] = df[date_col].dt.to_period('W').dt.start_time
     elif granularity == 'Monthly':
         df['Period'] = df[date_col].dt.to_period('M').dt.to_timestamp()
     else:
@@ -104,10 +103,12 @@ def aggregation_ratio(df, date_col, granularity):
         'Total handle robot': 'sum'
     }).reset_index()
 
-    grouped['Robot Success ratio'] = grouped.apply(
-        lambda r: ((r['Total handle robot'] - r['Number of exit queues']) / r['Connected to robot'] * 100)
-        if r['Connected to robot'] > 0 else np.nan, 
-        axis = 1
+    # Vectorized ratio — avoids slow row-by-row .apply(axis=1)
+    grouped['Robot Success ratio'] = np.where(
+        grouped['Connected to robot'] > 0,
+        (grouped['Total handle robot'] - grouped['Number of exit queues'])
+            / grouped['Connected to robot'] * 100,
+        np.nan
     )
 
     # grouped['Robot Success ratio'] = (
@@ -128,7 +129,7 @@ def aggregate_sum(df, date_col, granularity, agg_dict):
     if granularity == 'Daily':
         df['Period'] = df[date_col].dt.date
     elif granularity == 'Weekly':
-        df['Period'] = df[date_col].dt.to_period('W').apply(lambda r: r.start_time)
+        df['Period'] = df[date_col].dt.to_period('W').dt.start_time
     elif granularity == 'Monthly':
         df['Period'] = df[date_col].dt.to_period('M').dt.to_timestamp()
     else:
@@ -166,15 +167,16 @@ def aggregate_table_with_granularity(
 ):
     df = df.copy()
 
-    # pastikan ada filter tanggal
+    # Convert to datetime FIRST, then apply date filter
+    df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
+
     if start_date is not None and end_date is not None:
+        start_date = pd.to_datetime(start_date)
+        end_date = pd.to_datetime(end_date)
         df = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
 
     if df.empty:
         return pd.DataFrame(columns=[category_col, 'Total'])
-
-    # konversi date_col ke datetime
-    df[date_col] = pd.to_datetime(df[date_col])
 
     # ==== Tentukan granularity ====
     if granularity == 'Weekly':
@@ -262,6 +264,7 @@ def aggregate_table_with_granularity(
 
 
 def calculate_checker_accuracy(df):
+    df = df.copy()  # Prevent mutating the caller's DataFrame
     # cari semua kolom yang dimulai dengan 'Count'
     count_cols = [col for col in df.columns if col.startswith("Count")]
     

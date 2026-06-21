@@ -4,7 +4,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 import logging
-import datetime
 
 # from backend.kula.chatbot_optimized import ChatbotOptimized
 from utils_aggregation import aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity, calculate_checker_accuracy, aggregate_checker_errors, week_of_month, aggregate_csat_dual, highlight_diff_words, build_screenshot_path, show_image
@@ -18,6 +17,27 @@ logging.getLogger('streamlit.runtime.scriptrunner').setLevel(logging.ERROR)
 CURRENT_THEME = "light" 
 IS_DARK_THEME = False
 st.set_page_config(layout="wide")
+
+
+# -------------------------------------------------
+# Cached data loader — avoids re-reading CSVs on every Streamlit re-render
+# -------------------------------------------------
+@st.cache_data(ttl=3600)
+def load_csv(path, **kwargs):
+    """Load a CSV once and cache the result for 1 hour."""
+    return pd.read_csv(path, **kwargs)
+
+
+# -------------------------------------------------
+# Reusable AgGrid renderer — replaces 8 repeated blocks
+# -------------------------------------------------
+def render_aggrid(df, height=400):
+    """Build and display an AgGrid table with standard options."""
+    gb = GridOptionsBuilder.from_dataframe(df)
+    for col in df.columns:
+        gb.configure_column(col, filter=False, sortable=True, resizable=True)
+    gb.configure_pagination()
+    AgGrid(df, gridOptions=gb.build(), height=height)
 
 # team = st.sidebar.radio('Team', ['QC'])
 team = 'QC'
@@ -62,7 +82,7 @@ if team == 'QC':
             st.markdown(html, unsafe_allow_html=True)
 
         # Dashboard
-        df = pd.read_csv('dataset_qc/new_4_clean.csv', parse_dates=['Tanggal Pengerjaan', 'Waktu Inbound'])
+        df = load_csv('dataset_qc/new_4_clean.csv', parse_dates=['Tanggal Pengerjaan', 'Waktu Inbound'])
 
         # Filter "Tidak bisa di Play"
         df_filtered = df[df['Efektif'] != 'Tidak bisa di Play']
@@ -96,23 +116,16 @@ if team == 'QC':
 
             cols = st.columns(5)
 
-            # Total Tagged berdasarkan pertambahan dari hari sebelumnya
+            # Compute date masks ONCE, then use value_counts for O(1) lookups
             last_selected_date = date_range[1]
             day_before_last = last_selected_date - pd.Timedelta(days=1)
+            date_col = df['Tanggal Pengerjaan'].dt.date
 
-            # Hitung total data sampai hari sebelum tanggal terakhir
-            total_before = df[
-                (df['Tanggal Pengerjaan'].dt.date >= date_range[0]) &
-                (df['Tanggal Pengerjaan'].dt.date <= day_before_last)
-            ]
-            count_before = len(total_before)
+            mask_until = (date_col >= date_range[0]) & (date_col <= last_selected_date)
+            mask_before = (date_col >= date_range[0]) & (date_col <= day_before_last)
 
-            # Hitung total data sampai tanggal terakhir
-            total_until_last = df[
-                (df['Tanggal Pengerjaan'].dt.date >= date_range[0]) &
-                (df['Tanggal Pengerjaan'].dt.date <= last_selected_date)
-            ]
-            count_until_last = len(total_until_last)
+            count_until_last = mask_until.sum()
+            count_before = mask_before.sum()
 
             delta_tagged = count_until_last - count_before
             if delta_tagged > 0:
@@ -126,27 +139,16 @@ if team == 'QC':
                 styled_metric("Total Tagged", f"{count_until_last:,}", delta_tagged, delta_color_tagged)
                 st.markdown('</div>', unsafe_allow_html=True)
 
-            # Efektif Score Cards
+            # Efektif Score Cards — use value_counts instead of N separate full-DataFrame scans
             efektif_list = ['On Target/HC', 'On Target/Not HC', 'Miss Target/ Not HC', 'Miss Target/HC']
-            last_selected_date = date_range[1]
-            day_before_last = last_selected_date - pd.Timedelta(days=1)
+            counts_until = df.loc[mask_until, 'Efektif'].value_counts()
+            counts_before = df.loc[mask_before, 'Efektif'].value_counts()
 
             for i, label in enumerate(efektif_list):
-                # Total hingga tanggal terakhir
-                count_until_last = df[
-                    (df['Tanggal Pengerjaan'].dt.date >= date_range[0]) &
-                    (df['Tanggal Pengerjaan'].dt.date <= last_selected_date) &
-                    (df['Efektif'] == label)
-                ].shape[0]
+                cnt_until = counts_until.get(label, 0)
+                cnt_before = counts_before.get(label, 0)
 
-                # Total hingga hari sebelumnya
-                count_before = df[
-                    (df['Tanggal Pengerjaan'].dt.date >= date_range[0]) &
-                    (df['Tanggal Pengerjaan'].dt.date <= day_before_last) &
-                    (df['Efektif'] == label)
-                ].shape[0]
-
-                delta = count_until_last - count_before
+                delta = cnt_until - cnt_before
                 if delta > 0:
                     delta_color = "normal"
                 elif delta < 0:
@@ -155,7 +157,7 @@ if team == 'QC':
                     delta_color = "off"
                 with cols[i + 1]:
                     st.markdown('<div class="metric-box">', unsafe_allow_html=True)
-                    styled_metric(label, f"{count_until_last:,}", delta, delta_color)
+                    styled_metric(label, f"{cnt_until:,}", delta, delta_color)
                     st.markdown('</div>', unsafe_allow_html=True)
 
         st.markdown(
@@ -167,7 +169,7 @@ if team == 'QC':
         with st.container():
 
             df_weekly = df_filtered.copy()
-            df_weekly['Week'] = df_weekly['Tanggal Pengerjaan'].dt.to_period('W').apply(lambda r: r.start_time)
+            df_weekly['Week'] = df_weekly['Tanggal Pengerjaan'].dt.to_period('W').dt.start_time
 
             # Grafik 1: Hanya kategori "Miss Target/ Not HC"
             df_miss_target_not_hc = df_weekly[df_weekly['Efektif'] == 'Miss Target/ Not HC']
@@ -366,7 +368,7 @@ if team == 'QC':
             """
             st.markdown(html, unsafe_allow_html=True)
 
-        df_sampling = pd.read_csv('dataset_qc/kalib_sampling.csv', parse_dates=['Tanggal Sampling'])
+        df_sampling = load_csv('dataset_qc/kalib_sampling.csv', parse_dates=['Tanggal Sampling'])
 
         # ==== Layout ====
         st.title("Sampling Data")
@@ -397,9 +399,12 @@ if team == 'QC':
             (df_sampling['Tanggal Sampling'] <= end_date)
         ]
 
+        # Compute .str.upper() ONCE — reuse everywhere instead of calling 6 times
+        red_label_upper = df_sampling['Red Label'].str.upper()
+
         # ==== Filter RED LABEL ====
         df_merah = df_sampling[
-            df_sampling['Red Label'].str.upper().isin(["MERAH", "TEXT"])
+            red_label_upper.isin(["MERAH", "TEXT"])
         ]
 
         # ==== Hitung Persentase ====
@@ -424,14 +429,12 @@ if team == 'QC':
             df_this_day = df_sampling[df_sampling['Tanggal Sampling'].dt.date == last_selected_date]
             df_last_day = df_sampling[df_sampling['Tanggal Sampling'].dt.date == day_before_last]
 
-            # === Jumlah Hari Ini ===
+            # === Jumlah Hari Ini (use cached upper) ===
             total_this_day = df_this_day.shape[0]
-            merah_this_day = df_this_day[
-                df_this_day['Red Label'].str.upper().str.contains('MERAH') +
-                df_this_day['Red Label'].str.upper().str.contains('TEXT')
-                ].shape[0]
+            this_day_upper = df_this_day['Red Label'].str.upper()
+            merah_this_day = this_day_upper.isin(['MERAH', 'TEXT']).sum()
 
-            non_merah_this_day = df_this_day[df_this_day['Red Label'].str.upper() != 'MERAH'].shape[0]
+            non_merah_this_day = (~this_day_upper.isin(['MERAH'])).sum()
 
             # === Delta ===
             delta_total = total_this_day
@@ -453,11 +456,11 @@ if team == 'QC':
                 styled_metric("TIDAK MERAH", f"{total_tidak_merah:,} data", delta_non_merah, delta_color_non_merah)
 
         # ==== Weekly Trend Line Chart ===
-        df_sampling['Week'] = df_sampling['Tanggal Sampling'].dt.to_period('W').apply(lambda r: r.start_time)
+        df_sampling['Week'] = df_sampling['Tanggal Sampling'].dt.to_period('W').dt.start_time
 
-        # Pisahkan berdasarkan Red Label
-        df_merah = df_sampling[df_sampling['Red Label'].str.upper() == "MERAH"]
-        df_text = df_sampling[df_sampling['Red Label'].str.upper() == "TEXT"]
+        # Pisahkan berdasarkan Red Label (use cached upper)
+        df_merah = df_sampling[red_label_upper.loc[df_sampling.index] == "MERAH"]
+        df_text = df_sampling[red_label_upper.loc[df_sampling.index] == "TEXT"]
 
         # Hitung jumlah per minggu
         df_merah_weekly = df_merah.groupby('Week').size().reset_index(name='Jumlah')
@@ -523,7 +526,7 @@ if team == 'QC':
         with st.container():
             cols = st.columns([2, 3])
 
-            total_merah = df_sampling['Red Label'].str.upper().isin(['MERAH', 'TEXT']).sum()
+            total_merah = red_label_upper.loc[df_sampling.index].isin(['MERAH', 'TEXT']).sum()
             total_tidak_merah = total_data - total_merah
 
             pie_df = pd.DataFrame({
@@ -568,9 +571,10 @@ if team == 'QC':
             last_7_days = df_sampling['Tanggal Sampling'].max() - pd.Timedelta(days=6)
             df_last7 = df_sampling[df_sampling['Tanggal Sampling'] >= last_7_days]
 
-            # Pisahkan berdasarkan Red Label
-            df_merah = df_last7[df_last7['Red Label'].str.upper() == "MERAH"]
-            df_text = df_last7[df_last7['Red Label'].str.upper() == "TEXT"]
+            # Pisahkan berdasarkan Red Label (use cached upper on the last-7-day subset)
+            last7_upper = df_last7['Red Label'].str.upper()
+            df_merah = df_last7[last7_upper == "MERAH"]
+            df_text = df_last7[last7_upper == "TEXT"]
 
             # Hitung jumlah per hari
             df_merah_daily = df_merah.groupby('Tanggal Sampling').size().reset_index(name='MERAH')
@@ -621,7 +625,7 @@ if team == 'QC':
         st.title("Audio Sample")
 
         # Load data
-        df = pd.read_csv("dataset_qc/weekly_calibration_data.csv")
+        df = load_csv("dataset_qc/weekly_calibration_data.csv")
         df.columns = df.columns.str.strip()
         df = df.fillna("")
         df["Tanggal Meeting"] = pd.to_datetime(df["Tanggal Meeting"], errors="coerce").dt.date
@@ -723,7 +727,7 @@ if team == 'QC':
         st.title("AI Human Agent QC Sampling")
         
         # Load data
-        df = pd.read_csv("dataset_qc/sampling_agent.csv")
+        df = load_csv("dataset_qc/sampling_agent.csv")
         # df = pd.read_csv('dataset_qc/sampling_summary.csv')
         df.columns = df.columns.str.strip()
         df.fillna('-', inplace=True)
@@ -901,7 +905,7 @@ if team == 'QC':
 
     # Page 5
     elif page == 'Performance':
-        df_sampling = pd.read_csv(
+        df_sampling = load_csv(
             'dataset_qc/kalib_sampling.csv',
             parse_dates=['Tanggal Sampling']
         )
@@ -1179,9 +1183,9 @@ if team == 'QC':
     # Page 6
     elif page == 'Hotline Calibration':
         st.title('Hotline Calibration')
-        df = pd.read_csv('dataset_qc/sampling_hotline.csv')
+        df = load_csv('dataset_qc/sampling_hotline.csv')
 
-        df.fillna('-', inplace=True)
+        # df.fillna('-', inplace=True
         df['tanggal_sampling'] = pd.to_datetime(df['tanggal_sampling'], errors='coerce').dt.date
         df['tanggal_meeting'] = pd.to_datetime(df['tanggal_meeting'], errors='coerce').dt.date
 
@@ -1351,8 +1355,6 @@ if team == 'QC':
                     with st.expander(f'Case {idx}', expanded=False):
                         st.markdown(item['text'], unsafe_allow_html=True)
                         if item['file_audio']:
-                            if not item['file_audio']:
-                                st.error('Audio Restricted')
                             try:
                                 st.audio(item['file_audio'])
                             except Exception as e:
@@ -1382,7 +1384,7 @@ elif team == 'KULA':
                 )
 
         # Chart 1: Ratio Success Rate
-        df_ratio = pd.read_csv('dataset_kula/success_ratio.csv')
+        df_ratio = load_csv('dataset_kula/success_ratio.csv')
         df_ratio['Date'] = pd.to_datetime(df_ratio['Date'])
 
         # Default range: 2 minggu terakhir
@@ -1446,8 +1448,8 @@ elif team == 'KULA':
 
         # Chart 2: CSAT Robot
         
-        csat_before = pd.read_csv('dataset_kula/csat_before_takeout.csv')
-        csat_after = pd.read_csv('dataset_kula/csat_after_takeout.csv')
+        csat_before = load_csv('dataset_kula/csat_before_takeout.csv')
+        csat_after = load_csv('dataset_kula/csat_after_takeout.csv')
 
         # Parse dates
         csat_before['Date'] = pd.to_datetime(csat_before['Date'], errors='coerce')
@@ -1512,7 +1514,7 @@ elif team == 'KULA':
         st.plotly_chart(fig, use_container_width=True)
 
         # Load data bad survey
-        df_bad_survey = pd.read_csv('dataset_kula/bad_survey.csv')
+        df_bad_survey = load_csv('dataset_kula/bad_survey.csv')
 
         # Pastikan kolom tanggal dalam format datetime
         df_bad_survey['Conversation Start Time'] = pd.to_datetime(df_bad_survey['Conversation Start Time'], errors='coerce')
@@ -1589,20 +1591,10 @@ elif team == 'KULA':
             cols = st.columns([0.5, 0.45])
 
             with cols[0]:
-                gd1 = GridOptionsBuilder.from_dataframe(subcat_summary)
-                for col in subcat_summary.columns:
-                    gd1.configure_columns(col, filter=False, sortable=True, resizable=True)
-                gd1.configure_pagination()
-                grid_options1 = gd1.build()
-                AgGrid(subcat_summary, gridOptions=grid_options1, height=300)
+                render_aggrid(subcat_summary, height=300)
 
             with cols[1]:
-                gd2 = GridOptionsBuilder.from_dataframe(cat_summary)
-                for col in cat_summary.columns:
-                    gd2.configure_column(col, filter=False, sortable=True, resizable=True)
-                gd2.configure_pagination()
-                grid_options2 = gd2.build()
-                AgGrid(cat_summary, gridOptions=grid_options2, height=300)
+                render_aggrid(cat_summary, height=300)
 
         # Like and Dislike
         st.markdown('##### Like and Dislike')
@@ -1610,7 +1602,7 @@ elif team == 'KULA':
             cols = st.columns([1,4])
             
             #The Linechart
-            df_like_dislike = pd.read_csv('dataset_kula/kula_like_dislike.csv')
+            df_like_dislike = load_csv('dataset_kula/kula_like_dislike.csv')
             df_like_dislike['Date'] = pd.to_datetime(df_like_dislike['Date'])
 
             df_like_dislike = df_like_dislike[(df_like_dislike['Date'] >= pd.to_datetime(start)) & (df_like_dislike['Date'] <= pd.to_datetime(end))]
@@ -1627,15 +1619,6 @@ elif team == 'KULA':
             })
             df_daily.rename(columns={'solved_num': 'Like', 'unsolved_num': 'Dislike'}, inplace=True)
 
-            latest_date = df_daily['Date'].max()
-            latest_data = df_daily[df_daily['Date'] == latest_date].melt(
-                id_vars = 'Date',
-                value_vars = ['Like', 'Dislike'],
-                var_name = 'Category',
-                value_name = 'Total'
-            )
-            
-            #The BarGraph Chart
             latest_date = df_daily['Date'].max()
             latest_data = df_daily[df_daily['Date'] == latest_date].melt(
                 id_vars='Date',
@@ -1775,24 +1758,14 @@ elif team == 'KULA':
             cols = st.columns([0.45, 0.5])
 
             with cols[0]:
-                gd1 = GridOptionsBuilder.from_dataframe(team_summary)
-                for col in team_summary.columns:
-                    gd1.configure_column(col, filter=False, sortable=True, resizable=True)
-                gd1.configure_pagination()
-                grid_options1 = gd1.build()
-                AgGrid(team_summary, gridOptions=grid_options1, height=400)
+                render_aggrid(team_summary)
 
             with cols[1]:
-                gd2 = GridOptionsBuilder.from_dataframe(bg_summary)
-                for col in bg_summary.columns:
-                    gd2.configure_column(col, filter=False, sortable=True, resizable=True)
-                gd2.configure_pagination()
-                grid_options2 = gd2.build()
-                AgGrid(bg_summary, gridOptions=grid_options2, height=400)
+                render_aggrid(bg_summary)
 
         
             # Table QC KULA
-            df_qc_kula = pd.read_csv('dataset_kula/qc_kula.csv')
+            df_qc_kula = load_csv('dataset_kula/qc_kula.csv')
             df_qc_kula['Score_date'] = pd.to_datetime(df_qc_kula['Score_date'], errors='coerce')
 
             if date_mode == 'Single' and selected_date:
@@ -1865,31 +1838,16 @@ elif team == 'KULA':
                 cols = st.columns([4, 3])
 
                 with cols[0]:
-                    gd_main = GridOptionsBuilder.from_dataframe(main_sub_summary)
-                    for col in main_sub_summary.columns:
-                        gd_main.configure_column(col, filter=False, sortable=True, resizable=True)
-                    gd_main.configure_pagination()
-                    grid_options_main = gd_main.build()
-                    AgGrid(main_sub_summary, gridOptions=grid_options_main, height=400)
+                    render_aggrid(main_sub_summary)
 
                 with cols[1]:
-                    gd_team = GridOptionsBuilder.from_dataframe(team_cat_qc)
-                    for col in team_cat_qc.columns:
-                        gd_team.configure_column(col, filter=False, sortable=True, resizable=True)
-                    gd_team.configure_pagination()
-                    grid_options_team = gd_team.build()
-                    AgGrid(team_cat_qc, gridOptions=grid_options_team, height=400)
+                    render_aggrid(team_cat_qc)
             
             with st.container():
                 cols = st.columns([3,2])
 
                 with cols[0]:
-                    gd_bg = GridOptionsBuilder.from_dataframe(bg_summary)
-                    for col in bg_summary.columns:
-                        gd_bg.configure_column(col, filter=False, sortable=True, resizable=True)
-                    gd_bg.configure_pagination()
-                    grid_options_bg = gd_bg.build()
-                    AgGrid(bg_summary, gridOptions=grid_options_bg, height=400)
+                    render_aggrid(bg_summary)
 
 
 elif team == 'LLM':
