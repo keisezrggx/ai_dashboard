@@ -563,6 +563,3 @@ for i in range(0, len(filtered_entries), 3):
         with head_s:
             with st.expander(f'Screenshot {idx} - 1', expanded=False):
                 show_image(item.get('file_1'))
-
-
-page = st.sidebar.selectbox("Pages", ['Dashboard'])
