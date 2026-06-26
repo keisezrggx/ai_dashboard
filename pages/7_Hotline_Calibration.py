@@ -393,12 +393,17 @@ meeting_data = {}
 
 for _, row in df.iterrows():
     tanggal_meeting = row['tanggal_meeting']
+    if pd.isna(tanggal_meeting):
+        continue
     checker = row['checker']
     agent = row['agent_sampling']
 
     # Ambil nama audio
     audio_filename = str(row.get('file_audio', '')).strip()
-    audio_file = f'audio/{audio_filename}' if audio_filename else None
+    if not audio_filename or audio_filename.lower() == 'nan':
+        audio_file = None
+    else:
+        audio_file = f'audio/{audio_filename}'
 
     # nama file gambar
     screenshot_file_1 = build_screenshot_path(row.get('file_screenshot', ''))
@@ -547,7 +552,8 @@ for i in range(0, len(filtered_entries), 3):
     row_entries = filtered_entries[i:i+3]
     cols = st.columns(len(row_entries))
 
-    for idx, item in enumerate(filtered_entries, start=1):
+    for j, item in enumerate(row_entries):
+        idx = i + j + 1
         
         head_case, head_s = st.columns([0.8, 1.2])
 
