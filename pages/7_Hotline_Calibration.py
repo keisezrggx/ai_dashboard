@@ -409,14 +409,14 @@ for _, row in df.iterrows():
     screenshot_file_1 = build_screenshot_path(row.get('file_screenshot', ''))
 
     # teks recheck
-    sections = []
+    rows = []
     
     mapping = [
         # static data
         {
             'type': 'static',
             'col': 'asi/afi',
-            'label': 'Comp'
+            'label': 'Company'
         },
 
         {
@@ -481,15 +481,16 @@ for _, row in df.iterrows():
     call_id = safe_str(row.get('call_id', ''))
     detik = safe_str(row.get('detik', ''))
     alasan = safe_str(row.get('alasan', ''))
-    kelengkapan_rekaman = safe_str(row.get('kelengkapan_rekaman', ''))
 
-    if asi_afi or call_id:
-        sections.append(
-            f'**Comp:** {asi_afi}  \n'
-            f'**Call ID:** {call_id}  \n'
-            f'**Detik:** {detik}  \n'
-            '\n'
-        )
+    if asi_afi:
+        rows.append(['Company', asi_afi])
+    if call_id:
+        rows.append(['Call ID', call_id])
+    if detik:
+        rows.append(['Detik', detik])
+
+    if asi_afi or call_id or detik:
+        rows.append(['', ''])
 
     for item in mapping:
         if item['type'] == 'compare':
@@ -497,21 +498,21 @@ for _, row in df.iterrows():
             hasil = safe_str(row.get(item['final'], ''))
 
             if text_awal:
-                sections.append(f'**{item["label"]}:** {text_awal}  \n')
+                rows.append([item['label'], text_awal])
                 if hasil:
-                    sections.append(f'**Diubah:** {hasil}  \n')
-                sections.append('\n')
+                    rows.append(['Diubah', hasil])
+                rows.append(['', ''])
 
     if alasan:
-        sections.append(f'**Text Sebelum:** {alasan}  \n')
-            
-    if not sections and not screenshot_file_1 and not audio_filename:
+        rows.append(['Text Sebelum', alasan])
+
+    if not rows and not screenshot_file_1 and not audio_filename:
         continue
 
     entry = {
         'checker': checker,
         'agent': agent,
-        'text': f'**Checker:** {checker}' + ('\n\n' + ''.join(sections) if sections else ''),
+        'rows': rows,
         'file_1': screenshot_file_1,
         'file_audio': audio_file
     }
@@ -562,7 +563,18 @@ for i in range(0, len(filtered_entries), 3):
 
         with head_case:
             with st.expander(f'Case {idx}', expanded=False):
-                st.markdown(item['text'], unsafe_allow_html=True)
+                st.markdown(f'**Checker:** {item["checker"]}')
+                rows_html = ''.join(
+                    f"<tr><td style='padding: 6px 8px; vertical-align: top; width: 180px; font-weight: 600; color: #111;'>" \
+                    f"{row[0]}</td><td style='padding: 6px 8px; vertical-align: top; color: #111;'>{row[1]}</td></tr>"
+                    for row in item['rows']
+                )
+                table_html = (
+                    "<table style='border-collapse: collapse; width: 100%; margin-bottom: 1rem;'>"
+                    f"{rows_html}"
+                    "</table>"
+                )
+                st.markdown(table_html, unsafe_allow_html=True)
                 if item['file_audio']:
                     try:
                         st.audio(item['file_audio'])
