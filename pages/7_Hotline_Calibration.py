@@ -474,30 +474,33 @@ for _, row in df.iterrows():
         }
     ]
     
-    asi_afi = str(row.get("asi/afi", "")).strip()
-    call_id = str(row.get('call_id', '')).strip()
-    detik = str(row.get('detik', '')).strip()
-    alasan = str(row.get('alasan', '')).strip()
-    kelengkapan_rekaman = str(row.get('kelengkapan_rekaman', '')).strip()
+    def safe_str(value):
+        return '' if pd.isna(value) else str(value).strip()
+
+    asi_afi = safe_str(row.get("asi/afi", ""))
+    call_id = safe_str(row.get('call_id', ''))
+    detik = safe_str(row.get('detik', ''))
+    alasan = safe_str(row.get('alasan', ''))
+    kelengkapan_rekaman = safe_str(row.get('kelengkapan_rekaman', ''))
 
     if asi_afi or call_id:
         sections.append(
             f'**Comp:** {asi_afi}  \n'
             f'**Call ID:** {call_id}  \n'
             f'**Detik:** {detik}  \n'
+            '\n'
         )
 
     for item in mapping:
         if item['type'] == 'compare':
-
-            text_awal = str(row.get(item['text_awal'], '')).strip()
-            hasil = str(row.get(item['final'], '')).strip()
+            text_awal = safe_str(row.get(item['text_awal'], ''))
+            hasil = safe_str(row.get(item['final'], ''))
 
             if text_awal:
-                sections.append(
-                    f'**{item['label']}:** {text_awal}  \n'
-                    f'**Diubah:** {hasil}   \n'
-                )
+                sections.append(f'**{item["label"]}:** {text_awal}  \n')
+                if hasil:
+                    sections.append(f'**Diubah:** {hasil}  \n')
+                sections.append('\n')
 
     if alasan:
         sections.append(f'**Text Sebelum:** {alasan}  \n')
@@ -508,7 +511,7 @@ for _, row in df.iterrows():
     entry = {
         'checker': checker,
         'agent': agent,
-        'text': f'**Checker:** {checker}' + ('\n\n' + '\n'.join(sections) if sections else ''),
+        'text': f'**Checker:** {checker}' + ('\n\n' + ''.join(sections) if sections else ''),
         'file_1': screenshot_file_1,
         'file_audio': audio_file
     }
