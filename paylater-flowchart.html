@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayLater — Flowchart Penanganan Transaksi Gagal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f1117;
+            --surface: #1a1d27;
+            --surface-2: #242836;
+            --border: #2e3347;
+            --text: #e4e6f0;
+            --text-muted: #8b90a5;
+            --accent: #6c63ff;
+            --accent-glow: rgba(108, 99, 255, 0.25);
+            --green: #34d399;
+            --green-bg: rgba(52, 211, 153, 0.1);
+            --orange: #fb923c;
+            --orange-bg: rgba(251, 146, 60, 0.1);
+            --red: #f87171;
+            --red-bg: rgba(248, 113, 113, 0.1);
+            --blue: #60a5fa;
+            --blue-bg: rgba(96, 165, 250, 0.1);
+            --yellow: #fbbf24;
+            --yellow-bg: rgba(251, 191, 36, 0.1);
+            --purple: #a78bfa;
+            --purple-bg: rgba(167, 139, 250, 0.1);
+            --cyan: #22d3ee;
+            --cyan-bg: rgba(34, 211, 238, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 600px 400px at 20% 20%, rgba(108, 99, 255, 0.06), transparent),
+                radial-gradient(ellipse 500px 300px at 80% 80%, rgba(34, 211, 238, 0.04), transparent);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6c63ff, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        .header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Main flow line */
+        .flow-main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        /* Arrow connector */
+        .arrow-down {
+            width: 2px;
+            height: 32px;
+            background: var(--border);
+            position: relative;
+        }
+        .arrow-down::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 7px solid var(--border);
+        }
+
+        /* Start node */
+        .node-start {
+            background: linear-gradient(135deg, var(--accent), #4f46e5);
+            color: #fff;
+            padding: 18px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 0 30px var(--accent-glow);
+            text-align: center;
+            max-width: 520px;
+        }
+
+        /* Decision diamond */
+        .node-decision {
+            background: var(--surface);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 16px 24px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 0 20px var(--accent-glow);
+            max-width: 480px;
+            position: relative;
+        }
+        .node-decision .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        /* Branch grid */
+        .branch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            width: 100%;
+            max-width: 1350px;
+            margin: 0 auto;
+        }
+
+        /* Branch card */
+        .branch-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+        .branch-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .branch-card.expanded .card-detail {
+            max-height: 800px;
+            opacity: 1;
+        }
+        .branch-card .card-header {
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .card-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-weight: 600;
+            font-size: 0.88rem;
+            line-height: 1.3;
+        }
+        .card-code {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .card-solution {
+            padding: 0 18px 14px 18px;
+        }
+        .solution-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .card-detail {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.35s ease;
+            padding: 0 18px;
+        }
+        .branch-card.expanded .card-detail {
+            padding: 0 18px 16px 18px;
+        }
+        .detail-section {
+            background: var(--surface-2);
+            border-radius: 10px;
+            padding: 14px;
+            margin-top: 10px;
+        }
+        .detail-section h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .detail-section p, .detail-section li {
+            font-size: 0.82rem;
+            line-height: 1.6;
+            color: var(--text);
+        }
+        .detail-section ol {
+            padding-left: 18px;
+        }
+        .expand-hint {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-align: right;
+            padding: 4px 18px 10px;
+        }
+
+        /* Color themes */
+        .theme-green .card-icon { background: var(--green-bg); color: var(--green); }
+        .theme-green .solution-tag { background: var(--green-bg); color: var(--green); }
+        .theme-orange .card-icon { background: var(--orange-bg); color: var(--orange); }
+        .theme-orange .solution-tag { background: var(--orange-bg); color: var(--orange); }
+        .theme-red .card-icon { background: var(--red-bg); color: var(--red); }
+        .theme-red .solution-tag { background: var(--red-bg); color: var(--red); }
+        .theme-blue .card-icon { background: var(--blue-bg); color: var(--blue); }
+        .theme-blue .solution-tag { background: var(--blue-bg); color: var(--blue); }
+        .theme-yellow .card-icon { background: var(--yellow-bg); color: var(--yellow); }
+        .theme-yellow .solution-tag { background: var(--yellow-bg); color: var(--yellow); }
+        .theme-purple .card-icon { background: var(--purple-bg); color: var(--purple); }
+        .theme-purple .solution-tag { background: var(--purple-bg); color: var(--purple); }
+        .theme-cyan .card-icon { background: var(--cyan-bg); color: var(--cyan); }
+        .theme-cyan .solution-tag { background: var(--cyan-bg); color: var(--cyan); }
+
+        /* Sub-branch area */
+        .sub-branch {
+            width: 100%;
+            max-width: 1350px;
+            margin: 0 auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 24px;
+        }
+        .sub-branch-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        .sub-branch-title .pill {
+            background: linear-gradient(135deg, var(--accent), #4f46e5);
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .sub-branch-title h3 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        /* Level 3 sub-branch */
+        .sub-branch-l3 {
+            background: var(--surface-2);
+            border: 1px dashed var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+        .sub-branch-l3 .sub-branch-title .pill {
+            background: linear-gradient(135deg, var(--purple), #7c3aed);
+        }
+
+        /* End node */
+        .node-end {
+            background: linear-gradient(135deg, var(--green), #059669);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(52, 211, 153, 0.2);
+        }
+
+        /* CRM box */
+        .crm-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px 24px;
+            max-width: 500px;
+            text-align: center;
+        }
+        .crm-box h3 {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            color: var(--cyan);
+        }
+        .crm-box p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .branch-grid {
+                grid-template-columns: 1fr;
+            }
+            .header h1 { font-size: 1.4rem; }
+            .container { padding: 20px 12px; }
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>PayLater — Alur Penanganan Transaksi Gagal</h1>
+            <p>Panduan lengkap penanganan pengguna yang memiliki limit tetapi tidak dapat bertransaksi &nbsp;•&nbsp; Klik kartu untuk lihat detail & skrip</p>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> Quick Fix</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div> Network Issue</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--yellow)"></div> Limit Issue</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div> Product Unsupported</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div> Transaction Failed (Deeper)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div> Credit Risk / System</div>
+        </div>
+
+        <div class="flow-main">
+            <!-- START -->
+            <div class="node-start">🛒 Keluhan Pelanggan: Punya Limit PayLater Tapi Tidak Bisa Transaksi</div>
+            <div class="arrow-down"></div>
+
+            <!-- Decision: Round 1 -->
+            <div class="node-decision">
+                <div class="label">Putaran 1 — Tab Pilihan</div>
+                Pengguna memilih jenis masalah yang dialami
+            </div>
+            <div class="arrow-down"></div>
+
+            <!-- ROUND 1 BRANCHES -->
+            <div class="section-label">8 Skenario Masalah</div>
+            <div class="branch-grid">
+
+                <!-- ① Update Sistem -->
+                <div class="branch-card theme-green" onclick="this.classList.toggle('expanded')">
+                    <div class="card-header">
+                        <div class="card-icon">①</div>
+                        <div>
+                            <div class="card-title">Pengumuman Pembaruan Sistem</div>
+                            <div class="card-code">Skenario 1 • Kode 3.1</div>
+                        </div>
+                    </div>
+                    <div class="card-solution">
+                        <span class="solution-tag">→ Perbarui Aplikasi Akulaku</span>
+                    </div>
+                    <div class="expand-hint">klik untuk detail ▾</div>
+                    <div class="card-detail">
+                        <div class="detail-section">
+                            <h4>Skrip CS</h4>
+                            <p>Berdasarkan notifikasi yang Anda laporkan, kami sarankan Anda untuk memperbarui aplikasi Akulaku.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ②③ Network -->
+                <div class="branch-card theme-orange" onclick="this.classList.toggle('expanded')">
+                    <div class="card-header">
+                        <div class="card-icon">②③</div>
+                        <div>
+                            <div class="card-title">Halaman Kosong / Gangguan Jaringan</div>
+                            <div class="card-code">Skenario 2 • Kode 3.2</div>
+                        </div>
+                    </div>
+                    <div class="card-solution">
+                        <span class="solution-tag">→ Clear Cache + Reconnect</span>
+                    </div>
+                    <div class="expand-hint">klik untuk detail ▾</div>
+                    <div class="card-detail">
+                        <div class="detail-section">
+                            <h4>Langkah Solusi</h4>
+                            <ol>
+                                <li>Pastikan jaringan stabil, gunakan data seluler</li>
+                                <li>Logout dan login kembali</li>
+                                <li>Hapus cache: Menu Akun → Ikon Gear → Hapus Cache</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ④ Limit Insufficient -->
+                <div class="branch-card theme-yellow" onclick="this.classList.toggle('expanded')">
+                    <div class="card-header">
+                        <div class="card-icon">④</div>
+                        <div>
+                            <div class="card-title">Limit Tidak Cukup</div>
+                            <div class="card-code">Skenario 3 • Kode 3.3</div>
+                        </div>
+                    </div>
+                    <div class="card-solution">
+                        <span class="solution-tag">→ Sesuaikan Limit + Panduan Peningkatan</span>
+                    </div>
+                    <div class="expand-hint">klik untuk detail ▾</div>
+                    <div class="card-detail">
+                        <div class="detail-section">
+                            <h4>Langkah Peningkatan Limit</h4>
+                            <ol>
+                                <li>Buka halaman PayLater</li>
+                                <li>Klik "Limit Tersedia"</li>
+                                <li>Di "Pusat Peningkatan Limit", pilih item otorisasi: Verifikasi Laporan Pajak, Isi Kartu Bank, Info Perusahaan, Email Perusahaan, SIM, NPWP, Kontak Darurat</li>
+                                <li>Lengkapi pengisian data</li>
+                            </ol>
+                            <p style="margin-top:8px; color: var(--orange); font-size:0.78rem;">⚠ Persetujuan limit = operasi sistem, tidak bisa diintervensi manual</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ⑤⑥ No Installment -->
+                <div class="branch-card theme-blue" onclick="this.classList.toggle('expanded')">
+                    <div class="card-header">
+                        <div class="card-icon">⑤⑥</div>
+                        <div>
+                            <div class="card-title">Produk Fisik Tidak Mendukung Cicilan</div>
+                            <div class="card-code">Skenario 4 • Kode 3.4</div>
+                        </div>
+                    </div>
+                    <div class="card-solution">
+                        <span class="solution-tag">→ Gunakan Metode Pembayaran Lain</span>
+                    </div>
+                    <div class="expand-hint">klik untuk detail ▾</div>
+                    <div class="card-detail">
+                        <div class="detail-section">
+                            <h4>Skrip CS</h4>
+                            <p>Produk/merchant ini tidak mendukung cicilan PayLater, kami sarankan Anda menggunakan metode pembayaran lain.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ⑦ E-Wallet -->
+                <div class="branch-card theme-blue" onclick="this.classList.toggle('expanded')">
+                    <div class="card-header">
+                        <div class="card-icon">⑦</div>
+                        <div>
+                            <div class="card-title">Produk Virtual E-Wallet</div>
+                            <div class="card-code">Skenario 5 • Kode 3.10</div>
+                        </div>
+                    </div>
+                    <div class="card-solution">
+                        <span class="solution-tag">→ PayLater Tidak Mendukung E-Wallet</span>
+                    </div>
+                    <div class="expand-hint">klik untuk detail ▾</div>
+                    <div class="card-detail">
+                        <div class="detail-section">
+                            <h4>Skrip CS</h4>
+                            <p>Metode cicilan Akulaku PayLater saat ini tidak mendukung pembelian produk e-wallet. Kami sarankan Anda menggunakan metode pembayaran lain yang tersedia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ⑧ Transaction Failed — DEEP BRANCH -->
+                <div class="branch-card theme-red" style="border: 1px solid var(--red); grid-column: 1 / -1;">
+                    <div class="card-header">
+                        <div class="card-icon" style="width:40px;height:40px;font-size:0.95rem;">⑧</div>
+                        <div>
+                            <div class="card-title" style="font-size:1rem;">Transaksi Gagal — Memerlukan Penelusuran Lebih Lanjut ↓</div>
+                            <div class="card-code">Skenario 6 • Kode 3.11+ • Lanjut ke Putaran 2 di bawah</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arrow-down"></div>
+
+            <!-- ============ ROUND 2 ============ -->
+            <div class="sub-branch">
+                <div class="sub-branch-title">
+                    <span class="pill">PUTARAN 2</span>
+                    <h3>⑧ Transaksi Gagal — Tab Pilihan Tingkat 2</h3>
+                </div>
+
+                <div class="branch-grid">
+                    <!-- A: Limit not enough -->
+                    <div class="branch-card theme-yellow" onclick="this.classList.toggle('expanded')">
+                        <div class="card-header">
+                            <div class="card-icon">A</div>
+                            <div>
+                                <div class="card-title">Limit Tidak Cukup</div>
+                                <div class="card-code">Kode 3.12</div>
+                            </div>
+                        </div>
+                        <div class="card-solution">
+                            <span class="solution-tag">→ Sesuaikan Limit + Panduan Peningkatan</span>
+                        </div>
+                        <div class="expand-hint">klik untuk detail ▾</div>
+                        <div class="card-detail">
+                            <div class="detail-section">
+                                <h4>Langkah Solusi</h4>
+                                <p>Sama dengan Skenario 3 (Kode 3.3): Pastikan limit mencakup harga + biaya admin + bunga. Arahkan ke Pusat Peningkatan Limit.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- B: Limit enough but fail — DEEP -->
+                    <div class="branch-card theme-purple" style="border-color: var(--purple);">
+                        <div class="card-header">
+                            <div class="card-icon">B</div>
+                            <div>
+                                <div class="card-title">Limit Cukup Tapi Tidak Bisa Digunakan ↓</div>
+                                <div class="card-code">Kode 3.15~3.17 • Lanjut ke Putaran 3 di bawah</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- C: Repeat purchase -->
+                    <div class="branch-card theme-orange" onclick="this.classList.toggle('expanded')">
+                        <div class="card-header">
+                            <div class="card-icon">C</div>
+                            <div>
+                                <div class="card-title">Pembelian Berulang</div>
+                                <div class="card-code">Kode 3.19</div>
+                            </div>
+                        </div>
+                        <div class="card-solution">
+                            <span class="solution-tag">→ Sistem Blokir Transaksi Berulang</span>
+                        </div>
+                        <div class="expand-hint">klik untuk detail ▾</div>
+                        <div class="card-detail">
+                            <div class="detail-section">
+                                <h4>Skrip CS</h4>
+                                <p>Transaksi belanja dilakukan secara berulang, sehingga sistem memblokir transaksi tersebut. Sarankan untuk tidak melakukan transaksi berulang, coba secara berkala dan normal.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- D: Other -->
+                    <div class="branch-card theme-purple" onclick="this.classList.toggle('expanded')">
+                        <div class="card-header">
+                            <div class="card-icon">D</div>
+                            <div>
+                                <div class="card-title">Situasi Lainnya</div>
+                                <div class="card-code">Kode 3.20</div>
+                            </div>
+                        </div>
+                        <div class="card-solution">
+                            <span class="solution-tag">→ Skor Kredit / Penilaian Risiko Sistem</span>
+                        </div>
+                        <div class="expand-hint">klik untuk detail ▾</div>
+                        <div class="card-detail">
+                            <div class="detail-section">
+                                <h4>Skrip CS</h4>
+                                <p>Hasil skor kredit atau penilaian risiko. Riwayat keterlambatan dapat memengaruhi keberhasilan. Operasi sistem, tidak dapat diintervensi manual.</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>Skrip Eskalasi (jika pelanggan tidak puas)</h4>
+                                <p>Ini merupakan bagian dari evaluasi sistem dan kebijakan Akulaku, di luar kendali kami. Kami benar-benar memahami kekecewaan Anda. Kami mohon maaf atas ketidaknyamanan ini.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============ ROUND 3 ============ -->
+                <div class="sub-branch-l3">
+                    <div class="sub-branch-title">
+                        <span class="pill">PUTARAN 3</span>
+                        <h3>⑧B — Limit Cukup Tapi Tidak Bisa Digunakan — Cek Tagihan</h3>
+                    </div>
+                    <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:16px;">
+                        Pertanyaan: "Apakah saat ini Anda memiliki tagihan yang sedang berjalan di platform/aplikasi lain? Termasuk tagihan di Akulaku?"
+                    </p>
+
+                    <div class="branch-grid">
+                        <!-- 1: No bills -->
+                        <div class="branch-card theme-purple" onclick="this.classList.toggle('expanded')">
+                            <div class="card-header">
+                                <div class="card-icon">1</div>
+                                <div>
+                                    <div class="card-title">Tidak Ada Tagihan & Tidak Pernah Terlambat</div>
+                                    <div class="card-code">Kode 3.15</div>
+                                </div>
+                            </div>
+                            <div class="card-solution">
+                                <span class="solution-tag">→ Skor Kredit / Penilaian Risiko Sistem</span>
+                            </div>
+                            <div class="expand-hint">klik untuk detail ▾</div>
+                            <div class="card-detail">
+                                <div class="detail-section">
+                                    <h4>Skrip CS</h4>
+                                    <p>Masalah disebabkan oleh hasil skor kredit atau penilaian risiko. Riwayat keterlambatan di aplikasi lain dapat memengaruhi keberhasilan. Persetujuan limit = operasi sistem, tidak dapat diintervensi manual.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2: Akulaku bills -->
+                        <div class="branch-card theme-cyan" onclick="this.classList.toggle('expanded')">
+                            <div class="card-header">
+                                <div class="card-icon">2</div>
+                                <div>
+                                    <div class="card-title">Ada Tagihan di Platform Akulaku</div>
+                                    <div class="card-code">Kode 3.17</div>
+                                </div>
+                            </div>
+                            <div class="card-solution">
+                                <span class="solution-tag">→ Lunasi Cicilan, Coba 90 Hari Lagi</span>
+                            </div>
+                            <div class="expand-hint">klik untuk detail ▾</div>
+                            <div class="card-detail">
+                                <div class="detail-section">
+                                    <h4>Skrip CS</h4>
+                                    <p>Tagihan berjalan di Akulaku dapat memengaruhi keberhasilan transaksi. Selesaikan cicilan terlebih dahulu, coba bertransaksi kembali setelah 90 hari.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3: External bills -->
+                        <div class="branch-card theme-cyan" onclick="this.classList.toggle('expanded')">
+                            <div class="card-header">
+                                <div class="card-icon">3</div>
+                                <div>
+                                    <div class="card-title">Ada Tagihan di Platform Eksternal</div>
+                                    <div class="card-code">Kode 3.16</div>
+                                </div>
+                            </div>
+                            <div class="card-solution">
+                                <span class="solution-tag">→ Lunasi Tagihan Eksternal, 90 Hari, No New Bills</span>
+                            </div>
+                            <div class="expand-hint">klik untuk detail ▾</div>
+                            <div class="card-detail">
+                                <div class="detail-section">
+                                    <h4>Skrip CS</h4>
+                                    <p>Tagihan di aplikasi lain dapat memengaruhi belanja PayLater. Selesaikan tagihan/cicilan yang ada, coba kembali setelah 90 hari. Selama periode tersebut, jangan tambah tagihan baru di Akulaku maupun aplikasi eksternal.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arrow-down"></div>
+
+            <!-- CRM -->
+            <div class="crm-box">
+                <h3>📋 Buat Tiket CRM</h3>
+                <p>Jenis: KATEGORI PERCAKAPAN<br>
+                   Sub-jenis: Tidak dapat bertransaksi tetapi memiliki limit<br>
+                   Nomor Detail: 3.1 ~ 3.20 (sesuai penyebab spesifik)</p>
+            </div>
+
+            <div class="arrow-down"></div>
+
+            <!-- END -->
+            <div class="node-end">✅ Selesai</div>
+        </div>
+    </div>
+
+    <script>
+        // Auto-collapse other cards when one is expanded (within same grid)
+        document.querySelectorAll('.branch-card[onclick]').forEach(card => {
+            card.addEventListener('click', () => {
+                const grid = card.closest('.branch-grid');
+                if (grid) {
+                    grid.querySelectorAll('.branch-card.expanded').forEach(other => {
+                        if (other !== card) other.classList.remove('expanded');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
