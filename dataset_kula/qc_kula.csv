@@ -122870,12 +122870,12 @@
 122867,2026-08-31,ASI,Customer,Not meet expectation,How to check the due loan,Loan
 122868,2026-08-31,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
 122869,2026-08-31,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
-122870,2026-08-31,ASI,,,Want a loan application,Loan
-122871,2026-08-31,ASI,,,How to increase loan limit,Loan
-122872,2026-08-31,ASI,,,LOAN NOT USING ACCOUNT,Loan
-122873,2026-08-31,ASI,,,How to apply for a loan,Loan
-122874,2026-08-31,ASI,,,Flexi Fund Product Disbursement Process,Loan
-122875,2026-09-01,AFI,,,How to pay installment bills,Installment/Payment Gateway
+122870,2026-08-31,ASI,Customer,Not meet expectation,Want a loan application,Loan
+122871,2026-08-31,ASI,Customer,Not meet expectation,How to increase loan limit,Loan
+122872,2026-08-31,ASI,Customer,Not meet expectation,LOAN NOT USING ACCOUNT,Loan
+122873,2026-08-31,ASI,Customer,Not meet expectation,How to apply for a loan,Loan
+122874,2026-08-31,ASI,Customer,Not meet expectation,Flexi Fund Product Disbursement Process,Loan
+122875,2026-09-01,AFI,Customer,Not meet expectation,How to pay installment bills,Installment/Payment Gateway
 122876,2026-09-01,AFI,Customer,Not meet expectation,Paylater submission failed,Submission of Limit/Credit Points
 122877,2026-09-01,AFI,Customer,Not meet expectation,Paylater submission failed,Submission of Limit/Credit Points
 122878,2026-09-01,AFI,Customer,Not meet expectation,Field Collection Process,Collection
@@ -122893,7 +122893,7 @@
 122890,2026-09-01,ASI,Customer,Not meet expectation,Want a loan application,Loan
 122891,2026-09-02,AFI,Customer,Not meet expectation,How to activate the qris feature,Akulaku Paylater
 122892,2026-09-02,AFI,Customer,Not meet expectation,Freeze accounts because it is misused,Account Security
-122893,2026-09-02,AFI,,,How to Restructure Bills,Collection
+122893,2026-09-02,AFI,Customer,Not meet expectation,How to Restructure Bills,Collection
 122894,2026-09-02,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
 122895,2026-09-02,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
 122896,2026-09-02,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
@@ -122907,14 +122907,30 @@
 122904,2026-09-02,ASI,Customer,Not meet expectation,There is no feature looking for my dan,Cari Danaku
 122905,2026-09-02,ASI,Customer,Not meet expectation,PLN token number has not been received,Voucher
 122906,2026-09-02,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
-122907,2026-09-03,AFI,,,Deactivate account,Account Security
-122908,2026-09-03,ASI,,,KTP verification constraints,Bug
-122909,2026-09-03,ASI,,,How to pay a loan bill,Loan
-122910,2026-09-03,ASI,,,How to pay a loan bill,Loan
-122911,2026-09-03,ASI,,,Check the history of submission of installment funds,Loan
-122912,2026-09-03,ASI,,,Unable to pay loan via BCA,Loan
+122907,2026-09-03,AFI,Customer,Not meet expectation,Deactivate account,Account Security
+122908,2026-09-03,ASI,Customer,Not meet expectation,KTP verification constraints,Bug
+122909,2026-09-03,ASI,Customer,Not meet expectation,How to pay a loan bill,Loan
+122910,2026-09-03,ASI,Customer,Not meet expectation,How to pay a loan bill,Loan
+122911,2026-09-03,ASI,Customer,Not meet expectation,Check the history of submission of installment funds,Loan
+122912,2026-09-03,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
 122913,2026-09-03,ASI,Customer,Not meet expectation,How to Change Account Number,Data Update
 122914,2026-09-03,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
 122915,2026-09-03,ASI,Customer,Not meet expectation,How to submit a installment fund,Loan
 122916,2026-09-03,ASI,Customer,Not meet expectation,Merchant Online - Status will be sent,Merchant Online
 122917,2026-09-03,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122918,2026-09-04,AFI,Customer,Not meet expectation,How to submit akulaku paylater,Akulaku Paylater
+122919,2026-09-05,AFI,Customer,Not meet expectation,How to check the bill,Installment/Payment Gateway
+122920,2026-09-06,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122921,2026-09-04,ASI,Customer,Not meet expectation,How to apply for a loan,Loan
+122922,2026-09-04,ASI,Customer,Not meet expectation,Want a loan application,Loan
+122923,2026-09-04,ASI,Customer,Not meet expectation,How to pay a loan bill,Loan
+122924,2026-09-04,ASI,Customer,Not meet expectation,Payment of Flexi Fund Product Bills,Loan
+122925,2026-09-04,ASI,Customer,Not meet expectation,How to change the password/forget the password,Data Update
+122926,2026-09-04,ASI,Customer,Not meet expectation,How to apply for a loan,Loan
+122927,2026-09-05,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122928,2026-09-05,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122929,2026-09-05,ASI,Customer,Not meet expectation,Want a loan application,Loan
+122930,2026-09-05,ASI,Customer,Not meet expectation,Repayment of loan bills,Loan
+122931,2026-09-05,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122932,2026-09-06,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122933,2026-09-06,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
