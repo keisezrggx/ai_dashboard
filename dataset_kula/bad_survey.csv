@@ -2335,7 +2335,7 @@ Pertanyaan cust ""Mengapa tidak melakukan pengajuan Pinjaman?, saran seharusnya 
 2216,,2023-05-24,Week 4,January,Yulia Sari,ASI,20257081,2-20257081-3-1_1684947065,CHATBOT OPS,Answer not update by Engineer,PLN transaction has not been successful,Urgent,Bad Survey,Voucher,,,2.0,ASI
 2217,,2023-05-24,Week 4,January,Yulia Sari,AFI,2023360413,2-2023360413-3-1_1684945880,Customer,Information Not Meet Customer Expectations,How to pay Dana Cicil bills,N/A,Bad Survey,Loan,,,1.0,ASI
 2218,,2023-05-25,Week 4,January,Yulia Sari,ASI,80944019,2-80944019-3-1_1684987935,CHATBOT OPS,Answer not update by Engineer,Change of telephone number,Urgent,Bad Survey,Account,,,1.0,ASI
-2219,,2023-05-25,Week 4,January,Yulia Sari,AFI,111479364,2-111479364-3-1_1684975117,Customer,Information Not Meet Customer Expectations,Use of limits that can only be used at certain merchants,N/A,Bad Survey,Akulaku Paylater,,,1.0,ASI
+2219,,2023-05-25,Week 4,January,Yulia Sari,AFI,111479364,2-111479364-3-1_1684975117,Customer,Information Not Meet Customer Expectations,Usage limits that can only be used at certain merchants,N/A,Bad Survey,Akulaku Paylater,,,1.0,ASI
 2220,,2023-05-25,Week 4,January,Yulia Sari,AFI,2023944544,2-2023944544-3-1_1684984482,Customer,Information Not Meet Customer Expectations,Akulaku Paylater cannot be used,N/A,Bad Survey,Submission of Limit/Credit Points,,,1.0,ASI
 2221,,2023-05-25,Week 4,January,Yulia Sari,AFI,77062995,2-77062995-3-1_1684991318,Customer,Information Not Meet Customer Expectations,Didn't get credit limit,N/A,Bad Survey,Submission of Limit/Credit Points,,,1.0,ASI
 2222,,2023-05-25,Week 4,January,Yulia Sari,ASI,118804093,2-118804093-3-1_1684995430,CHATBOT OPS,Answer not update by Engineer,Online Merchant - Invalid Receipt Number,Urgent,Bad Survey,Merchant Online,,,1.0,ASI
@@ -3620,7 +3620,7 @@ bisa gak?"" robot tidak menjawab",1.0,ASI
 3451,,2023-07-13,Week 2,January,Yulia Sari,AFI,101124335,2-101124335-3-1_1689210888,Customer,Information Not Meet Customer Expectations,Shopping Limit cannot be used,N/A,Bad Survey,Submission of Limit/Credit Points,,,1.0,ASI
 3452,,2023-07-13,Week 2,January,Yulia Sari,AFI,111160274,2-111160274-3-1_1689245592,Customer,Information Not Meet Customer Expectations,Shopping Limit cannot be used,N/A,Bad Survey,Submission of Limit/Credit Points,,,1.0,ASI
 3453,,2023-07-13,Week 2,January,Yulia Sari,AFI,2001660275,2-2001660275-3-1_1689219547,SOP IMPROVEMENT,Not on the FAQ List,The loan bill next month has not yet appeared,Low,Bad Survey,Installment/Payment Gateway,,Kenapa tagihan cicilan pinjaman bulan depan belum muncul?,1.0,ASI
-3454,,2023-07-13,Week 2,January,Yulia Sari,AFI,20880224,2-20880224-3-1_1689227588,SYSTEM,Robots don't show up,There is a call from Akulaku,Medium,Bad Survey,Account Security,,,1.0,ASI
+3454,,2023-07-13,Week 2,January,Yulia Sari,AFI,20880224,2-20880224-3-1_1689227588,SYSTEM,Robots don't show up,There was a call from Akulaku,Medium,Bad Survey,Account Security,,,1.0,ASI
 3455,,2023-07-13,Week 2,January,Yulia Sari,ASI,6629606,2-6629606-3-1_1689260636,SYSTEM,Robots don't show up,Global Buy Products - Want product service/warranty claims?,Medium,Bad Survey,Global Buy,,,1.0,ASI
 3456,,2023-07-13,Week 2,January,Yulia Sari,AFI,2011523919,2-2011523919-3-1_1689229056,Customer,Information Not Meet Customer Expectations,Paylater cannot be used again,N/A,Bad Survey,Submission of Limit/Credit Points,,,1.0,ASI
 3457,,2023-07-13,Week 2,January,Yulia Sari,AFI,2007220321,2-2007220321-3-1_1689230101,Customer,Information Not Meet Customer Expectations,Akulaku Paylater payment is not correct,N/A,Bad Survey,Akulaku Paylater,,,1.0,ASI
@@ -3986,7 +3986,7 @@ bisa gak?"" robot tidak menjawab",1.0,ASI
 3817,,2023-07-28,Week 4,January,Yulia Sari,AFI,2026488931,2-2026488931-3-1_1690528645,CHATBOT OPS,FAQ Revision Q&A,Application to unblock account,Urgent,Bad Survey,Account Security,,,1.0,ASI
 3818,,2023-07-28,Week 4,January,Yulia Sari,ASI,2026340956,2-2026340956-3-1_1690543663,CHATBOT OPS,Question keywords,Electricity token cannot be used,Urgent,Bad Survey,Voucher,,"Pertanyaan pelanggan ""token kenapa pas di masukan gagal terus"" masuk ke katogori ""Limit Belanja tidak bisa digunakan"" pada saat dicek GDOC, sedangkan robot menjawab menggunakan jawaban code 052909",1.0,ASI
 3819,,2023-07-28,Week 4,January,Yulia Sari,No Differentiated,12024003,2-12024003-3-1_1690545431,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,"Pelanggan bertanya ""NURHAYATI AR"" robot tidak memberikan jawaban",1.0,ASI
-3820,,2023-07-28,Week 4,January,Yulia Sari,AFI,54948707,2-54948707-3-1_1690546521,CHATBOT OPS,Question keywords,There is a call from Akulaku,Urgent,Bad Survey,Account Security,,"Pertanyaan pelanggan ""saya tidak punya tagihan kenapa selalu di telpon oleh akulaku untuk segera melunasi cicilan"" masuk ke katogori ""Muncul notif tagihan namun tagihan sudah Rp.0"" pada saat dicek GDOC, sedangkan robot menjawab menggunakan jawaban code 191501",1.0,ASI
+3820,,2023-07-28,Week 4,January,Yulia Sari,AFI,54948707,2-54948707-3-1_1690546521,CHATBOT OPS,Question keywords,There was a call from Akulaku,Urgent,Bad Survey,Account Security,,"Pertanyaan pelanggan ""saya tidak punya tagihan kenapa selalu di telpon oleh akulaku untuk segera melunasi cicilan"" masuk ke katogori ""Muncul notif tagihan namun tagihan sudah Rp.0"" pada saat dicek GDOC, sedangkan robot menjawab menggunakan jawaban code 191501",1.0,ASI
 3821,,2023-07-28,Week 4,January,Yulia Sari,AFI,53273695,2-53273695-3-1_1690551307,Customer,Information Not Meet Customer Expectations,Check credit score,N/A,Bad Survey,Submission of Limit/Credit Points,,,1.0,ASI
 3822,,2023-07-28,Week 4,January,Yulia Sari,ASI,19362406,2-19362406-3-1_1690559367,CHATBOT OPS,FAQ Revision Q&A,Phone balance has not been received,Urgent,Bad Survey,Voucher,,,1.0,ASI
 3823,,2023-07-28,Week 4,January,Yulia Sari,AFI,2026360112,2-2026360112-3-1_1690496089,Customer,Information Not Meet Customer Expectations,Loan funds not yet received,N/A,Bad Survey,Loan,,,1.0,ASI
@@ -4111,9 +4111,9 @@ bisa gak?"" robot tidak menjawab",1.0,ASI
 3942,,2023-08-01,Week 1,January,Nurhamni Septia,AFI,77221567,2-77221567-3-1_1690894521,Customer,Information Not Meet Customer Expectations,Cannot make installment transactions,N/A,Bad Survey,Submission of Limit/Credit Points,,,1.0,ASI
 3943,,2023-08-01,Week 1,January,Nurhamni Septia,AFI,7809462,2-7809462-3-1_1690907377,Customer,Information Not Meet Customer Expectations,Failed loan application,N/A,Bad Survey,Loan,,,1.0,ASI
 3944,,2023-08-01,Week 1,January,Nurhamni Septia,AFI,2002298880,2-2002298880-3-1_1690907510,Customer,Information Not Meet Customer Expectations,Failed loan application,N/A,Bad Survey,Loan,,,1.0,ASI
-3945,,2023-08-02,Week 1,January,Yulia Sari,AFI,2025387790,2-2025387790-3-1_1690950800,CHATBOT OPS,Question keywords,Cannot apply for loan,Urgent,Bad Survey,Loan,,"Pertanyaan pelanggan ""Kenapa Saya tidak bisa mengajukan pinjaman?"" masuk ke katogori ""Ingin pengajuan pinjaman"" pada saat dicek GDOC, sedangkan robot menjawab menggunakan jawaban code 052925",1.0,ASI
-3946,,2023-08-02,Week 1,January,Yulia Sari,AFI,123830040,2-123830040-3-1_1690963723,CHATBOT OPS,Question keywords,Cannot apply for loan,Urgent,Bad Survey,Loan,,"Pertanyaan pelanggan ""Kenapa Saya tidak bisa mengajukan pinjaman?"" masuk ke katogori ""Ingin pengajuan pinjaman"" pada saat dicek GDOC, sedangkan robot menjawab menggunakan jawaban code 052925",2.0,ASI
-3947,,2023-08-02,Week 1,January,Yulia Sari,AFI,75165469,2-75165469-3-1_1690983535,CHATBOT OPS,Question keywords,Cannot apply for loan,Urgent,Bad Survey,Loan,,"Pertanyaan pelanggan ""Kenapa Saya tidak bisa mengajukan pinjaman?"" masuk ke katogori ""Ingin pengajuan pinjaman"" pada saat dicek GDOC, sedangkan robot menjawab menggunakan jawaban code 052925",1.0,ASI
+3945,,2023-08-02,Week 1,January,Yulia Sari,AFI,2025387790,2-2025387790-3-1_1690950800,CHATBOT OPS,Question keywords,Unable to apply for a loan,Urgent,Bad Survey,Loan,,"Pertanyaan pelanggan ""Kenapa Saya tidak bisa mengajukan pinjaman?"" masuk ke katogori ""Ingin pengajuan pinjaman"" pada saat dicek GDOC, sedangkan robot menjawab menggunakan jawaban code 052925",1.0,ASI
+3946,,2023-08-02,Week 1,January,Yulia Sari,AFI,123830040,2-123830040-3-1_1690963723,CHATBOT OPS,Question keywords,Unable to apply for a loan,Urgent,Bad Survey,Loan,,"Pertanyaan pelanggan ""Kenapa Saya tidak bisa mengajukan pinjaman?"" masuk ke katogori ""Ingin pengajuan pinjaman"" pada saat dicek GDOC, sedangkan robot menjawab menggunakan jawaban code 052925",2.0,ASI
+3947,,2023-08-02,Week 1,January,Yulia Sari,AFI,75165469,2-75165469-3-1_1690983535,CHATBOT OPS,Question keywords,Unable to apply for a loan,Urgent,Bad Survey,Loan,,"Pertanyaan pelanggan ""Kenapa Saya tidak bisa mengajukan pinjaman?"" masuk ke katogori ""Ingin pengajuan pinjaman"" pada saat dicek GDOC, sedangkan robot menjawab menggunakan jawaban code 052925",1.0,ASI
 3948,,2023-08-02,Week 1,January,Yulia Sari,AFI,2020529954,2-2020529954-3-1_1690972042,CHATBOT OPS,Add Question Simulation,discount when making payment,Urgent,Bad Survey,Loan,,"Siang Kak, saya ada pinjaman belum di bayar, apakah ada kebijakan dari akulaku untuk pelunasan seperti bayar pokoknya saja?",1.0,ASI
 3949,,2023-08-02,Week 1,January,Yulia Sari,AFI,22420468,2-22420468-3-1_1690962387,Customer,Information Not Meet Customer Expectations,Failed loan application,N/A,Bad Survey,Loan,,,1.0,ASI
 3950,,2023-08-02,Week 1,January,Yulia Sari,AFI,16423418,2-16423418-3-1_1690965907,Customer,Information Not Meet Customer Expectations,Failed loan application,N/A,Bad Survey,Loan,,,1.0,ASI
@@ -4149,7 +4149,7 @@ bisa gak?"" robot tidak menjawab",1.0,ASI
 3980,,2023-08-03,Week 1,January,Yulia Sari,AFI,13914181,2-13914181-3-1_1691049650,Customer,Information Not Meet Customer Expectations,Can't make a loan,N/A,Bad Survey,Loan,,,1.0,ASI
 3981,,2023-08-03,Week 1,January,Yulia Sari,AFI,2617535,2-2617535-3-1_1691061803,Customer,Information Not Meet Customer Expectations,Cancellation of loan application,N/A,Bad Survey,Loan,,,1.0,ASI
 3982,,2023-08-03,Week 1,January,Yulia Sari,AFI,2026730500,2-2026730500-3-1_1691069337,Customer,Information Not Meet Customer Expectations,Cancellation of loan application,N/A,Bad Survey,Loan,,,2.0,ASI
-3983,,2023-08-03,Week 1,January,Yulia Sari,AFI,2026609776,2-2026609776-3-1_1691052703,CHATBOT OPS,Question keywords,Cannot apply for loan,Urgent,Bad Survey,Loan,,"Pertanyaan pelanggan ""penilaian pada akun saya baik, saya juga sudah membayar tagihan selanjutnya, kenapa tidak bisa mengajukan pinjaman?"" masuk ke katogori ""Tagihan pinjaman tidak muncul"" pada saat dicek GDOC, sedangkan robot menjawab menggunakan jawaban code 103301",1.0,ASI
+3983,,2023-08-03,Week 1,January,Yulia Sari,AFI,2026609776,2-2026609776-3-1_1691052703,CHATBOT OPS,Question keywords,Unable to apply for a loan,Urgent,Bad Survey,Loan,,"Pertanyaan pelanggan ""penilaian pada akun saya baik, saya juga sudah membayar tagihan selanjutnya, kenapa tidak bisa mengajukan pinjaman?"" masuk ke katogori ""Tagihan pinjaman tidak muncul"" pada saat dicek GDOC, sedangkan robot menjawab menggunakan jawaban code 103301",1.0,ASI
 3984,,2023-08-03,Week 1,January,Yulia Sari,AFI,2025624520,2-2025624520-3-1_1691065317,Customer,Information Not Meet Customer Expectations,Failed loan application,N/A,Bad Survey,Loan,,,1.0,ASI
 3985,,2023-08-03,Week 1,January,Yulia Sari,AFI,53065254,2-53065254-3-1_1691062183,Customer,Information Not Meet Customer Expectations,Installment payment process using Akulaku,N/A,Bad Survey,Loan,,,1.0,ASI
 3986,,2023-08-03,Week 1,January,Yulia Sari,No Differentiated,120753547,2-120753547-3-1_1691035644,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
@@ -4247,7 +4247,7 @@ bisa gak?"" robot tidak menjawab",1.0,ASI
 4078,,2023-08-06,Week 1,January,Nurhamni Septia,AFI,2026836641,2-2026836641-3-1_1691330217,Customer,Information Not Meet Customer Expectations,Cannot make installment transactions,N/A,Bad Survey,Submission of Limit/Credit Points,,,1.0,ASI
 4079,,2023-08-06,Week 1,January,Nurhamni Septia,AFI,2020603642,2-2020603642-3-1_1691258466,Customer,Information Not Meet Customer Expectations,"Failed loan, previously successful",N/A,Bad Survey,Loan,,,1.0,ASI
 4081,,2023-08-07,Week 2,January,Yulia Sari,AFI,2023100377,2-2023100377-3-1_1691395347,CHATBOT OPS,FAQ Revision Q&A,Can't make a loan,Urgent,Bad Survey,Loan,,,1.0,ASI
-4082,,2023-08-07,Week 2,January,Yulia Sari,AFI,2026104048,2-2026104048-3-1_1691379856,Customer,Information Not Meet Customer Expectations,Cannot apply for loan,N/A,Bad Survey,Loan,,,2.0,ASI
+4082,,2023-08-07,Week 2,January,Yulia Sari,AFI,2026104048,2-2026104048-3-1_1691379856,Customer,Information Not Meet Customer Expectations,Unable to apply for a loan,N/A,Bad Survey,Loan,,,2.0,ASI
 4083,,2023-08-07,Week 2,January,Yulia Sari,AFI,131824633,2-131824633-3-1_1691403779,Customer,Information Not Meet Customer Expectations,Failed loan application,N/A,Bad Survey,Loan,,,1.0,ASI
 4084,,2023-08-07,Week 2,January,Yulia Sari,AFI,10949938,2-10949938-3-1_1691417409,Customer,Information Not Meet Customer Expectations,Failed loan application,N/A,Bad Survey,Loan,,,1.0,ASI
 4085,,2023-08-07,Week 2,January,Yulia Sari,AFI,2026499374,2-2026499374-3-1_1691370507,Customer,Information Not Meet Customer Expectations,How to apply for a loan,N/A,Bad Survey,Loan,,,1.0,ASI
@@ -4260,7 +4260,7 @@ bisa gak?"" robot tidak menjawab",1.0,ASI
 4092,,2023-08-07,Week 2,January,Yulia Sari,No Differentiated,2009737058,2-2009737058-3-1_1691386521,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,2.0,ASI
 4093,,2023-08-07,Week 2,January,Yulia Sari,No Differentiated,8607619,2-8607619-3-1_1691420555,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
 4094,,2023-08-07,Week 2,January,Yulia Sari,AFI,2010874673,2-2010874673-3-1_1691411960,CHATBOT OPS,Answer not update by Engineer,How to use the offline payment code service,Urgent,Bad Survey,Akulaku Paylater,,,1.0,ASI
-4095,,2023-08-07,Week 2,January,Yulia Sari,AFI,24988155,2-24988155-3-1_1691418013,SYSTEM,Robots don't show up,There is a call from Akulaku,Medium,Bad Survey,Account Security,,,1.0,ASI
+4095,,2023-08-07,Week 2,January,Yulia Sari,AFI,24988155,2-24988155-3-1_1691418013,SYSTEM,Robots don't show up,There was a call from Akulaku,Medium,Bad Survey,Account Security,,,1.0,ASI
 4096,,2023-08-07,Week 2,January,Yulia Sari,ASI,79236704,2-79236704-3-1_1691369016,CHATBOT OPS,Answer not update by Engineer,Phone balance has not been received,Urgent,Bad Survey,Voucher,,,1.0,ASI
 4097,,2023-08-07,Week 2,January,Yulia Sari,ASI,2004773991,2-2004773991-3-1_1691416480,CHATBOT OPS,Answer not update by Engineer,Phone balance has not been received,Urgent,Bad Survey,Voucher,,,1.0,ASI
 4098,,2023-08-07,Week 2,January,Yulia Sari,No Differentiated,19577015,2-19577015-3-1_1691376013,SYSTEM,Robots don't show up,Confirmation about the problem,Medium,Bad Survey,No Category,,"Pertanyaan pelanggan ""Tolong segera di Follow Up"" Robot tidak memberikan jawab",2.0,ASI
@@ -4279,7 +4279,7 @@ bisa gak?"" robot tidak menjawab",1.0,ASI
 4111,,2023-08-08,Week 2,January,Nurhamni Septia,AFI,131087835,2-131087835-3-1_1691430305,Customer,Information Not Meet Customer Expectations,Can't make a loan,N/A,Bad Survey,Loan,,,1.0,ASI
 4112,,2023-08-08,Week 2,January,Nurhamni Septia,AFI,2017495452,2-2017495452-3-1_1691494566,Customer,Information Not Meet Customer Expectations,Can't make a loan,N/A,Bad Survey,Loan,,,1.0,ASI
 4113,,2023-08-08,Week 2,January,Nurhamni Septia,AFI,2019168727,2-2019168727-3-1_1691474530,Customer,Information Not Meet Customer Expectations,Can't apply for a loan,N/A,Bad Survey,Loan,,,1.0,ASI
-4114,,2023-08-08,Week 2,January,Nurhamni Septia,AFI,2021813217,2-2021813217-3-1_1691464940,Customer,Information Not Meet Customer Expectations,Cannot apply for loan,N/A,Bad Survey,Loan,,,1.0,ASI
+4114,,2023-08-08,Week 2,January,Nurhamni Septia,AFI,2021813217,2-2021813217-3-1_1691464940,Customer,Information Not Meet Customer Expectations,Unable to apply for a loan,N/A,Bad Survey,Loan,,,1.0,ASI
 4115,,2023-08-08,Week 2,January,Nurhamni Septia,AFI,94925421,2-94925421-3-1_1691492526,Customer,Information Not Meet Customer Expectations,Failed loan application,N/A,Bad Survey,Loan,,,1.0,ASI
 4116,,2023-08-08,Week 2,January,Nurhamni Septia,AFI,2026899325,2-2026899325-3-1_1691489386,Customer,Information Not Meet Customer Expectations,How to apply for a loan,N/A,Bad Survey,Loan,,,1.0,ASI
 4117,,2023-08-08,Week 2,January,Nurhamni Septia,AFI,66761181,2-66761181-3-1_1691497600,Customer,Information Not Meet Customer Expectations,"Late payment, cannot apply for loan",N/A,Bad Survey,Loan,,,1.0,ASI
@@ -4410,7 +4410,7 @@ kenapa tidak lolos pengajuan pinjaman saya ?"" masuk ke katogori ""Status Pinjam
 4241,,2023-08-12,Week 2,January,Yulia Sari,ASI,16729515,2-16729515-3-1_1691775177,Customer,Information Not Meet Customer Expectations,PLN transaction has not been successful,N/A,Bad Survey,Voucher,,,2.0,ASI
 4242,,2023-08-12,Week 2,January,Yulia Sari,ASI,2004408170,2-2004408170-3-1_1691797175,Customer,Information Not Meet Customer Expectations,Refund funds have not been returned,N/A,Bad Survey,Refund,,,1.0,ASI
 4243,,2023-08-12,Week 2,January,Yulia Sari,No Differentiated,129439863,2-129439863-3-1_1691847991,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
-4244,,2023-08-13,Week 2,January,Yulia Sari,AFI,2003246381,2-2003246381-3-1_1691942277,Customer,Information Not Meet Customer Expectations,Cannot apply for loan,N/A,Bad Survey,Loan,,,1.0,ASI
+4244,,2023-08-13,Week 2,January,Yulia Sari,AFI,2003246381,2-2003246381-3-1_1691942277,Customer,Information Not Meet Customer Expectations,Unable to apply for a loan,N/A,Bad Survey,Loan,,,1.0,ASI
 4245,,2023-08-13,Week 2,January,Yulia Sari,AFI,2003145555,2-2003145555-3-1_1691927210,Customer,Information Not Meet Customer Expectations,How to increase loan limit,N/A,Bad Survey,Loan,,,2.0,ASI
 4246,,2023-08-13,Week 2,January,Yulia Sari,AFI,127967461,2-127967461-3-1_1691909421,Customer,Information Not Meet Customer Expectations,Re-apply for loan after bill is paid off,N/A,Bad Survey,Loan,,,1.0,ASI
 4247,,2023-08-13,Week 2,January,Yulia Sari,AFI,2024581976,2-2024581976-3-1_1691896479,CHATBOT OPS,FAQ Revision Q&A,Akulaku Paylater cannot be used,Urgent,Bad Survey,Akulaku Paylater,,,1.0,ASI
@@ -4464,7 +4464,7 @@ kenapa tidak lolos pengajuan pinjaman saya ?"" masuk ke katogori ""Status Pinjam
 4295,,2023-08-14,Week 3,January,Yulia Sari,AFI,2027065019,2-2027065019-3-1_1692019509,CHATBOT OPS,Question keywords,Paylater limit cannot be used,Urgent,Bad Survey,Loan,,"pelanggan klik pilihan topik rekomendasi  ""Pinjaman disetujui, tapi dana belum masuk""  jawaban masuk ke kategori ""Limit Paylater tidak bisa dipakai"" kode 052912",1.0,ASI
 4296,,2023-08-15,Week 3,January,Yulia Sari,AFI,111674413,2-111674413-3-1_1692102519,Customer,Information Not Meet Customer Expectations,Can't make a loan,N/A,Bad Survey,Loan,,,1.0,ASI
 4297,,2023-08-15,Week 3,January,Yulia Sari,AFI,108498326,2-108498326-3-1_1692104343,Customer,Information Not Meet Customer Expectations,Can't make a loan,N/A,Bad Survey,Loan,,,1.0,ASI
-4298,,2023-08-15,Week 3,January,Yulia Sari,AFI,2016930648,2-2016930648-3-1_1692068062,Customer,Information Not Meet Customer Expectations,Cannot apply for loan,N/A,Bad Survey,Loan,,,2.0,ASI
+4298,,2023-08-15,Week 3,January,Yulia Sari,AFI,2016930648,2-2016930648-3-1_1692068062,Customer,Information Not Meet Customer Expectations,Unable to apply for a loan,N/A,Bad Survey,Loan,,,2.0,ASI
 4299,,2023-08-15,Week 3,January,Yulia Sari,AFI,140145228,2-140145228-3-1_1692102912,Customer,Information Not Meet Customer Expectations,Failed loan application,N/A,Bad Survey,Loan,,,1.0,ASI
 4300,,2023-08-15,Week 3,January,Yulia Sari,AFI,6999900,2-6999900-3-1_1692112361,Customer,Information Not Meet Customer Expectations,Installment funds have not been received,N/A,Bad Survey,Loan,,,2.0,ASI
 4301,,2023-08-15,Week 3,January,Yulia Sari,AFI,2008787603,2-2008787603-3-1_1692097587,Customer,Information Not Meet Customer Expectations,How to pay installment bills,N/A,Bad Survey,Installment/Payment Gateway,,,1.0,ASI
@@ -4505,7 +4505,7 @@ kenapa tidak lolos pengajuan pinjaman saya ?"" masuk ke katogori ""Status Pinjam
 4336,,2023-08-16,Week 3,January,Yulia Sari,AFI,613413,2-613413-3-1_1692174400,CHATBOT OPS,FAQ Revision Q&A,Submission to unblock the account,Urgent,Bad Survey,Account Security,,,1.0,ASI
 4337,,2023-08-16,Week 3,January,Yulia Sari,AFI,2001746982,2-2001746982-3-1_1692170403,SOP IMPROVEMENT,Not on the FAQ List,Refunded order bill,Low,Bad Survey,Refund,,"Bagaimana kalau batalkan pesanan, pengembalian dana uang muka akan balik ke akun akulaku. Bagaimana dengan cicilannya?",1.0,ASI
 4338,,2023-08-17,Week 3,January,Yulia Sari,AFI,10221039,2-10221039-3-1_1692235034,Customer,Information Not Meet Customer Expectations,Can't make a loan,N/A,Bad Survey,Loan,,,1.0,ASI
-4339,,2023-08-17,Week 3,January,Yulia Sari,AFI,13488089,2-13488089-3-1_1692265668,Customer,Information Not Meet Customer Expectations,Cannot apply for loan,N/A,Bad Survey,Loan,,,1.0,ASI
+4339,,2023-08-17,Week 3,January,Yulia Sari,AFI,13488089,2-13488089-3-1_1692265668,Customer,Information Not Meet Customer Expectations,Unable to apply for a loan,N/A,Bad Survey,Loan,,,1.0,ASI
 4340,,2023-08-17,Week 3,January,Yulia Sari,AFI,2027182491,2-2027182491-3-1_1692247979,Customer,Information Not Meet Customer Expectations,Do not have BPJS/NPWP for Loans,N/A,Bad Survey,Loan,,,1.0,ASI
 4341,,2023-08-17,Week 3,January,Yulia Sari,AFI,2027158412,2-2027158412-3-1_1692239326,Customer,Information Not Meet Customer Expectations,Failed loan application,N/A,Bad Survey,Loan,,,1.0,ASI
 4342,,2023-08-17,Week 3,January,Yulia Sari,AFI,2027146252,2-2027146252-3-1_1692266210,Customer,Information Not Meet Customer Expectations,How to apply for a loan,N/A,Bad Survey,Loan,,,1.0,ASI
@@ -4675,8 +4675,8 @@ Seharusnya bisa tampilkan rincian klasifikasi terkait ""Gagal pembayaran"" yaitu
 4486,,2023-08-22,Week 4,January,Nurhamni Septia,ASI,2024184258,2-2024184258-3-1_1692716836,Customer,Information Not Meet Customer Expectations,Online Merchant - Order cancellation request,N/A,Bad Survey,Merchant Online,,,2.0,ASI
 4487,,2023-08-22,Week 4,January,Nurhamni Septia,AFI,2027295169,2-2027295169-3-1_1692666636,Customer,Information Not Meet Customer Expectations,Understanding OJK's SLIK,N/A,Bad Survey,SLIK,,,1.0,ASI
 4488,,2023-08-22,Week 4,January,Nurhamni Septia,AFI,60286128,2-60286128-3-1_1692718340,Customer,Information Not Meet Customer Expectations,"Want to make a payment, BNI VA doesn't appear",N/A,Bad Survey,Installment/Payment Gateway,,,1.0,ASI
-4489,,2023-08-23,Week 4,January,Nurhamni Septia,AFI,123207691,2-123207691-3-1_1692776828,Customer,Information Not Meet Customer Expectations,Cannot apply for loan,N/A,Bad Survey,Loan,,,1.0,ASI
-4490,,2023-08-23,Week 4,January,Nurhamni Septia,AFI,2025638753,2-2025638753-3-1_1692794869,Customer,Information Not Meet Customer Expectations,Cannot apply for loan,N/A,Bad Survey,Loan,,,2.0,ASI
+4489,,2023-08-23,Week 4,January,Nurhamni Septia,AFI,123207691,2-123207691-3-1_1692776828,Customer,Information Not Meet Customer Expectations,Unable to apply for a loan,N/A,Bad Survey,Loan,,,1.0,ASI
+4490,,2023-08-23,Week 4,January,Nurhamni Septia,AFI,2025638753,2-2025638753-3-1_1692794869,Customer,Information Not Meet Customer Expectations,Unable to apply for a loan,N/A,Bad Survey,Loan,,,2.0,ASI
 4491,,2023-08-23,Week 4,January,Nurhamni Septia,AFI,2025314105,2-2025314105-3-1_1692758782,Customer,Information Not Meet Customer Expectations,Do not have BPJS/NPWP for Loans,N/A,Bad Survey,Loan,,,1.0,ASI
 4492,,2023-08-23,Week 4,January,Nurhamni Septia,AFI,79758117,2-79758117-3-1_1692787323,Customer,Information Not Meet Customer Expectations,Failed loan application,N/A,Bad Survey,Loan,,,1.0,ASI
 4493,,2023-08-23,Week 4,January,Nurhamni Septia,AFI,68011858,2-68011858-3-1_1692731663,Customer,Information Not Meet Customer Expectations,Loan application rejected,N/A,Bad Survey,Loan,,,1.0,ASI
@@ -4906,7 +4906,7 @@ Seharusnya bisa tampilkan rincian klasifikasi terkait ""Gagal pembayaran"" yaitu
 4717,,2023-08-31,Week 5,January,Yulia Sari,AFI,2004851126,2-2004851126-3-1_1693430133,CHATBOT OPS,FAQ Revision Q&A,Cannot be installments,Urgent,Bad Survey,Submission of Limit/Credit Points,,,1.0,ASI
 4718,,2023-08-31,Week 5,January,Yulia Sari,ASI,2027392118,2-2027392118-3-1_1693486642,CHATBOT OPS,"Robot cannot display customer orders, added order list display",Online Merchant - Order cancellation request,Urgent,Bad Survey,Merchant Online,,"Customer diminta kirimkan nomor pemesanan atau pesanan, namun menu pilihan pesanan pada percakapan terlalu sulit untuk ditemukan harus klik [+], seharusnya sistem otomatis menampilkan pesanan customer dan customer bisa langsung pilih salah satunya.",1.0,ASI
 4719,,2023-08-31,Week 5,January,Yulia Sari,AFI,2021320666,2-2021320666-3-1_1693501120,CHATBOT OPS,FAQ Revision Q&A,Cannot be installments,Urgent,Bad Survey,Submission of Limit/Credit Points,,,1.0,ASI
-4720,,2023-09-01,Week 5,January,Yulia Sari,AFI,2021472433,2-2021472433-3-1_1693560837,Customer,Information Not Meet Customer Expectations,Cannot apply for loan,N/A,Bad Survey,Loan,,,1.0,ASI
+4720,,2023-09-01,Week 5,January,Yulia Sari,AFI,2021472433,2-2021472433-3-1_1693560837,Customer,Information Not Meet Customer Expectations,Unable to apply for a loan,N/A,Bad Survey,Loan,,,1.0,ASI
 4721,,2023-09-01,Week 5,January,Yulia Sari,AFI,2027345613,2-2027345613-3-1_1693564763,Customer,Information Not Meet Customer Expectations,Failed loan application,N/A,Bad Survey,Loan,,,1.0,ASI
 4722,,2023-09-01,Week 5,January,Yulia Sari,No Differentiated,112573148,2-112573148-3-1_1693521346,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
 4723,,2023-09-01,Week 5,January,Yulia Sari,No Differentiated,2004612455,2-2004612455-3-1_1693524155,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
@@ -4923,7 +4923,7 @@ Jadi kredit skor itu ditentukan oleh sistem kita dan kita gatau dan gadikasih ta
 4731,,2023-09-01,Week 5,January,Yulia Sari,AFI,14983498,2-14983498-3-1_1693543953,CHATBOT OPS,Answer not update by Engineer,Issue not clear,Urgent,Bad Survey,Account Security,,,2.0,ASI
 4732,,2023-09-01,Week 5,January,Yulia Sari,AFI,2010662691,2-2010662691-3-1_1693546738,Customer,Information Not Meet Customer Expectations,Shopping Limit cannot be used,N/A,Bad Survey,Submission of Limit/Credit Points,,,1.0,ASI
 4733,,2023-09-01,Week 5,January,Yulia Sari,AFI,19138661,2-19138661-3-1_1693548206,CHATBOT OPS,Question keywords,Shopping Limit cannot be used,Urgent,Bad Survey,Submission of Limit/Credit Points,,"Pelanggan bertanya ""masukin token gagal terus"" seharusnya robot memberikan jawaban ""Limit Belanja tidak bisa digunakan"" kode 052909",1.0,ASI
-4734,,2023-09-01,Week 5,January,Yulia Sari,AFI,4305736,2-4305736-3-1_1693557303,Customer,Information Not Meet Customer Expectations,There is a call from Akulaku,N/A,Bad Survey,Account Security,,,1.0,ASI
+4734,,2023-09-01,Week 5,January,Yulia Sari,AFI,4305736,2-4305736-3-1_1693557303,Customer,Information Not Meet Customer Expectations,There was a call from Akulaku,N/A,Bad Survey,Account Security,,,1.0,ASI
 4735,,2023-09-01,Week 5,January,Yulia Sari,AFI,7579384,2-7579384-3-1_1693572275,CHATBOT OPS,FAQ Revision Q&A,Limit cannot be used,Urgent,Bad Survey,Submission of Limit/Credit Points,,,1.0,ASI
 4736,,2023-09-01,Week 5,January,Yulia Sari,No Differentiated,109475913,2-109475913-3-1_1693573382,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
 4737,,2023-09-01,Week 5,January,Yulia Sari,No Differentiated,2022609346,2-2022609346-3-1_1693574547,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
@@ -5511,7 +5511,7 @@ Jadi kredit skor itu ditentukan oleh sistem kita dan kita gatau dan gadikasih ta
 5313,,2023-09-27,Week 4,January,Yulia Sari,AFI,2007059630,2-2007059630-3-1_1695829970,Customer,Information Not Meet Customer Expectations,Understanding OJK's SLIK,N/A,Bad Survey,SLIK,,,1.0,ASI
 5314,,2023-09-27,Week 4,January,Yulia Sari,AFI,2027629224,2-2027629224-3-1_1695815646,Customer,Information Not Meet Customer Expectations,Want a loan application,N/A,Bad Survey,Loan,,,1.0,ASI
 5315,,2023-09-27,Week 4,January,Yulia Sari,ASI,2026951508,2-2026951508-3-1_1695803308,Customer,Information Not Meet Customer Expectations,Refund in verification,N/A,Bad Survey,Refund,,,1.0,ASI
-5316,,2023-09-28,Week 4,January,Yulia Sari,AFI,2023949510,2-2023949510-3-1_1695887564,Customer,Information Not Meet Customer Expectations,Cannot apply for loan,N/A,Bad Survey,Loan,,,1.0,ASI
+5316,,2023-09-28,Week 4,January,Yulia Sari,AFI,2023949510,2-2023949510-3-1_1695887564,Customer,Information Not Meet Customer Expectations,Unable to apply for a loan,N/A,Bad Survey,Loan,,,1.0,ASI
 5317,,2023-09-28,Week 4,January,Yulia Sari,AFI,2001641065,2-2001641065-3-1_1695917797,CHATBOT OPS,Answer not update by Engineer,Failed loan application,Urgent,Bad Survey,Loan,,,1.0,ASI
 5318,,2023-09-28,Week 4,January,Yulia Sari,AFI,59125335,2-59125335-3-1_1695881188,CHATBOT OPS,Answer not update by Engineer,Loan limit decreases,Urgent,Bad Survey,Loan,,,1.0,ASI
 5319,,2023-09-28,Week 4,January,Yulia Sari,No Differentiated,60825888,2-60825888-3-1_1695860285,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,2.0,ASI
@@ -5551,7 +5551,7 @@ Jadi kredit skor itu ditentukan oleh sistem kita dan kita gatau dan gadikasih ta
 5353,,2023-09-29,Week 4,January,Yulia Sari,ASI,16074037,2-16074037-3-1_1695984485,CHATBOT OPS,Answer not update by Engineer,PLN token number has not been received,Urgent,Bad Survey,Voucher,,,1.0,ASI
 5354,,2023-09-29,Week 4,January,Yulia Sari,No Differentiated,2008485679,2-2008485679-3-1_1695994004,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
 5355,,2023-09-29,Week 4,January,Yulia Sari,AFI,2020471266,2-2020471266-3-1_1695964930,Customer,Information Not Meet Customer Expectations,Want a loan application,N/A,Bad Survey,Loan,,,2.0,ASI
-5356,,2023-09-30,Week 4,January,Yulia Sari,AFI,2028617276,2-2028617276-3-1_1696030859,Customer,Information Not Meet Customer Expectations,Cannot apply for loan,N/A,Bad Survey,Loan,,,1.0,ASI
+5356,,2023-09-30,Week 4,January,Yulia Sari,AFI,2028617276,2-2028617276-3-1_1696030859,Customer,Information Not Meet Customer Expectations,Unable to apply for a loan,N/A,Bad Survey,Loan,,,1.0,ASI
 5357,,2023-09-30,Week 4,January,Yulia Sari,AFI,2023273713,2-2023273713-3-1_1696029125,CHATBOT OPS,Answer not update by Engineer,Failed to apply for a loan,Urgent,Bad Survey,Loan,,,1.0,ASI
 5358,,2023-09-30,Week 4,January,Yulia Sari,AFI,24386646,2-24386646-3-1_1696051483,CHATBOT OPS,Answer not update by Engineer,Failed to apply for a loan,Urgent,Bad Survey,Loan,,,1.0,ASI
 5359,,2023-09-30,Week 4,January,Yulia Sari,AFI,2028001598,2-2028001598-3-1_1696052020,Customer,Information Not Meet Customer Expectations,How to change account number,N/A,Bad Survey,Loan,,,1.0,ASI
@@ -5622,8 +5622,8 @@ Jadi kredit skor itu ditentukan oleh sistem kita dan kita gatau dan gadikasih ta
 5424,,2023-10-02,Week 1,January,Yulia Sari,AFI,51026258,2-51026258-3-1_1696223926,Customer,Information Not Meet Customer Expectations,Postponement of bill payments,N/A,Bad Survey,Collection,,,1.0,ASI
 5425,,2023-10-02,Week 1,January,Yulia Sari,AFI,67991400,2-67991400-3-1_1696248721,Customer,Information Not Meet Customer Expectations,Postponement of bill payments,N/A,Bad Survey,Collection,,,1.0,ASI
 5426,,2023-10-02,Week 1,January,Yulia Sari,AFI,3129582,2-3129582-3-1_1696255286,Customer,Information Not Meet Customer Expectations,Postponement of bill payments,N/A,Bad Survey,Collection,,,1.0,ASI
-5427,,2023-10-03,Week 1,January,Yulia Sari,AFI,79312917,2-79312917-3-1_1696295940,Customer,Information Not Meet Customer Expectations,Cannot apply for loan,N/A,Bad Survey,Loan,,,2.0,ASI
-5428,,2023-10-03,Week 1,January,Yulia Sari,AFI,2004225930,2-2004225930-3-1_1696298693,Customer,Information Not Meet Customer Expectations,Cannot apply for loan,N/A,Bad Survey,Loan,,,2.0,ASI
+5427,,2023-10-03,Week 1,January,Yulia Sari,AFI,79312917,2-79312917-3-1_1696295940,Customer,Information Not Meet Customer Expectations,Unable to apply for a loan,N/A,Bad Survey,Loan,,,2.0,ASI
+5428,,2023-10-03,Week 1,January,Yulia Sari,AFI,2004225930,2-2004225930-3-1_1696298693,Customer,Information Not Meet Customer Expectations,Unable to apply for a loan,N/A,Bad Survey,Loan,,,2.0,ASI
 5429,,2023-10-03,Week 1,January,Yulia Sari,No Differentiated,2017502840,2-2017502840-3-1_1696337895,Customer,Information Not Meet Customer Expectations,Contact CS Live Chat,N/A,Bad Survey,No Category,,"pertanyaan pelanggan ""saya ingin melunasi pinjaman, tetapi tidak bisa, bagaimana??  "" seharusnya robot berikan jawaban ""Pelunasan tagihan Pinjaman"" kode 104002",1.0,ASI
 5430,,2023-10-03,Week 1,January,Yulia Sari,AFI,18280828,2-18280828-3-1_1696339532,CHATBOT OPS,Question keywords,Cannot apply for a loan,Urgent,Bad Survey,Loan,,"Pertanyaan pelanggan ""saya ingin melunasi pinjaman, tetapi tidak bisa, bagaimana??"" seharusnya robot memberikan jawaban ""Repayment of loan bills"" kode : 104002",1.0,ASI
 5431,,2023-10-03,Week 1,January,Yulia Sari,AFI,99305031,2-99305031-3-1_1696324240,SOP IMPROVEMENT,Not on the FAQ List,Help ACC with loan applications,Low,Bad Survey,Loan,,Tolong bantu ACC pengajuan pinjaman saya,1.0,ASI
@@ -6108,7 +6108,7 @@ Jadi kredit skor itu ditentukan oleh sistem kita dan kita gatau dan gadikasih ta
 5910,,2023-10-26,Week 4,January,Yulia Sari,AFI,8295924,2-8295924-3-1_1698319453,CHATBOT OPS,FAQ Revision Q&A,Failed to apply for a loan,Urgent,Bad Survey,Loan,,,1.0,ASI
 5911,,2023-10-26,Week 4,January,Yulia Sari,ASI,11551101,2-11551101-3-1_1698320192,CHATBOT OPS,FAQ Revision Writing Technique,Didn't get a bonus from inviting friends,Urgent,Bad Survey,Promo/Undian/Event,,,1.0,ASI
 5912,,2023-10-26,Week 4,January,Yulia Sari,ASI,2027461668,2-2027461668-3-1_1698320496,CHATBOT OPS,FAQ Revision Writing Technique,Online Merchant - Invalid Receipt Number,Urgent,Bad Survey,Merchant Online,,,1.0,ASI
-5913,,2023-10-26,Week 4,January,Yulia Sari,AFI,9491540,2-9491540-3-1_1698322742,CHATBOT OPS,FAQ Revision Writing Technique,There is a call from Akulaku,Urgent,Bad Survey,Account Security,,,1.0,ASI
+5913,,2023-10-26,Week 4,January,Yulia Sari,AFI,9491540,2-9491540-3-1_1698322742,CHATBOT OPS,FAQ Revision Writing Technique,There was a call from Akulaku,Urgent,Bad Survey,Account Security,,,1.0,ASI
 5914,,2023-10-26,Week 4,January,Yulia Sari,AFI,10351188,2-10351188-3-1_1698327015,Customer,Information Not Meet Customer Expectations,Why doesn't Akulaku support installments now?,N/A,Bad Survey,Submission of Limit/Credit Points,,,1.0,ASI
 5915,,2023-10-26,Week 4,January,Yulia Sari,ASI,99978673,2-99978673-3-1_1698329648,Customer,Information Not Meet Customer Expectations,The credit has not been received by the bill has been paid,N/A,Bad Survey,Voucher,,,1.0,ASI
 5916,,2023-10-26,Week 4,January,Yulia Sari,AFI,10879010,2-10879010-3-1_1698330783,Customer,Information Not Meet Customer Expectations,Cannot apply for Installment Funds,N/A,Bad Survey,Loan,,,1.0,ASI
@@ -24007,3 +24007,47 @@ Namun, sampai saat ini 08/26/2026 9:59 tidak ada jawaban dari Kula",1.0,ASI
 23684,,2026-09-06,Week 1,September,Yulia Sari,No Differentiated,2029906532,2-2029906532-3-1_1788696788,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
 23685,,2026-09-06,Week 1,September,Yulia Sari,AFI,2058663202,2-2058663202-3-1_1788699217,Customer,Information Not Meet Customer Expectations,Block permanent limit,N/A,Bad Survey,Account Security,738739758121,,1.0,ASI
 23686,,2026-09-06,Week 1,September,Yulia Sari,ASI,2039321634,2-2039321634-3-1_1788702803,Customer,Information Not Meet Customer Expectations,Failed to apply for a loan,N/A,Bad Survey,Loan,289292446173,,1.0,ASI
+23687,,2026-09-07,Week 2,September,Dicky Pratama Putra,No Differentiated,2058292059,2-2058292059-3-1_1788744092,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,AFI
+23688,,2026-09-07,Week 2,September,Dicky Pratama Putra,No Differentiated,2061452329,2-2061452329-3-1_1788754291,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,AFI
+23689,,2026-09-07,Week 2,September,Risma Aprila Daeng Putri,No Differentiated,59327718,2-59327718-3-1_1788769034,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,AFI
+23690,,2026-09-07,Week 2,September,Risma Aprila Daeng Putri,No Differentiated,2058815250,2-2058815250-3-1_1788789968,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,AFI
+23691,,2026-09-07,Week 2,September,Risma Aprila Daeng Putri,No Differentiated,2054336615,2-2054336615-3-1_1788796597,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,AFI
+23692,,2026-09-07,Week 2,September,Yulia Sari,No Differentiated,2063634156,2-2063634156-3-1_1788721045,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+23693,,2026-09-07,Week 2,September,Yulia Sari,ASI,2059142518,2-2059142518-3-1_1788747703,Customer,Information Not Meet Customer Expectations,Loan limit decreases,N/A,Bad Survey,Loan,289308465411,,2.0,ASI
+23694,,2026-09-07,Week 2,September,Yulia Sari,ASI,2058942314,2-2058942314-3-1_1788766255,CHATBOT OPS,Answer Robot Mistake,Available Balance Refund Withdrawal,Urgent,Bad Survey,Refund,121012391294330,"ID Chat 2-2058942314-3-1_1788766255
+Seharusnya faq tentang How to apply for a loan 289-328-485-506",1.0,ASI
+23695,,2026-09-07,Week 2,September,Yulia Sari,AFI,2024491143,2-2024491143-3-1_1788720562,Customer,Information Not Meet Customer Expectations,Paylater cannot be used again,N/A,Bad Survey,Submission of Limit/Credit Points,289400557658,,1.0,ASI
+23696,,2026-09-07,Week 2,September,Yulia Sari,ASI,90761158,2-90761158-3-1_1788745963,Customer,Information Not Meet Customer Expectations,Request to cancel an online merchant order,N/A,Bad Survey,Merchant Online,121012211267253,,1.0,ASI
+23697,,2026-09-07,Week 2,September,Yulia Sari,AFI,2046403403,2-2046403403-3-1_1788747045,Customer,Information Not Meet Customer Expectations,Paylater submission failed,N/A,Bad Survey,Submission of Limit/Credit Points,289398555656,,1.0,ASI
+23698,,2026-09-07,Week 2,September,Yulia Sari,AFI,2060370007,2-2060370007-3-1_1788753236,Customer,Information Not Meet Customer Expectations,Raise credit limits,N/A,Bad Survey,Submission of Limit/Credit Points,289425582816,,1.0,ASI
+23699,,2026-09-07,Week 2,September,Yulia Sari,No Differentiated,2030840330,2-2030840330-3-1_1788753456,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+23700,,2026-09-07,Week 2,September,Yulia Sari,No Differentiated,68690736,2-68690736-3-1_1788758712,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+23701,,2026-09-07,Week 2,September,Yulia Sari,ASI,2060176505,2-2060176505-3-1_1788761349,Customer,Information Not Meet Customer Expectations,Can't pay loan bills via BCA,N/A,Bad Survey,Loan,289177017711188,,1.0,ASI
+23702,,2026-09-07,Week 2,September,Yulia Sari,No Differentiated,2059292387,2-2059292387-3-1_1788772993,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+23703,,2026-09-07,Week 2,September,Yulia Sari,No Differentiated,6586080,2-6586080-3-1_1788775020,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+23704,,2026-09-07,Week 2,September,Yulia Sari,No Differentiated,2039814765,2-2039814765-3-1_1788775683,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+23705,,2026-09-07,Week 2,September,Yulia Sari,No Differentiated,2005080881,2-2005080881-3-1_1788789920,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+23706,,2026-09-07,Week 2,September,Yulia Sari,No Differentiated,99116528,2-99116528-3-1_1788791060,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+23707,,2026-09-07,Week 2,September,Yulia Sari,AFI,2039802260,2-2039802260-3-1_1788791193,Customer,Information Not Meet Customer Expectations,Double Pay Dp/Installments,N/A,Bad Survey,Installment/Payment Gateway,872877972164,,1.0,ASI
+23708,,2026-09-07,Week 2,September,Yulia Sari,No Differentiated,2052151095,2-2052151095-3-1_1788792687,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+23709,,2026-09-07,Week 2,September,Yulia Sari,AFI,112160742,2-112160742-3-1_1788793291,Customer,Information Not Meet Customer Expectations,Submission to unblock the account,N/A,Bad Survey,Account Security,738755774837,,1.0,ASI
+23710,,2026-09-07,Week 2,September,Yulia Sari,No Differentiated,2055045340,2-2055045340-3-1_1788793622,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,2.0,ASI
+23711,,2026-09-07,Week 2,September,Yulia Sari,ASI,17185266,2-17185266-3-1_1788793916,Customer,Information Not Meet Customer Expectations,Loan application is rejected,N/A,Bad Survey,Loan,289424581778,,1.0,ASI
+23712,,2026-09-08,Week 2,September,,,5355189,2-5355189-3-1_1788876146,,,,,Bad Survey,,,,1.0,
+23713,,2026-09-08,Week 2,September,,,2062857570,2-2062857570-3-1_1788861749,,,,,Bad Survey,,,,1.0,
+23714,,2026-09-08,Week 2,September,,,2030841404,2-2030841404-3-1_1788807391,,,,,Bad Survey,,,,1.0,
+23715,,2026-09-08,Week 2,September,,,2029388674,2-2029388674-3-1_1788869970,,,,,Bad Survey,,,,1.0,
+23716,,2026-09-08,Week 2,September,Nurhamni Septia,,71409917,2-71409917-3-1_1788862072,,,,,Bad Survey,,,,1.0,ASI
+23717,,2026-09-08,Week 2,September,Nurhamni Septia,,2057717290,2-2057717290-3-1_1788886637,,,,,Bad Survey,,,,2.0,ASI
+23718,,2026-09-08,Week 2,September,Nurhamni Septia,,2006913126,2-2006913126-3-1_1788846017,,,,,Bad Survey,,,,1.0,ASI
+23719,,2026-09-08,Week 2,September,Nurhamni Septia,,2062660834,2-2062660834-3-1_1788878703,,,,,Bad Survey,,,,1.0,ASI
+23720,,2026-09-08,Week 2,September,Nurhamni Septia,,2059996621,2-2059996621-3-1_1788851953,,,,,Bad Survey,,,,1.0,ASI
+23721,,2026-09-08,Week 2,September,Nurhamni Septia,,2063227138,2-2063227138-3-1_1788835795,,,,,Bad Survey,,,,1.0,ASI
+23722,,2026-09-08,Week 2,September,Nurhamni Septia,,10643718,2-10643718-3-1_1788866322,,,,,Bad Survey,,,,1.0,ASI
+23723,,2026-09-08,Week 2,September,Nurhamni Septia,,8055483,2-8055483-3-1_1788876632,,,,,Bad Survey,,,,1.0,ASI
+23724,,2026-09-08,Week 2,September,Nurhamni Septia,,2029724462,2-2029724462-3-1_1788871568,,,,,Bad Survey,,,,1.0,ASI
+23725,,2026-09-08,Week 2,September,Nurhamni Septia,,2037221739,2-2037221739-3-1_1788855979,,,,,Bad Survey,,,,1.0,ASI
+23726,,2026-09-08,Week 2,September,Nurhamni Septia,,2062153563,2-2062153563-3-1_1788885217,,,,,Bad Survey,,,,1.0,ASI
+23727,,2026-09-08,Week 2,September,Nurhamni Septia,,2062540668,2-2062540668-3-1_1788876738,,,,,Bad Survey,,,,1.0,ASI
+23728,,2026-09-08,Week 2,September,Nurhamni Septia,,2054688122,2-2054688122-3-1_1788880626,,,,,Bad Survey,,,,1.0,ASI
+23729,,2026-09-08,Week 2,September,Nurhamni Septia,,2016343321,2-2016343321-3-1_1788855433,,,,,,,,,1.0,ASI
