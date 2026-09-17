@@ -122960,21 +122960,32 @@
 122957,2026-09-10,ASI,Customer,Not meet expectation,PLN token number has not been received,Voucher
 122958,2026-09-10,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
 122959,2026-09-10,ASI,Customer,Not meet expectation,PLN token number has not been received,Voucher
-122960,2026-09-11,AFI,,,How to activate the qris feature,Akulaku Paylater
-122961,2026-09-12,AFI,,,Deactivate account,Account Security
-122962,2026-09-12,AFI,,,How to pay installment bills,Installment/Payment Gateway
-122963,2026-09-13,AFI,,,Deactivate account,Account Security
-122964,2026-09-11,ASI,,,Unable to pay loan via BCA,Loan
-122965,2026-09-11,ASI,,,Refund in verification,Refund
-122966,2026-09-11,ASI,,,Want a loan application,Loan
-122967,2026-09-11,ASI,,,Unable to pay loan via BCA,Loan
-122968,2026-09-11,ASI,,,Activate Install Funds in the Application,Loan
-122969,2026-09-12,ASI,,,Check the data package transaction status,Voucher
-122970,2026-09-12,ASI,,,Unable to pay loan via BCA,Loan
-122971,2026-09-12,ASI,,,Unable to pay loan via BCA,Loan
-122972,2026-09-12,ASI,,,Payment of Flexi Fund Product Bills,Loan
-122973,2026-09-13,ASI,,,PLN token number has not been received,Voucher
-122974,2026-09-13,ASI,,,Blank loan constraints,Bug
-122975,2026-09-13,ASI,,,Unable to pay loan via BCA,Loan
-122976,2026-09-13,ASI,,,How to apply for a loan,Loan
-122977,2026-09-13,ASI,,,How to submit a installment fund,Loan
+122960,2026-09-11,AFI,Customer,Not meet expectation,How to activate the qris feature,Akulaku Paylater
+122961,2026-09-12,AFI,Customer,Not meet expectation,Deactivate account,Account Security
+122962,2026-09-12,AFI,Customer,Not meet expectation,How to pay installment bills,Installment/Payment Gateway
+122963,2026-09-13,AFI,Customer,Not meet expectation,Deactivate account,Account Security
+122964,2026-09-11,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122965,2026-09-11,ASI,Customer,Not meet expectation,Refund in verification,Refund
+122966,2026-09-11,ASI,Customer,Not meet expectation,Want a loan application,Loan
+122967,2026-09-11,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122968,2026-09-11,ASI,Customer,Not meet expectation,Activate Install Funds in the Application,Loan
+122969,2026-09-12,ASI,Customer,Not meet expectation,Check the data package transaction status,Voucher
+122970,2026-09-12,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122971,2026-09-12,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122972,2026-09-12,ASI,Customer,Not meet expectation,Payment of Flexi Fund Product Bills,Loan
+122973,2026-09-13,ASI,Customer,Not meet expectation,PLN token number has not been received,Voucher
+122974,2026-09-13,ASI,Customer,Not meet expectation,Blank loan constraints,Bug
+122975,2026-09-13,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122976,2026-09-13,ASI,Customer,Not meet expectation,How to apply for a loan,Loan
+122977,2026-09-13,ASI,Customer,Not meet expectation,How to submit a installment fund,Loan
+122978,2026-09-14,AFI,Customer,Not meet expectation,Deactivate account,Account Security
+122979,2026-09-14,ASI,Customer,Not meet expectation,PLN token number has not been received,Voucher
+122980,2026-09-14,ASI,Customer,Not meet expectation,Blank loan constraints,Bug
+122981,2026-09-14,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122982,2026-09-14,ASI,Customer,Not meet expectation,How to apply for a loan,Loan
+122983,2026-09-14,ASI,Customer,Not meet expectation,How to submit a installment fund,Loan
+122984,2026-09-15,AFI,Customer,Not meet expectation,Deactivate account,Account Security
+122985,2026-09-15,ASI,Customer,Not meet expectation,How to change the password/forget the password,Data Update
+122986,2026-09-15,ASI,Customer,Not meet expectation,How to apply for a loan,Loan
+122987,2026-09-15,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122988,2026-09-15,ASI,Customer,Not meet expectation,Repayment of loan bills,Loan
