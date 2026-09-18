@@ -541,7 +541,7 @@ if selected_date not in meeting_data:
     st.stop()
 
 # Date filter
-manual_order = ['Aulia', 'Neneng', 'Azer', 'Reza']
+manual_order = ['Reza', 'Azer', 'Neneng', 'Aulia']
 agent_list = [agent for agent in manual_order if agent in {entry['agent'] for entry in meeting_data[selected_date]}]
 selected_agent = st.sidebar.radio('Agent Sampling', agent_list)
 
