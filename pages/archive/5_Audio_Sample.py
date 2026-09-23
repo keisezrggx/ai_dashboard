@@ -4,6 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 import logging
+import difflib
 
 # from backend.kula.chatbot_optimized import ChatbotOptimized
 from streamlit_chatbox import *
@@ -17,14 +18,19 @@ CURRENT_THEME = "light"
 IS_DARK_THEME = False
 st.set_page_config(layout="wide")
 
+
+# -------------------------------------------------
 # Cached data loader — avoids re-reading CSVs on every Streamlit re-render
+# -------------------------------------------------
 @st.cache_data(ttl=3600)
 def load_csv(path, **kwargs):
     """Load a CSV once and cache the result for 1 hour."""
     return pd.read_csv(path, **kwargs)
 
 
+# -------------------------------------------------
 # Reusable AgGrid renderer — replaces 8 repeated blocks
+# -------------------------------------------------
 def render_aggrid(df, height=400):
     """Build and display an AgGrid table with standard options."""
     gb = GridOptionsBuilder.from_dataframe(df)
@@ -41,6 +47,7 @@ if team == 'QC':
 
     # page = st.sidebar.selectbox("Pages", ["Agent Sample", "Hotline Calibration"])
     page = 'Hotline Calibration'
+
 
 
 # ============ Fungsi Global Week of Month ============
@@ -376,139 +383,59 @@ def show_image(path: str):
         st.info('No image.')
     
 
-st.title('Hotline Calibration')
-df = load_csv('dataset_qc/sampling_hotline.csv')
+st.title("Audio Sample")
 
-# df.fillna('-', inplace=True
-df['tanggal_sampling'] = pd.to_datetime(df['tanggal_sampling'], errors='coerce').dt.date
-df['tanggal_meeting'] = pd.to_datetime(df['tanggal_meeting'], errors='coerce').dt.date
+# Load data
+df = load_csv("dataset_qc/weekly_calibration_data.csv")
+df.columns = df.columns.str.strip()
+df = df.fillna("")
+df["Tanggal Meeting"] = pd.to_datetime(df["Tanggal Meeting"], errors="coerce").dt.date
 
 meeting_data = {}
 
 for _, row in df.iterrows():
-    tanggal_meeting = row['tanggal_meeting']
-    if pd.isna(tanggal_meeting):
-        continue
-    checker = row['checker']
-    agent = row['agent_sampling']
+    tanggal_meeting = row["Tanggal Meeting"]
+    checker = row["Checker"]
+    agent = row["Agent Sampling"]
 
-    # Ambil nama audio
-    audio_filename = str(row.get('file_audio', '')).strip()
-    if not audio_filename or audio_filename.lower() == 'nan':
-        audio_file = None
-    else:
-        audio_file = f'audio/{audio_filename}'
+    # Ambil nama file audio
+    audio_filename = str(row.get("File Audio", "")).strip()
+    audio_file = f"audio/{audio_filename}" if audio_filename else None
 
-    # nama file gambar
-    screenshot_file_1 = build_screenshot_path(row.get('file_screenshot', ''))
+    # Siapkan teks kalibrasi
+    sections = []
 
-    # teks recheck
-    rows = []
-    
     mapping = [
-        # static data
-        {
-            'type': 'static',
-            'col': 'asi/afi',
-            'label': 'Company'
-        },
-
-        {
-            'type': 'static',
-            'col': 'call_id',
-            'label': 'Call ID'
-        },
-
-        {
-            'type': 'static',
-            'col': 'detik',
-            'label': 'Detik'
-        },
-
-        {
-            'type': 'static',
-            'col': 'alasan',
-            'label': 'Alasan'
-        },
-
-        #dynamic data
-        {
-            'type': 'compare',
-            'final': 'hasil_pemeriksaan_kualitas_ubah',
-            'text_awal': 'hasil_pemeriksaan_kualitas',
-            'label': 'Hasil Pemeriksaan Kualitas'
-        },
-        
-        {
-            'type': 'compare',
-            'final': 'efektif_ubah',
-            'text_awal': 'efektif',
-            'label': 'Efektif'
-        },
-        
-        {
-            'type': 'compare',
-            'final': 'kejelasan_suara_ubah',
-            'text_awal': 'kejelasan_suara',
-            'label': 'Kejelasan Suara'
-        },
-
-        {
-            'type': 'compare',
-            'final': 'suara_lain_ubah',
-            'text_awal': 'suara_lain',
-            'label': 'Suara Lain'
-        },
-
-        {
-            'type': 'compare',
-            'final': 'kelengkapan_rekaman_ubah',
-            'text_awal': 'kelengkapan_rekaman',
-            'label': 'Kelengkapan Rekaman'
-        }
+        ("Hasil ASR", "Text Awal Hasil ASR", "ASR"),
+        ("Hasil Pemeriksaan Kualitas", "Text Awal Hasil Pemeriksaan Kualitas", "Hasil Pemeriksaan Kualitas" ),
+        ("Efektif", "Text Awal Efektif", "Efektif"),
+        ("Kejelasan Suara", "Text Awal Kejelasan Suara", "Kejelasan Suara"),
+        ("Suara Lain", "Text Awal Suara Lain", "Suara Lain"),
+        ("Kelengkapan Rekaman", "Text Awal Kelengkapan Rekaman", "Kelengkapan Rekaman"),
+        ("Revisi Teks", "Text Awal Revisi Text", "Teks")
     ]
-    
-    def safe_str(value):
-        return '' if pd.isna(value) else str(value).strip()
 
-    asi_afi = safe_str(row.get("asi/afi", ""))
-    call_id = safe_str(row.get('call_id', ''))
-    detik = safe_str(row.get('detik', ''))
-    alasan = safe_str(row.get('alasan', ''))
+    for final_col, awal_col, label in mapping:
+        text_awal = str(row[awal_col]).strip()
+        hasil = str(row[final_col]).strip()
 
-    if asi_afi:
-        rows.append(['Company', asi_afi])
-    if call_id:
-        rows.append(['Call ID', call_id])
-    if detik:
-        rows.append(['Detik', detik])
+        if text_awal:
+            if label == "Teks" and hasil:
+                hasil_diff = highlight_diff_words(text_awal, hasil)
+                hasil_markdown = f"**{label}:** {text_awal}  \n**Diubah:** <span>{hasil_diff}</span>  \n"
+                sections.append(hasil_markdown)
+            else:
+                sections.append(f"**{label}:** {text_awal}  \n**Diubah:** {hasil}  \n")
 
-    if asi_afi or call_id or detik:
-        rows.append(['', ''])
 
-    for item in mapping:
-        if item['type'] == 'compare':
-            text_awal = safe_str(row.get(item['text_awal'], ''))
-            hasil = safe_str(row.get(item['final'], ''))
-
-            if text_awal:
-                rows.append([item['label'], text_awal])
-                if hasil:
-                    rows.append(['Diubah', hasil])
-                rows.append(['', ''])
-
-    if alasan:
-        rows.append(['Alasan', alasan])
-
-    if not rows and not screenshot_file_1 and not audio_filename:
+    if not sections and not audio_filename:
         continue
 
     entry = {
-        'checker': checker,
-        'agent': agent,
-        'rows': rows,
-        'file_1': screenshot_file_1,
-        'file_audio': audio_file
+        "checker": checker,
+        "agent": agent,
+        "text": f"**Checker:** {checker}" + ("\n\n" + "\n".join(sections) if sections else ""),
+        "file": audio_file
     }
 
     if tanggal_meeting not in meeting_data:
@@ -516,65 +443,41 @@ for _, row in df.iterrows():
 
     meeting_data[tanggal_meeting].append(entry)
 
-dates = sorted(meeting_data.keys())
 
-if not dates:
-    st.warning('Tidak ada data meeting.')
-    st.stop()
-
-#Sidebar tanggal meeting
+# === Sidebar: Pilih tanggal ===
 selected_date = st.sidebar.date_input(
-    'Tanggal Meeting',
-    value=max(meeting_data.keys()),
+    "Tanggal Meeting",
+    value=max(meeting_data.keys()),  #default
     min_value=min(meeting_data.keys()),
     max_value=max(meeting_data.keys())
 )
 
 if selected_date not in meeting_data:
-    st.warning(f'Tidak ada data untuk tanggal {selected_date.strftime("%d %B %Y")}')
+    st.warning(f"Tidak ada data untuk tanggal {selected_date.strftime('%d %B %Y')}.")
     st.stop()
 
 # Date filter
-manual_order = ['Aulia', 'Neneng', 'Azer', 'Reza']
-agent_list = [agent for agent in manual_order if agent in {entry['agent'] for entry in meeting_data[selected_date]}]
-selected_agent = st.sidebar.radio('Agent Sampling', agent_list)
+manual_order = ["Neneng", "Azer", "Reza", "Aulia"]
+agent_list = [agent for agent in manual_order if agent in {entry["agent"] for entry in meeting_data[selected_date]}]
+selected_agent = st.sidebar.radio("Agent Sampling", agent_list)
 
 st.markdown(f"### {selected_agent}")
 
 filtered_entries = [
     item for item in meeting_data[selected_date]
-    if item['agent'] == selected_agent
+    if item["agent"] == selected_agent
 ]
 
 for i in range(0, len(filtered_entries), 3):
     row_entries = filtered_entries[i:i+3]
-    cols = st.columns(len(row_entries))
+    cols = st.columns(3)
 
-    for j, item in enumerate(row_entries):
-        idx = i + j + 1
-        
-        head_case, head_s = st.columns([0.8, 1.2])
-
-        with head_case:
-            with st.expander(f'Case {idx}', expanded=False):
-                st.markdown(f'**Checker:** {item["checker"]}')
-                rows_html = ''.join(
-                    f"<tr><td style='padding: 6px 8px; vertical-align: top; width: 180px; font-weight: 600; color: #111;'>" \
-                    f"{row[0]}</td><td style='padding: 6px 8px; vertical-align: top; color: #111;'>{row[1]}</td></tr>"
-                    for row in item['rows']
-                )
-                table_html = (
-                    "<table style='border-collapse: collapse; width: 100%; margin-bottom: 1rem;'>"
-                    f"{rows_html}"
-                    "</table>"
-                )
-                st.markdown(table_html, unsafe_allow_html=True)
-                if item['file_audio']:
+    for col, item in zip(cols, row_entries):
+        with col:
+            with st.expander(f"Audio {i + filtered_entries.index(item) + 1}"):
+                st.markdown(item["text"], unsafe_allow_html=True)
+                if item["file"]:
                     try:
-                        st.audio(item['file_audio'])
+                        st.audio(item["file"])
                     except Exception as e:
-                        st.info('No Audio')
-
-        with head_s:
-            with st.expander(f'Screenshot {idx} - 1', expanded=False):
-                show_image(item.get('file_1'))
+                        st.error(f"Audio Restricted")
