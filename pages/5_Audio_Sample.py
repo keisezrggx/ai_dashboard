@@ -50,14 +50,14 @@ def show_image(path: str):
     try:
         st.image(path)
     except Exception as e:
-        st.info('No image.')
+        st.info('No Image')
     
 
 st.title('Voice Labelling')
-df = load_csv('dataset_qc/sampling_hotline.csv')
+df = load_csv('dataset_qc/sampling_voice_labelling.csv')
 
 # df.fillna('-', inplace=True
-df['tanggal_sampling'] = pd.to_datetime(df['tanggal_sampling'], errors='coerce').dt.date
+df['tanggal_pengerjaan'] = pd.to_datetime(df['tanggal_pengerjaan'], errors='coerce').dt.date
 df['tanggal_meeting'] = pd.to_datetime(df['tanggal_meeting'], errors='coerce').dt.date
 
 meeting_data = {}
@@ -67,7 +67,6 @@ for _, row in df.iterrows():
     if pd.isna(tanggal_meeting):
         continue
     checker = row['checker']
-    agent = row['agent_sampling']
 
     # Ambil nama audio
     audio_filename = str(row.get('file_audio', '')).strip()
@@ -87,7 +86,6 @@ for _, row in df.iterrows():
 
     entry = {
         'checker': checker,
-        'agent': agent,
         'file_1': screenshot_file_1,
         'file_audio': audio_file
     }
@@ -116,15 +114,15 @@ if selected_date not in meeting_data:
     st.stop()
 
 # Date filter
-manual_order = ['Aulia', 'Neneng', 'Azer', 'Reza']
-agent_list = [agent for agent in manual_order if agent in {entry['agent'] for entry in meeting_data[selected_date]}]
-selected_agent = st.sidebar.radio('Agent Sampling', agent_list)
+manual_order = ['Aul', 'Neneng', 'Azer', 'Reza']
+checker_list = [checker for checker in manual_order if checker in {entry['checker'] for entry in meeting_data[selected_date]}]
+selected_checker = st.sidebar.radio('checker Sampling', checker_list)
 
-st.markdown(f"### {selected_agent}")
+st.markdown(f"### {selected_checker}")
 
 filtered_entries = [
     item for item in meeting_data[selected_date]
-    if item['agent'] == selected_agent
+    if item['checker'] == selected_checker
 ]
 
 for i in range(0, len(filtered_entries), 2):
