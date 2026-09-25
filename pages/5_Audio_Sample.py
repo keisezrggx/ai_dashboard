@@ -125,18 +125,12 @@ filtered_entries = [
     if item['checker'] == selected_checker
 ]
 
-for i in range(0, len(filtered_entries), 2):
-    row_entries = filtered_entries[i:i+2]
-    cols = st.columns(2)
-
-    for j, item in enumerate(row_entries):
-        idx = i + j + 1
-
-        with cols[j]:
-            with st.expander(f'Case {idx}', expanded=False):
-                show_image(item.get('file_1'))
-                if item['file_audio']:
-                    try:
-                        st.audio(item['file_audio'])
-                    except Exception as e:
-                        st.info('No Audio')
+for idx, item in enumerate(filtered_entries, start=1):
+    with st.container():
+        with st.expander(f'Case {idx}', expanded=False):
+            show_image(item.get('file_1'))
+            if item['file_audio']:
+                try:
+                    st.audio(item['file_audio'])
+                except Exception:
+                    st.info('No Audio')

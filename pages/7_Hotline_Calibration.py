@@ -17,14 +17,19 @@ CURRENT_THEME = "light"
 IS_DARK_THEME = False
 st.set_page_config(layout="wide")
 
+
+# -------------------------------------------------
 # Cached data loader — avoids re-reading CSVs on every Streamlit re-render
+# -------------------------------------------------
 @st.cache_data(ttl=3600)
 def load_csv(path, **kwargs):
     """Load a CSV once and cache the result for 1 hour."""
     return pd.read_csv(path, **kwargs)
 
 
+# -------------------------------------------------
 # Reusable AgGrid renderer — replaces 8 repeated blocks
+# -------------------------------------------------
 def render_aggrid(df, height=400):
     """Build and display an AgGrid table with standard options."""
     gb = GridOptionsBuilder.from_dataframe(df)
@@ -41,6 +46,7 @@ if team == 'QC':
 
     # page = st.sidebar.selectbox("Pages", ["Agent Sample", "Hotline Calibration"])
     page = 'Hotline Calibration'
+
 
 
 # ============ Fungsi Global Week of Month ============
@@ -535,7 +541,7 @@ if selected_date not in meeting_data:
     st.stop()
 
 # Date filter
-manual_order = ['Aulia', 'Neneng', 'Azer', 'Reza']
+manual_order = ['Reza', 'Azer', 'Neneng', 'Aulia']
 agent_list = [agent for agent in manual_order if agent in {entry['agent'] for entry in meeting_data[selected_date]}]
 selected_agent = st.sidebar.radio('Agent Sampling', agent_list)
 
