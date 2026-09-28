@@ -123010,10 +123010,17 @@ Score_date,Business Type,Code,Main Category,Checking Result (Sub Category),Backg
 2026-09-20,ASI,289-328-485-506,Customer,Not meet expectation,How to apply for a loan,Loan,2-2034432591-3-1_1789873896
 2026-09-20,ASI,289-1770-1771-1188,Customer,Not meet expectation,Unable to pay loan via BCA,Loan,2-2047167528-3-1_1789889349
 2026-09-20,ASI,1344-1356-1418-260,Customer,Not meet expectation,PLN token number has not been received,Voucher,2-2025528471-3-1_1789753318
-2026-09-21,AFI,738-1608-1609-967,,,Deactivate account,Account Security,
-2026-09-21,AFI,738-1608-1609-967,,,Deactivate account,Account Security,
-2026-09-21,ASI,289-1770-1771-1188,Customer,Not meet expectation,Unable to pay loan via BCA,Loan,2-2041462078-3-1_1790002729
+2026-09-21,AFI,738-1608-1609-967,Customer,Not meet expectation,Deactivate account,Account Security,2-51935339-3-1_1790100552
+2026-09-21,AFI,289-1770-1771-1188,Customer,Not meet expectation,Unable to pay loan via BCA,Loan,2-2041462078-3-1_1790002729
 2026-09-21,ASI,289-1483-1484-900,Customer,Not meet expectation,Payment of Flexi Fund Product Bills,Loan,2-94848097-3-1_1789965173
 2026-09-21,ASI,1134-1142-1165-504,Customer,Not meet expectation,How to change the password/forget the password,Data Update,2-16146630-3-1_1789958810
 2026-09-21,ASI,1344-1356-1418-260,Customer,Not meet expectation,PLN token number has not been received,Voucher,2-67043573-3-1_1789959268
 2026-09-21,ASI,289-1770-1771-1188,Customer,Not meet expectation,Unable to pay loan via BCA,Loan,2-2061782261-3-1_1789982018
+2026-09-22,AFI,738-1608-1609-967,Customer,Not meet expectation,Deactivate account,Account Security,2-2057286181-3-1_1790068814
+2026-09-22,ASI,620-639-676-408,Customer,Not meet expectation,Problematic security verification,Bug,2-25000977-3-1_1790011744
+2026-09-22,ASI,1134-1136-1159-175,Customer,Not meet expectation,Changes in telephone number,Data Update,2-2041835882-3-1_1790083458
+2026-09-23,AFI,738-1608-1609-967,Customer,Not meet expectation,Deactivate account,Account Security,2-51935339-3-1_1790100552
+2026-09-23,ASI,1344-1356-1418-260,Customer,Not meet expectation,PLN token number has not been received,Voucher,2-2039003964-3-1_1790092313
+2026-09-23,ASI,289-1770-1771-1188,Customer,Not meet expectation,Unable to pay loan via BCA,Loan,2-2042788612-3-1_1790148348
+2026-09-23,ASI,289-328-485-506,Customer,Not meet expectation,How to apply for a loan,Loan,2-2062437105-3-1_1790141167
+2026-09-23,ASI,289-409-566-712,Customer,Not meet expectation,Want a loan application,Loan,2-2059930747-3-1_1790140583
