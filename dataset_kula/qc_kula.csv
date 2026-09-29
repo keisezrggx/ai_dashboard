@@ -123024,3 +123024,19 @@ Score_date,Business Type,Code,Main Category,Checking Result (Sub Category),Backg
 2026-09-23,ASI,289-1770-1771-1188,Customer,Not meet expectation,Unable to pay loan via BCA,Loan,2-2042788612-3-1_1790148348
 2026-09-23,ASI,289-328-485-506,Customer,Not meet expectation,How to apply for a loan,Loan,2-2062437105-3-1_1790141167
 2026-09-23,ASI,289-409-566-712,Customer,Not meet expectation,Want a loan application,Loan,2-2059930747-3-1_1790140583
+2026-09-25,AFI,289-309-466-412,Customer,Not meet expectation,How to pay installment bills,Installment/Payment Gateway,2-2002383261-3-1_1790450179
+2026-09-25,AFI,872-894-989-305,Customer,Not meet expectation,Request for Bill Payment Code,Installment/Payment Gateway,2-108489168-3-1_1790330475
+2026-09-25,AFI,872-896-991-337,Customer,Not meet expectation,How to pay the remaining bill,Installment/Payment Gateway,2-2017672848-3-1_1790267938
+2026-09-25,ASI,289-359-516-565,Customer,Not meet expectation,How to check the due loan,Loan,2-2051178655-3-1_1790300485
+2026-09-25,ASI,620-640-677-409,Customer,Not meet expectation,KTP verification constraints,Bug,2-2034567723-3-1_1790340468
+2026-09-26,AFI,738-1608-1609-967,Customer,Not meet expectation,Deactivate account,Account Security,2-2026934830-3-1_1790393314
+2026-09-26,AFI,738-739-758-121,Customer,Not meet expectation,Block permanent limit,Account Security,2-22779407-3-1_1790413099
+2026-09-26,ASI,289-1770-1771-1188,Customer,Not meet expectation,Unable to pay loan via BCA,Loan,2-10663209-3-1_1790398232
+2026-09-26,ASI,872-949-1044-769,Customer,Not meet expectation,Repayment of loan bills,Loan,2-6633241-3-1_1790390519
+2026-09-27,AFI,289-1669-1670-999,Customer,Not meet expectation,How to check bill payment history,Installment/Payment Gateway,2-2057571287-3-1_1790486160
+2026-09-27,AFI,289-309-466-412,Customer,Not meet expectation,How to pay installment bills,Installment/Payment Gateway,2-56238294-3-1_1790302795
+2026-09-27,AFI,738-1608-1609-967,Customer,Not meet expectation,Deactivate account,Account Security,2-2026934830-3-1_17903933141
+2026-09-27,AFI,738-1608-1609-967,Customer,Not meet expectation,Deactivate account,Account Security,2-2026934830-3-1_17903933147
+2026-09-27,ASI,1134-1136-1159-175,Customer,Not meet expectation,Changes in telephone number,Data Update,2-2063539498-3-1_1790497621
+2026-09-27,ASI,1344-1356-1418-260,Customer,Not meet expectation,PLN token number has not been received,Voucher,2-7174429-3-1_1790485494
+2026-09-27,ASI,289-1770-1771-1188,Customer,Not meet expectation,Unable to pay loan via BCA,Loan,2-55794829-3-1_1790414403
