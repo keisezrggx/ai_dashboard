@@ -13,11 +13,10 @@ MEDIA_FIELDS = (
     ('suara_lain', 'suara_lain_ubah', 'Suara Lain'),
     ('kelengkapan_rekaman', 'kelengkapan_rekaman_ubah', 'Kelengkapan Rekaman'),
 )
-AGENT_ORDER = ('Reza', 'Azer', 'Neneng', 'Aulia')
+AGENT_ORDER = ('Azer', 'Neneng', 'Aulia', 'Reza')
 
 st.set_page_config(layout='wide')
 st.title('Hotline Calibration')
-st.sidebar.header('Adjust Data')
 
 
 @st.cache_data(ttl=3600)
