@@ -79,7 +79,7 @@ if selected_date not in meeting_data:
     st.stop()
 
 st.caption(f'Meeting date: {selected_date.strftime("%d %B %Y")}')
-manual_order = ['Neneng', 'Aul', 'Azer', 'Reza']
+manual_order = ['Reza', 'Azer', 'Aul', 'Neneng']
 available_checkers = {entry['checker'] for entry in meeting_data[selected_date]}
 checker_list = [name for name in manual_order if name in available_checkers]
 checker_list += sorted(available_checkers - set(checker_list))
