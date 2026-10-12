@@ -123105,12 +123105,18 @@ Score_date,Business Type,Code,Main Category,Checking Result (Sub Category),Backg
 2026-10-04,ASI,289-409-566-712,Customer,Not meet expectation,Want a loan application,Loan,2-2064557633-3-1_1791113905
 2026-10-04,ASI,289-1770-1771-1188,Customer,Not meet expectation,Unable to pay loan via BCA,Loan,2-104027692-3-1_1790907859
 2026-10-04,ASI,289-409-566-712,Customer,Not meet expectation,Want a loan application,Loan,2-2064531644-3-1_1791054743
-2026-10-05,ASI,289-1770-1771-1188,,,Unable to pay loan via BCA,Loan,
-2026-10-05,ASI,289-328-485-506,,,How to apply for a loan,Loan,
-2026-10-05,AFI,872-932-1027-564,,,How to check the bill,Installment/Payment Gateway,2-66590005-3-1_1791169383
-2026-10-05,ASI,289-1770-1771-1188,,,Unable to pay loan via BCA,Loan,
-2026-10-05,ASI,289-328-485-506,,,How to apply for a loan,Loan,
-2026-10-05,AFI,872-932-1027-564,,,How to check the bill,Installment/Payment Gateway,
-2026-10-06,ASI,289-1770-1771-1188,,,Unable to pay loan via BCA,Loan,
-2026-10-06,ASI,289-1770-1771-1188,,,Unable to pay loan via BCA,Loan,
-2026-10-06,ASI,289-409-566-712,,,Want a loan application,Loan,
+2026-10-05,ASI,289-1770-1771-1188,Customer,Not meet expectation,Unable to pay loan via BCA,Loan,
+2026-10-05,ASI,289-328-485-506,Customer,Not meet expectation,How to apply for a loan,Loan,
+2026-10-05,AFI,872-932-1027-564,Customer,Not meet expectation,How to check the bill,Installment/Payment Gateway,2-2050524919-3-1_1791368296
+2026-10-05,ASI,289-1770-1771-1188,Customer,Not meet expectation,Unable to pay loan via BCA,Loan,
+2026-10-05,ASI,289-328-485-506,Customer,Not meet expectation,How to apply for a loan,Loan,
+2026-10-05,AFI,872-932-1027-564,Customer,Not meet expectation,How to check the bill,Installment/Payment Gateway,2-2050524919-3-1_17913682961
+2026-10-06,ASI,289-1770-1771-1188,Customer,Not meet expectation,Unable to pay loan via BCA,Loan,2-2063757476-3-1_1788989450
+2026-10-06,ASI,289-1770-1771-1188,Customer,Not meet expectation,Unable to pay loan via BCA,Loan,2-2039821004-3-1_1788976375
+2026-10-06,ASI,289-409-566-712,Customer,Not meet expectation,Want a loan application,Loan,
+2026-10-07,AFI,872-932-1027-564,Customer,Not meet expectation,How to check the bill,Installment/Payment Gateway,2-2050524919-3-1_17913682962
+2026-10-07,ASI,1344-1356-1418-260,Customer,Not meet expectation,,,2-2033390149-3-1_1791326171
+2026-10-07,ASI,289-1770-1771-1188,Customer,Not meet expectation,,,2-2043939335-3-1_1791369482
+2026-10-07,ASI,289-419-576-751,Customer,Not meet expectation,,,2-13437253-3-1_1791385199
+2026-10-07,AFI/ASI,200101,Customer,Issue not clear,,,
+2026-10-08,ASI,289-1770-1771-1188,Customer,Not meet expectation,Unable to pay loan via BCA,Loan,2-2000696843-3-1_1791470588
