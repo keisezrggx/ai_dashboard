@@ -123126,3 +123126,6 @@ Score_date,Business Type,Code,Main Category,Checking Result (Sub Category),Backg
 2026-10-09,ASI,289-359-516-565,Customer,Not meet expectation,,,2-2000200989-3-1_1791545813
 2026-10-11,ASI,1134-1136-1159-175,Customer,Not meet expectation,,,2-2064799245-3-1_1791727810
 2026-10-11,ASI,289-419-576-751,Customer,Not meet expectation,,,2-20118637-3-1_1791683119
+2026-10-13,ASI,289-334-491-512,,,Check the loan status,Loan,
+2026-10-13,ASI,289-1770-1771-1188,,,Unable to pay loan via BCA,Loan,
+2026-10-13,ASI,289-409-566-712,,,Want a loan application,Loan,
