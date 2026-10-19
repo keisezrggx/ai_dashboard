@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "antislop": {
+      "source": "miqdadbadjuber/anti-slop",
+      "sourceType": "github",
+      "skillPath": "skills/antislop/SKILL.md",
+      "computedHash": "3b48a24dee4dce368c5dc37bec16561d5ddde78701c942945edfd69b4f110366"
+    },
     "cavecrew": {
       "source": "JuliusBrussee/caveman",
       "sourceType": "github",
