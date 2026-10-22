@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 import os
 import sys
+
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
@@ -9,6 +10,35 @@ import pandas as pd
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = PROJECT_ROOT / "dataset_wellbore"
+ENV_FILE = PROJECT_ROOT / ".env"
+
+
+def load_env_file(env_file: Path) -> dict[str, str]:
+    values = {}
+    if not env_file.is_file():
+        return values
+
+    for line_number, raw_line in enumerate(env_file.read_text(encoding="utf-8").splitlines(), start=1):
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if "=" not in line:
+            raise ValueError(f"Invalid .env entry at line {line_number}: expected KEY=VALUE")
+
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip()
+        if not key:
+            raise ValueError(f"Invalid .env entry at line {line_number}: empty key")
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in ("'", '\"'):
+            value = value[1:-1]
+        values[key] = value
+
+    return values
+
+
+def get_setting(name: str, default: str = "") -> str:
+    return os.environ.get(name) or load_env_file(ENV_FILE).get(name, default)
 
 DATA_FILES = [
     DATA_DIR / "akulaku_superset_presto_hanmm_ozy.prazuganda_1792482311_09_01_05.csv",
@@ -34,9 +64,9 @@ def load_multiple_csv(file_paths: list[Path]) -> pd.DataFrame:
     return pd.concat(frames, ignore_index=True)
 
 def call_llm_analysis(dataset_summary: dict[str, object], analysis_prompt: str) -> str:
-    base_url = os.environ.get("LLM_BASE_URL", "").strip().rstrip("/")
-    model = os.environ.get("LLM_MODEL", "").strip()
-    api_key = os.environ.get("OPENAI_API_KEY", "").strip()
+    base_url = get_setting("LLM_BASE_URL").strip().rstrip("/")
+    model = get_setting("LLM_MODEL").strip()
+    api_key = get_setting("OPENAI_API_KEY").strip()
 
     if not base_url or not model or not api_key:
         raise EnvironmentError(
@@ -150,7 +180,6 @@ Percakapan yang hanya minta dialihkan ke agen, 90% sampai ke agen. Penyalahgunaa
 
 I want you to check and verify those findings with my current real dataset of september that I gathered and stored into DF. here are the information that you need to know to proceed this analysis: 
 - the parameter that show is the user transfered into agent live or not is the column transfermanualtime. if there's data in that columns, that mean user have transfered into human agent.
-
 '''
 
 
