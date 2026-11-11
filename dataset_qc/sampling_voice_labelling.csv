@@ -29,11 +29,25 @@ tanggal_pengerjaan,checker,nomor ,id annotating,annotatoring,result,notes,file_s
 10/15/2026,Reza,,1788438774831_4ec5aa76.wav,Sampler 3 ,Agree,,reza_case_voice_8.png,reza_voice_8.mp3,10/16/2026
 10/14/2026,Neneng,,1789047704496_9042a435.wav,Sampler 2,Agree,,neneng_case_voice_7.png,neneng_voice_7.mp3,10/16/2026
 10/15/2026,Neneng,,1788428516757_d8265892.wav,Sampler 2,Disagree,,neneng_case_voice_8.png,neneng_voice_8.mp3,10/16/2026
-10/16/2026,Reza,,"1788790737669_580580e6.wav",Sampler 3 ,Disagree,,reza_case_voice_9.png,reza_voice_9.mp3,10/23/2026
-10/19/2026,Reza,,"1788572669873_70606ead.wav",Sampler 2,Disagree,,reza_case_voice_10.png,reza_voice_10.mp3,10/23/2026
+10/16/2026,Reza,,1788790737669_580580e6.wav,Sampler 3 ,Disagree,,reza_case_voice_9.png,reza_voice_9.mp3,10/23/2026
+10/19/2026,Reza,,1788572669873_70606ead.wav,Sampler 2,Disagree,,reza_case_voice_10.png,reza_voice_10.mp3,10/23/2026
 10/16/2026,Neneng,,1788800389906_db83ecbe.wav,Sampler 3 ,Disagree,,neneng_case_voice_9.png,neneng_voice_9.mp3,10/23/2026
 10/16/2026,Neneng,,1789143083730_8c969710.wav,Sampler 2,Disagree,,neneng_case_voice_10.png,neneng_voice_10.mp3,10/23/2026
 10/21/2026,Aul,,1789044521565_637eb367.wav,Sampler 4,Agree,,aul_case_voice_9.png,aul_voice_9.mp3,10/23/2026
 10/20/2026,Aul,,1788866317976_afcd8762.wav,Sampler 4,Disagree,,aul_case_voice_10.png,aul_voice_10.mp3,10/23/2026
 10/16/2026,Azer,,1788498249171_6f1e04d6.wav,Sampler 2,Disagree,perubahan text 'makan' menjadi 'maka' quality sebelumnya 3 menjadi 4,azer_case_voice_9.png,azer_voice_9.mp3,10/23/2026
 10/20/2026,Azer,,1789128907320_921a93ec.wav,Sampler 5,Agree,,azer_case_voice_10.png,azer_voice_10.mp3,10/23/2026
+10/26/2026,Neneng,,1789479553468_9c978373.wav,Sampler 2,Disagree,,neneng_case_voice_11.png,neneng_voice_11.mp3,10/30/2026
+10/28/2026,Neneng,,1790021943742_49350515.wav,Sampler 2,Disagree,,neneng_case_voice_12.png,neneng_voice_12.mp3,10/30/2026
+10/29/2026,Aul,,1789823402877_81d5c82b.wav,Sampler 3 ,Agree,,aul_case_voice_11.png,aul_voice_11.mp3,10/30/2026
+10/21/2026,Aul,,1788937432164_9c26709b.wav,Sampler 4,Agree,,aul_case_voice_12.png,aul_voice_12.mp3,10/30/2026
+10/29/2026,Reza,,1789459659590_20cbffd9.wav,Sampler 3 ,Agree,,reza_case_voice_11.png,reza_voice_11.mp3,10/30/2026
+10/21/2026,Reza,,1788937432164_9c26709b.wav,Sampler 3 ,Agree,,reza_case_voice_12.png,reza_voice_12.mp3,10/30/2026
+10/28/2026,Azer,,1789450357996_befd9984.wav,Sampler 2,Disagree,,azer_case_voice_11.png,azer_voice_11.mp3,10/30/2026
+10/27/2026,Azer,,1789985969842_14751fad.wav,Sampler 3 ,Agree,,azer_case_voice_12.png,azer_voice_12.mp3,10/30/2026
+11/5/2026,Neneng,,1789392507187_06c374fd.wav,Sampler 6,Disagree,,neneng_case_voice_13.png,neneng_voice_13.mp3,11/11/2026
+11/5/2026,Neneng,,1789649784834_df1b8ef1.wav,Sampler 6,Disagree,,neneng_case_voice_14.png,neneng_voice_14.mp3,11/11/2026
+11/5/2026,Aul,,1789437014315_00ee5e74.wav,Sampler 5,Disagree,,aul_case_voice_13.png,aul_voice_13.mp3,11/11/2026
+11/3/2026,Aul,,"1789481347562_bcb99aa9.wav",Sampler 3 ,Disagree,,aul_case_voice_14.png,aul_voice_14.mp3,11/11/2026
+11/4/2026,Azer,,1789481347562_bcb99aa9.wav,Sampler 5,Agree,,azer_case_voice_13.png,azer_voice_13.mp3,11/11/2026
+11/4/2026,Azer,,1789370193648_753c6f8f.wav,Sampler 4,Agree,,azer_case_voice_14.png,azer_voice_14.mp3,11/11/2026

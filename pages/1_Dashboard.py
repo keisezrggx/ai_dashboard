@@ -688,8 +688,9 @@ with st.container():
             y=df_daily_r1['Like'],
             mode='lines+markers+text',
             name='Like',
-            text=[f"<span style='color:black'>{x}" for x in df_daily_r1['Like']],
-            textposition='top center',
+            text=[f"<span style='color:black'>{x:.0f}" for x in df_daily_r1['Like']],
+            textposition=['top center' if like >= dislike else 'bottom center'
+                          for like, dislike in zip(df_daily_r1['Like'], df_daily_r1['Dislike'])],
             fill='tonexty',
             fillcolor='rgba(0, 123, 255, 0.2)'
         ))
@@ -700,8 +701,9 @@ with st.container():
             mode='lines+markers+text',
             name='Dislike',
             line=dict(color='red'),
-            text=[f"<span style='color:black'>{x}" for x in df_daily_r1['Dislike']],
-            textposition='top center',
+            text=[f"<span style='color:black'>{x:.0f}" for x in df_daily_r1['Dislike']],
+            textposition=['bottom center' if like >= dislike else 'top center'
+                          for like, dislike in zip(df_daily_r1['Like'], df_daily_r1['Dislike'])],
             fill='tonexty',
             fillcolor='rgba(255,0,0,0.2)'
         ))
@@ -714,7 +716,7 @@ with st.container():
 
     fig_r1.update_layout(
         title=dict(text='3-1robot (Previous Model)', x=0.4),
-        yaxis=dict(title=None),
+        yaxis=dict(title=None, tickformat=',.0f'),
         legend=dict(
             orientation="v",
             yanchor="top",
@@ -723,6 +725,7 @@ with st.container():
             x=1
         )
     )
+    fig_r1.update_traces(hovertemplate='%{x}<br>%{y:,.0f}<extra>%{fullData.name}</extra>')
 
     cols[0].plotly_chart(fig_r1, use_container_width=True)
 
@@ -735,8 +738,9 @@ with st.container():
             y=df_daily_r2['Like'],
             mode='lines+markers+text',
             name='Like',
-            text=[f"<span style='color:black'>{x}" for x in df_daily_r2['Like']],
-            textposition='top center',
+            text=[f"<span style='color:black'>{x:.0f}" for x in df_daily_r2['Like']],
+            textposition=['top center' if like >= dislike else 'bottom center'
+                          for like, dislike in zip(df_daily_r2['Like'], df_daily_r2['Dislike'])],
             fill='tonexty',
             fillcolor='rgba(0, 123, 255, 0.2)'
         ))
@@ -747,8 +751,9 @@ with st.container():
             mode='lines+markers+text',
             name='Dislike',
             line=dict(color='red'),
-            text=[f"<span style='color:black'>{x}" for x in df_daily_r2['Dislike']],
-            textposition='top center',
+            text=[f"<span style='color:black'>{x:.0f}" for x in df_daily_r2['Dislike']],
+            textposition=['bottom center' if like >= dislike else 'top center'
+                          for like, dislike in zip(df_daily_r2['Like'], df_daily_r2['Dislike'])],
             fill='tonexty',
             fillcolor='rgba(255,0,0,0.2)'
         ))
@@ -761,7 +766,7 @@ with st.container():
 
     fig_r2.update_layout(
         title=dict(text='3-1robot2 (Latest Model)', x=0.4),
-        yaxis=dict(title=None),
+        yaxis=dict(title=None, tickformat=',.0f'),
         legend=dict(
             orientation="v",
             yanchor="top",
@@ -770,6 +775,7 @@ with st.container():
             x=1
         )
     )
+    fig_r2.update_traces(hovertemplate='%{x}<br>%{y:,.0f}<extra>%{fullData.name}</extra>')
 
     cols[1].plotly_chart(fig_r2, use_container_width=True)
 
@@ -827,84 +833,84 @@ else:
     )
 
 # ===== Tampilkan di dashboard =====
-st.markdown("##### Dislike Summary")
-with st.container():
-    cols = st.columns([0.45, 0.5])
+# st.markdown("##### Dislike Summary")
+# with st.container():
+#     cols = st.columns([0.45, 0.5])
 
-    with cols[0]:
-        render_aggrid(team_summary)
+#     with cols[0]:
+#         render_aggrid(team_summary)
 
-    with cols[1]:
-        render_aggrid(bg_summary)
+#     with cols[1]:
+#         render_aggrid(bg_summary)
 
 
-    # Table QC KULA
-    df_qc_kula = load_csv('dataset_kula/qc_kula.csv')
-    df_qc_kula['Score_date'] = pd.to_datetime(df_qc_kula['Score_date'], errors='coerce')
+#     # Table QC KULA
+#     df_qc_kula = load_csv('dataset_kula/qc_kula.csv')
+#     df_qc_kula['Score_date'] = pd.to_datetime(df_qc_kula['Score_date'], errors='coerce')
 
-    if date_mode == 'Single' and selected_date:
-        df_qc_kula = df_qc_kula[df_qc_kula['Score_date'].dt.date == selected_date]
-    elif date_mode == 'Range' and selected_range and len(selected_range) == 2:
-        start_date, end_date = pd.to_datetime(selected_range[0]), pd.to_datetime(selected_range[1])
-        df_qc_kula = df_qc_kula[df_qc_kula['Score_date'].between(start_date, end_date)]
+#     if date_mode == 'Single' and selected_date:
+#         df_qc_kula = df_qc_kula[df_qc_kula['Score_date'].dt.date == selected_date]
+#     elif date_mode == 'Range' and selected_range and len(selected_range) == 2:
+#         start_date, end_date = pd.to_datetime(selected_range[0]), pd.to_datetime(selected_range[1])
+#         df_qc_kula = df_qc_kula[df_qc_kula['Score_date'].between(start_date, end_date)]
 
-    # Filter the company
-    if company_filter:
-        df_qc_kula = df_qc_kula[df_qc_kula['Business Type'].isin(company_filter)]
+#     # Filter the company
+#     if company_filter:
+#         df_qc_kula = df_qc_kula[df_qc_kula['Business Type'].isin(company_filter)]
 
-    # === Table 1: Main Category & Sub Category ===
-    if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
-        main_sub_summary = aggregate_table_with_granularity(
-            df_qc_kula,
-            category_col=['Main Category', 'Checking Result (Sub Category)'],
-            date_col='Score_date',
-            granularity=granularity,
-            start_date=start_date,
-            end_date=end_date
-        )
-    else:
-        main_sub_summary = (
-            df_qc_kula.groupby(['Main Category', 'Checking Result (Sub Category)'])
-            .size()
-            .reset_index(name='Total Sample')
-            .sort_values('Total Sample', ascending=False)
-        )
+#     # === Table 1: Main Category & Sub Category ===
+#     if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
+#         main_sub_summary = aggregate_table_with_granularity(
+#             df_qc_kula,
+#             category_col=['Main Category', 'Checking Result (Sub Category)'],
+#             date_col='Score_date',
+#             granularity=granularity,
+#             start_date=start_date,
+#             end_date=end_date
+#         )
+#     else:
+#         main_sub_summary = (
+#             df_qc_kula.groupby(['Main Category', 'Checking Result (Sub Category)'])
+#             .size()
+#             .reset_index(name='Total Sample')
+#             .sort_values('Total Sample', ascending=False)
+#         )
 
-    # === Table 2: Team Category ===
-    if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
-        team_cat_qc = aggregate_table_with_granularity(
-            df_qc_kula,
-            category_col='Team/Category',
-            date_col='Score_date',
-            granularity=granularity,
-            start_date=start_date,
-            end_date=end_date
-        )
-    else:
-        team_cat_qc = (
-            df_qc_kula.groupby('Team/Category')
-            .size()
-            .reset_index(name='Total Sample')
-            .sort_values('Total Sample', ascending=False)
-        )
+#     # === Table 2: Team Category ===
+#     if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
+#         team_cat_qc = aggregate_table_with_granularity(
+#             df_qc_kula,
+#             category_col='Team/Category',
+#             date_col='Score_date',
+#             granularity=granularity,
+#             start_date=start_date,
+#             end_date=end_date
+#         )
+#     else:
+#         team_cat_qc = (
+#             df_qc_kula.groupby('Team/Category')
+#             .size()
+#             .reset_index(name='Total Sample')
+#             .sort_values('Total Sample', ascending=False)
+#         )
 
-    # === Table 3: Background Detail ===
-    if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
-        bg_summary = aggregate_table_with_granularity(
-            df_qc_kula,
-            category_col='Background detail- ID',
-            date_col='Score_date',
-            granularity=granularity,
-            start_date=start_date,
-            end_date=end_date
-        )
-    else:
-        bg_summary = (
-            df_qc_kula.groupby('Background detail- ID')
-            .size()
-            .reset_index(name='Total Sample')
-            .sort_values('Total Sample', ascending=False)
-        )
+#     # === Table 3: Background Detail ===
+#     if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
+#         bg_summary = aggregate_table_with_granularity(
+#             df_qc_kula,
+#             category_col='Background detail- ID',
+#             date_col='Score_date',
+#             granularity=granularity,
+#             start_date=start_date,
+#             end_date=end_date
+#         )
+#     else:
+#         bg_summary = (
+#             df_qc_kula.groupby('Background detail- ID')
+#             .size()
+#             .reset_index(name='Total Sample')
+#             .sort_values('Total Sample', ascending=False)
+#         )
 
     # # === Show the data ===
     # st.markdown('##### QC Dislike')
